@@ -8,5 +8,9 @@
 </head>
 <body>
     <h1>PRUEBA INDEX</h1>
+    <div id="app">
+        <example-component></example-component>
+     </div>
 </body>
+<script src="{{ mix('/js/app.js') }}"></script>
 </html>
