@@ -18,7 +18,7 @@ class CreateVehiculosTable extends Migration
             $table->string('nombre', 20);
             $table->unsignedInteger('id_usuario');
             $table->foreign('id_usuario')->references('id_usuario')
-                ->on('usuarios')->onDelete('cascade');
+                ->on('users')->onDelete('cascade');
         });
     }
 
