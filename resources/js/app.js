@@ -8,12 +8,13 @@ require('./bootstrap');
 
 import { createApp } from 'vue'
 import App from './components/Header.vue'
-import router from './router'
-import axios from 'axios';
+//import router from './router'
+//import axios from 'axios';
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 const app =  createApp(App).mount('#app');
-app.use(router)
-.use(axios)
+//app.use(router)
+//.use(axios)
 
 
 /**

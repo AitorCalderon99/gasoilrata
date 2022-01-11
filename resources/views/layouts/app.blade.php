@@ -8,7 +8,7 @@
     <link rel="icon" href="{{ url('icons/Logo.ico') }}">
 </head>
 <body>
-    <div id="app">
+    <div id="app" v-bind:class="{navbar}">
     </div>
     <script src="{{ mix('js/app.js') }}"></script>
 </body>
