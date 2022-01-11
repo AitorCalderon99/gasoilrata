@@ -1,0 +1,12 @@
+{
+    "tarjetas":[
+        {
+            "pregunta" : "¿En qué influye un mayor octanaje en el combustible?" ,
+            "respuesta" : "A mayor octanaje mayor resistencia a la explosión. Es decir, la gasolina 98 tiene mayor capacidad de antidenotación por lo que el empuje del pistón es lineal. Por lo tanto, es la indicada para altas cilindradas."
+        },
+        {
+            "pregunta" : "¿Te pueden multar por circular con el carnet caducado?" ,
+            "respuesta" : "El carné de conducir tiene una vigencia de 10 años y según la Ley de Tráfico, circular con el carné caducado conlleva una multa de 200 euros. Pero no solo eso, si estamos implicados en algún accidente el seguro probablemente se lave las manos (sea a terceros o todo riesgo). "
+        }
+    ]
+}
