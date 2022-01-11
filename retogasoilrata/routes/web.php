@@ -22,18 +22,16 @@ Route::get('/', function () {
     return view('index');
 });
 
-// Vistas con mantenimiento
-Route::get("/home", [HomeController::class, "index"]);
-Route::get("/consumo", [consumosController::class, "consumo"]);
-Route::get("/repostajes", [repostajesController::class, "repostajes"]);
-Route::get("/usuarios", [usuariosController::class, "usuarios"]);
-Route::get("/vehiculos", [vehiculosController::class, "vehiculos"]);
-
-Route::get("/editUser", [vehiculosController::class, "editUser"]);
-Route::get("/registro", [vehiculosController::class, "registro"]);
-
 // Vistas sin mantenimiento
-Route::get("/login", [HomeController::class, "login"]);
-Route::get("/contacto", [HomeController::class, "contacto"]);
-Route::get("/calculadora", [HomeController::class, "calculadora"]);
-Route::get("/ranking", [HomeController::class, "ranking"]);
+Route::get("home", [HomeController::class, "getHome"])->name("home");
+Route::get("login", [HomeController::class, "login"])->name("login");
+Route::get("contacto", [HomeController::class, "contacto"])->name("contacto");
+Route::get("calculadora", [HomeController::class, "calculadora"])->name("calculadora");
+Route::get("ranking", [HomeController::class, "ranking"])->name("ranking");
+
+// Vistas con mantenimiento
+Route::resource("consumo", ConsumosController::class);
+Route::resource("repostajes", RepostajesController::class);
+Route::resource("usuarios", UsuariosController::class);
+Route::resource("vehiculos", VehiculosController::class);
+
