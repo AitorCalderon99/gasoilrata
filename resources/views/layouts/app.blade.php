@@ -12,7 +12,7 @@
         <headeras></headeras>
     </div>
 
-    espacio para el footer
+    @yield('content')
     
     <div id="app2">
         <app></app>
