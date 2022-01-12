@@ -11,6 +11,10 @@
     <div id="app">
         <headeras></headeras>
     </div>
+    espacio para el footer
+    <div id="app2">
+        <app></app>
+    </div>
     <script src="{{ mix('js/app.js') }}"></script>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet"/>
 </body>
