@@ -8,13 +8,13 @@ require('./bootstrap');
 
 import { createApp } from 'vue'
 import App from './components/Header.vue'
+import App2 from './components/Footer.vue'
 //import router from './router'
 //import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 const app =  createApp(App).mount('#app');
-//app.use(router)
-//.use(axios)
+const app2 = createApp(App2).mount('#app2');
 
 
 /**
@@ -36,3 +36,5 @@ const app =  createApp(App).mount('#app');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+Vue.component('headeras', require('./components/Header.vue').default);
+Vue.component('pie', require('./components/Footer.vue').default);
