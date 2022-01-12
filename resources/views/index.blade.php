@@ -1,6 +1,6 @@
 @extends('layout.app')
 
-<!-- @section('main') -->
+@section('main')
 <main>
     <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
@@ -51,18 +51,7 @@
     </div>
 
     <div class="grafico">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-10 offset-md-1">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Dashboard</div>
-                        <div class="panel-body">
-                            <canvas id="canvas" height="280" width="600"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <canvas id="grafico"></canvas>
     </div>
 </main>
-<!-- @endsection -->
+@endsection
