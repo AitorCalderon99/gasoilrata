@@ -84,8 +84,10 @@ export default {
   
   footer {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     background-color: #c5a880;
+    padding-left: 2em;
+    padding-right: 2em;
   }
 
   footer div {
