@@ -77,22 +77,23 @@ export default {
 </script>
 
 <style scoped>
-    html * {
+  html * {
     font-family: "Roboto";
     font-style: italic;
-    }
-    footer {
+  }
+  
+  footer {
     display: flex;
     justify-content: space-around;
     background-color: #c5a880;
-    }
+  }
 
-    footer div {
+  footer div {
     margin-top: auto;
     margin-bottom: auto;
-    }
+  }
 
-    svg {
+  svg {
     margin-bottom: 0.2em;
-    }
+  }
 </style>

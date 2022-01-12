@@ -22545,14 +22545,14 @@ var _withScopeId = function _withScopeId(n) {
 };
 
 var _hoisted_1 = {
-  "class": "container"
+  "class": "nav nav-pills nav-justified"
 };
 
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<nav class=\"nav nav-pills nav-justified\" data-v-1f42fb90><div class=\"nav-item dropdown\" data-v-1f42fb90><a href=\"#\" class=\"nav-link dropdown-toggle\" data-bs-toggle=\"dropdown\" data-v-1f42fb90>Messages</a><div class=\"dropdown-menu\" data-v-1f42fb90><a href=\"#\" class=\"dropdown-item\" data-v-1f42fb90>Inicio</a><a href=\"#\" class=\"dropdown-item\" data-v-1f42fb90>Ranking Gasolineras</a><a href=\"#\" class=\"dropdown-item\" data-v-1f42fb90>Calculadora Consumos</a><a href=\"#\" class=\"dropdown-item\" data-v-1f42fb90>Contacto</a><a href=\"#\" class=\"dropdown-item\" data-v-1f42fb90>Usuario</a><a href=\"#\" class=\"dropdown-item\" data-v-1f42fb90>Hacerse miembro</a></div></div><a href=\"#\" class=\"nav-item nav-link\" data-v-1f42fb90>GASOIL</a><a href=\"#\" class=\"nav-item nav-link\" data-v-1f42fb90><img src=\"Logo.png\" data-v-1f42fb90></a></nav>", 1);
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<button type=\"button\" class=\"navbar-toggler\" data-bs-toggle=\"collapse\" data-bs-target=\"#hamburguesa\" data-v-1f42fb90><span class=\"navbar-toggler-icon\" data-v-1f42fb90></span></button><a href=\"#\" class=\"nav-item nav-link\" data-v-1f42fb90>GASOIL</a><a href=\"#\" class=\"nav-item nav-link\" data-v-1f42fb90><img src=\"Logo.png\" data-v-1f42fb90></a><div id=\"hamburguesa\" class=\"collapse navbar-collapse\" data-v-1f42fb90><div class=\"navbar-nav\" data-v-1f42fb90><a href=\"#\" class=\"nav-item\" data-v-1f42fb90>Inicio</a><a href=\"#\" class=\"nav-item\" data-v-1f42fb90>Ranking Gasolineras</a><a href=\"#\" class=\"nav-item\" data-v-1f42fb90>Calculadora Consumos</a><a href=\"#\" class=\"nav-item\" data-v-1f42fb90>Contacto</a><a href=\"#\" class=\"nav-item\" data-v-1f42fb90>Login</a><a href=\"#\" class=\"nav-item\" data-v-1f42fb90>Hacerse miembro</a></div></div>", 4);
 
-var _hoisted_3 = [_hoisted_2];
+var _hoisted_6 = [_hoisted_2];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, _hoisted_3);
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("nav", _hoisted_1, _hoisted_6);
 }
 
 /***/ }),
@@ -27735,7 +27735,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\nimg[data-v-1f42fb90] {\r\n  width: 30px;\r\n  height: 30px;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\nhtml *[data-v-1f42fb90] {\r\n    font-family: \"Roboto\";\r\n    font-style: italic;\n}\na[data-v-1f42fb90]:not(#hamburguesa a) {\r\n    font-weight: bold;\r\n    color: black;\n}\n.nav-justified .nav-item[data-v-1f42fb90],\r\n  .nav-justified > .nav-link[data-v-1f42fb90] {\r\n    text-align: end;\n}\n#hamburguesa a[data-v-1f42fb90] {\r\n    color: white;\r\n    text-decoration: none;\r\n    transition: 0.5s;\r\n    width: -webkit-fit-content;\r\n    width: -moz-fit-content;\r\n    width: fit-content;\r\n    margin: auto;\n}\n#hamburguesa a[data-v-1f42fb90]:hover {\r\n    color: black;\n}\nimg[data-v-1f42fb90] {\r\n    width: 30px;\r\n    height: 30px;\r\n    margin-right: 0%;\n}\nnav[data-v-1f42fb90] {\r\n    background-color: #c5a880;\n}\n.container[data-v-1f42fb90]{\r\n    width: 100%;\r\n    margin: 0%;\r\n    padding: 0%;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
