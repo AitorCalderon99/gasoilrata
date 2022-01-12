@@ -13,8 +13,6 @@ import App from './components/Header.vue'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 const app =  createApp(App).mount('#app');
-//app.use(router)
-//.use(axios)
 
 
 /**
@@ -35,4 +33,7 @@ const app =  createApp(App).mount('#app');
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+
+Vue.component('headeras', require('./components/ExampleComponent.vue').default);
+ 
 
