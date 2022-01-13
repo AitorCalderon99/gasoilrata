@@ -16,7 +16,7 @@
 </template>
 
 <script>
-    import tarjetas from "../tarjetas.json";
+    import tarjetas from "../../tarjetas.json";
 
     var cuestiones = [];
 
@@ -27,7 +27,7 @@
         cuestiones.push(tarjetas[numRandom]);
     }
 
-    module.exports = {
+    export default {
         data : function() {
             return {
                 cuestiones : cuestiones
