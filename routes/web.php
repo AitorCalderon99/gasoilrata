@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,10 +27,10 @@ Route::get("calculadora", [HomeController::class, "calculadora"])->name("calcula
 Route::get("ranking", [HomeController::class, "ranking"])->name("ranking");
 
 // Vistas con mantenimiento
-Route::resource("consumo", ConsumosController::class);
-Route::resource("repostajes", RepostajesController::class);
-Route::resource("usuarios", UsuariosController::class);
-Route::resource("vehiculos", VehiculosController::class);
+Route::resource("consumo", \App\Http\Controllers\ConsumosController::class);
+Route::resource("repostajes", \App\Http\Controllers\RepostajesController::class);
+Route::resource("usuarios", \App\Http\Controllers\UsuariosController::class);
+Route::resource("vehiculos", \App\Http\Controllers\VehiculosController::class);
 
 
 require __DIR__.'/auth.php';
