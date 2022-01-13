@@ -23,8 +23,7 @@ class VehiculoFactory extends Factory
     public function definition()
     {
         return [
-            'id_vehiculo'  => Vehiculo::pluck('id_vehiculo')->random(),
-            'origen' => $this->faker->name(),
+            'nombre' => 'Vehiculo: '.$this->faker->randomDigitNotNull(),
             'id_usuario'  => User::pluck('id_usuario')->random(),
         ];
     }

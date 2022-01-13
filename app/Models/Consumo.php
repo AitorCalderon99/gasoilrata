@@ -9,6 +9,8 @@ class Consumo extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     protected $fillable = [
         'kilometros',
         'litros',

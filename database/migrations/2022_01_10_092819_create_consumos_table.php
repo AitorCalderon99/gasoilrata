@@ -19,7 +19,7 @@ class CreateConsumosTable extends Migration
             $table->double('litros');
             $table->double('coste_litro');
             $table->string('origen');
-            $table->double('destino');
+            $table->string('destino');
             $table->date('fecha');
             $table->string('carburante');
             $table->unsignedInteger('id_vehiculo');
