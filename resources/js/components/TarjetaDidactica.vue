@@ -28,7 +28,10 @@
     }
 
     export default {
-        data : function() {
+        mounted() {
+            console.log("Tarjeta component mounted.");
+        },
+        data () {
             return {
                 cuestiones : cuestiones
             }
