@@ -5,13 +5,13 @@
     <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <TarjetaDidactica src="..." class="d-block w-100" alt="...">
+                <TarjetaDidactica src="..." class="d-block w-100" alt="..."></TarjetaDidactica>
             </div>
             <div class="carousel-item">
-                <TarjetaDidactica src="..." class="d-block w-100" alt="...">
+                <TarjetaDidactica src="..." class="d-block w-100" alt="..."></TarjetaDidactica>
             </div>
             <div class="carousel-item">
-                <TarjetaDidactica src="..." class="d-block w-100" alt="...">
+                <TarjetaDidactica src="..." class="d-block w-100" alt="..."></TarjetaDidactica>
             </div>
         </div>
     </div>

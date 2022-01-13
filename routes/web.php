@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ChartJsController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,10 +29,10 @@ Route::get("ranking", [HomeController::class, "ranking"])->name("ranking");
 Route::get('chartjs', [ChartJsController::class, 'index'])->name('chartjs.index');
 
 // Vistas con mantenimiento
-Route::resource("consumo", ConsumosController::class);
-Route::resource("repostajes", RepostajesController::class);
-Route::resource("usuarios", UsuariosController::class);
-Route::resource("vehiculos", VehiculosController::class);
+Route::resource("consumo", \App\Http\Controllers\ConsumosController::class);
+Route::resource("repostajes", \App\Http\Controllers\RepostajesController::class);
+Route::resource("usuarios", \App\Http\Controllers\UsuariosController::class);
+Route::resource("vehiculos", \App\Http\Controllers\VehiculosController::class);
 
 
 require __DIR__.'/auth.php';
