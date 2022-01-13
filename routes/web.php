@@ -23,12 +23,11 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 Route::get("contacto", [HomeController::class, "contacto"])->name("contacto");
-Route::get("calculadora", [HomeController::class, "calculadora"])->name("calculadora");
-Route::get("ranking", [HomeController::class, "ranking"])->name("ranking");
-Route::get('chartjs', [ChartJsController::class, 'index'])->name('chartjs.index');
 
 // Vistas con mantenimiento
 Route::resource("consumo", \App\Http\Controllers\ConsumosController::class);
+Route::resource("ranking", \App\Http\Controllers\ConsumosController::class);
+Route::resource("calculadora", \App\Http\Controllers\ConsumosController::class);
 Route::resource("repostajes", \App\Http\Controllers\RepostajesController::class);
 Route::resource("usuarios", \App\Http\Controllers\UsuariosController::class);
 Route::resource("vehiculos", \App\Http\Controllers\VehiculosController::class);
