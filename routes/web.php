@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ChartJsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +14,7 @@ use App\Http\Controllers\ChartJsController;
 */
 
 Route::get('/', function () {
-    return view('layouts/app');
+    return view('index');
 });
 
 Route::get('/dashboard', function () {
