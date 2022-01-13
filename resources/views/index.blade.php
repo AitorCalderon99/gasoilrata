@@ -1,17 +1,17 @@
-@extends('layout.app')
+@extends('layouts.app')
 
-@section('main')
+@section('content')
 <main>
-    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel" id="slider-tarjetas">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <TarjetaDidactica src="..." class="d-block w-100" alt="...">
+                <TarjetaDidactica></TarjetaDidactica>
             </div>
             <div class="carousel-item">
-                <TarjetaDidactica src="..." class="d-block w-100" alt="...">
+                <TarjetaDidactica></TarjetaDidactica>
             </div>
             <div class="carousel-item">
-                <TarjetaDidactica src="..." class="d-block w-100" alt="...">
+                <TarjetaDidactica></TarjetaDidactica>
             </div>
         </div>
     </div>
@@ -53,5 +53,6 @@
     <div class="grafico">
         <canvas id="grafico"></canvas>
     </div>
+    <script src="../js/chart.js"></script>
 </main>
 @endsection
