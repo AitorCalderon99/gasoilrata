@@ -15,7 +15,7 @@ class CreateVehiculosTable extends Migration
     {
         Schema::create('vehiculos', function (Blueprint $table) {
             $table->increments('id_vehiculo');
-            $table->string('nombre', 20);
+            $table->string('nombre', 40);
             $table->unsignedInteger('id_usuario');
             $table->foreign('id_usuario')->references('id_usuario')
                 ->on('users')->onDelete('cascade');

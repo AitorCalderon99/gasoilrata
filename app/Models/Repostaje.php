@@ -9,6 +9,8 @@ class Repostaje extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     protected $fillable = [
         'combustible',
         'fecha',
