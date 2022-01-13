@@ -24,7 +24,6 @@ Route::get('/dashboard', function () {
 Route::get("contacto", [HomeController::class, "contacto"])->name("contacto");
 Route::get("calculadora", [HomeController::class, "calculadora"])->name("calculadora");
 Route::get("ranking", [HomeController::class, "ranking"])->name("ranking");
-Route::get('chartjs', [ChartJsController::class, 'index'])->name('chartjs.index');
 
 // Vistas con mantenimiento
 Route::resource("consumo", ConsumosController::class);
