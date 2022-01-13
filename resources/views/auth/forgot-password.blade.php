@@ -1,36 +1,55 @@
 <x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+    <div class="mb-4 text-sm text-gray-600">
+        {{ __('¿Te has olvidado de tu contraseña? No hay problema. Escribe tu correo y te mandaremos un link para resetear tu contraseña, que te permitira escoger una nueva.') }}
+    </div>
 
-        <div class="mb-4 text-sm text-gray-600">
-            {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+    <!-- Session Status -->
+    <x-auth-session-status class="mb-4" :status="session('status')" />
+
+    <!-- Validation Errors -->
+    <x-auth-validation-errors class="mb-4" :errors="$errors" />
+
+    <form method="POST" action="{{ route('password.email') }}" class="container">
+        @csrf
+
+        <!-- Email Address -->
+        <div class="mb-3">
+            <x-label for="email" :value="__('Correo')" class="form-label fw-bold text-light"/>
+
+            <x-input id="email" class="form-control rounded-pill" type="email" name="email" :value="old('email')" required autofocus />
         </div>
 
-        <!-- Session Status -->
-        <x-auth-session-status class="mb-4" :status="session('status')" />
-
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
-
-        <form method="POST" action="{{ route('password.email') }}">
-            @csrf
-
-            <!-- Email Address -->
-            <div>
-                <x-label for="email" :value="__('Email')" />
-
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <x-button>
-                    {{ __('Email Password Reset Link') }}
-                </x-button>
-            </div>
-        </form>
-    </x-auth-card>
+        <div class="d-flex align-items-center justify-content-center">
+            <button class="ml-3 rounded-pill bg-black text-light">
+                {{ __('Link para nueva contraseña') }}
+            </button>
+        </div>
+    </form>
 </x-guest-layout>
+
+<style>
+    html * {
+        font-family: "Roboto";
+    }   
+    
+    button{
+        width: 10em;
+        height: 3em;
+        border: none;
+        font-weight: 200;
+    }
+
+    #contrasenia > input{
+        padding-top: 6px;
+        padding-bottom: 2px;
+    }
+
+    input{
+        opacity: 56%;
+    }
+
+    body{
+        background-color: #C5A880;
+    }
+</style>
+
