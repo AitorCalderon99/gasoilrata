@@ -22,12 +22,14 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::get("contacto", [HomeController::class, "contacto"])->name("contacto");
+Route::get('contacto', function () {
+    return view('contacto');
+});
 
 // Vistas con mantenimiento
 Route::resource("consumo", \App\Http\Controllers\ConsumosController::class);
-Route::resource("ranking", \App\Http\Controllers\ConsumosController::class);
-Route::resource("calculadora", \App\Http\Controllers\ConsumosController::class);
+Route::resource("ranking", \App\Http\Controllers\RankingController::class);
+Route::resource("calculadora", \App\Http\Controllers\CalculadoraController::class);
 Route::resource("repostajes", \App\Http\Controllers\RepostajesController::class);
 Route::resource("usuarios", \App\Http\Controllers\UsuariosController::class);
 Route::resource("vehiculos", \App\Http\Controllers\VehiculosController::class);
