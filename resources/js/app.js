@@ -9,12 +9,14 @@ require('./bootstrap');
 import { createApp } from 'vue'
 import App from './components/Header.vue'
 import App2 from './components/Footer.vue'
+import TarjetaDidactica from './components/TarjetaDidactica.vue'
 //import router from './router'
 //import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 const app =  createApp(App).mount('#app');
 const app2 = createApp(App2).mount('#app2');
+const tarjeta = createApp(TarjetaDidactica).mount('#slider-tarjetas');
 
 
 /**
@@ -38,3 +40,4 @@ const app2 = createApp(App2).mount('#app2');
 
 Vue.component('headeras', require('./components/Header.vue').default);
 Vue.component('pie', require('./components/Footer.vue').default);
+Vue.component('TarjetaDidactica', require('./components/TarjetaDidactica.vue').default);
