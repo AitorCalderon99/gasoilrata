@@ -6,9 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <title>@yield('title')</title>
-
-    @stack('script')
-    @stack('style')
 </head>
 <body>
     <div id="app">
@@ -20,8 +17,15 @@
     <div id="app2">
         <app></app>
     </div>
-    
+
     <script src="{{ mix('js/app.js') }}"></script>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet"/>
+    <style>
+        body{
+            background-color: #C5A880;
+        }
+    </style>
+    @stack('script')
+    @stack('style')
 </body>
 </html>

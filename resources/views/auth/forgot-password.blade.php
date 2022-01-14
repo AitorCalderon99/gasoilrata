@@ -1,18 +1,18 @@
 <x-guest-layout>
-    <div class="mb-4 text-sm text-gray-600">
-        {{ __('¿Te has olvidado de tu contraseña? No hay problema. Escribe tu correo y te mandaremos un link para resetear tu contraseña, que te permitira escoger una nueva.') }}
-    </div>
-
-    <!-- Session Status -->
+    <!-- Estado de la sesion -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
-    <!-- Validation Errors -->
+    <!-- Validacion de errores -->
     <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-    <form method="POST" action="{{ route('password.email') }}" class="container">
+    <form method="POST" action="{{ route('password.email') }}" class="container my-3">
         @csrf
 
-        <!-- Email Address -->
+        <div class="mb-4 text-sm text-gray-600">
+            {{ __('¿Te has olvidado de tu contraseña? No hay problema. Escribe tu correo y te mandaremos un link para resetear tu contraseña, que te permitira escoger una nueva.') }}
+        </div>
+
+        <!-- Correo -->
         <div class="mb-3">
             <x-label for="email" :value="__('Correo')" class="form-label fw-bold text-light"/>
 
@@ -20,8 +20,12 @@
         </div>
 
         <div class="d-flex align-items-center justify-content-center">
-            <button class="ml-3 rounded-pill bg-black text-light">
-                {{ __('Link para nueva contraseña') }}
+            <a class="text-sm mx-1" href="{{ route('login') }}">
+                {{ __('Regresar') }}
+            </a>
+
+            <button class="rounded-pill bg-black text-light">
+                {{ __('Enviar') }}
             </button>
         </div>
     </form>
@@ -37,6 +41,12 @@
         height: 3em;
         border: none;
         font-weight: 200;
+        transition: 0.5s;
+    }
+
+    button:hover{
+        background-color: white !important;
+        color: #C5A880 !important;
     }
 
     #contrasenia > input{
@@ -50,6 +60,19 @@
 
     body{
         background-color: #C5A880;
+    }
+
+    form{
+        width: 80% !important;
+    }
+
+    a{
+        text-decoration: none;
+        transition: 0.5s;
+    }
+
+    a:hover{
+        font-weight: bold;
     }
 </style>
 

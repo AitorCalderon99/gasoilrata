@@ -10,16 +10,16 @@
   <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
 </svg>
     </button>
-    <a href="#" class="nav-item nav-link my-auto">GASOIL</a>
-    <a href="#" class="nav-item nav-link"><img src="Logo.png" /></a>
+    <p class="nav-item my-auto">GASOIL</p>
+    <a href="index.php" class="nav-item nav-link"><img id="Logo" src="Logo.png" /></a>
     <div id="hamburguesa" class="collapse navbar-collapse">
       <div class="navbar-nav">
-        <a href="#" class="nav-item">Inicio</a>
-        <a href="#" class="nav-item">Ranking Gasolineras</a>
-        <a href="#" class="nav-item">Calculadora Consumos</a>
-        <a href="#" class="nav-item">Contacto</a>
-        <a href="#" class="nav-item">Login</a>
-        <a href="#" class="nav-item">Hacerse miembro</a>
+        <a href="/" class="nav-item">Inicio</a>
+        <a href="ranking.php" class="nav-item">Ranking Gasolineras</a>
+        <a href="calculadora" class="nav-item">Calculadora Consumos</a>
+        <a href="contacto.php" class="nav-item">Contacto</a>
+        <a href="login" class="nav-item">Login</a>
+        <a href="register.php" class="nav-item">Hacerse miembro</a>
       </div>
     </div>
   </nav>
@@ -36,6 +36,8 @@ export default {
 <style scoped>
 html * {
   font-family: "Roboto";
+}
+nav{
   font-style: italic;
 }
 
@@ -61,7 +63,7 @@ a:not(#hamburguesa a) {
   color: black;
 }
 
-img {
+#Logo {
   width: 30px;
   height: 30px;
   margin-right: 0%;

@@ -2,6 +2,16 @@
 
 namespace App\Http\Controllers\Auth;
 
+
+/*
+
+
+Registrar usuario nuevo
+
+
+*/
+
+
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
