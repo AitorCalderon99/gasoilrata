@@ -7,9 +7,6 @@
 
     <title>@yield('title')</title>
 
-    <script src="{{ mix('js/app.js') }}"></script>
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet"/>
-
     @stack('script')
     @stack('style')
 </head>
@@ -17,12 +14,14 @@
     <div id="app">
         <headeras></headeras>
     </div>
-
+    
     @yield('content')
-
+    
     <div id="app2">
         <app></app>
     </div>
-
+    
+    <script src="{{ mix('js/app.js') }}"></script>
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet"/>
 </body>
 </html>
