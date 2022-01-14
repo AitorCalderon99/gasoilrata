@@ -18,8 +18,13 @@
                 <option value="3">Three</option>
             </select>
         </div>
-        <button type="button" class="btn btn-532E1C">Precio <i class="bi bi-chevron-down"></i></button>
+        <button type="button" class="btn btn-532E1C">Precio &nbsp;<i class="bi bi-arrow-down-short"></i></button>
     </div>
-    <link href="{{ asset('css/ranking.css') }}" rel="stylesheet"/>
-    @stack('style')
+
+    @push('head')
+        <!-- Styles -->
+        <link href="{{ asset('css/ranking.css') }}" rel="stylesheet"/>
+        <!-- Scripts -->
+        <script src="{{ asset('js/ranking.js') }}"></script>
+    @endpush
 @endsection
