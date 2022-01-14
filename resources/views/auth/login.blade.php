@@ -34,8 +34,11 @@
                             placeholder="***********"
                             required autocomplete="current-password" />
             
+        </div>
+
+        <div class="d-flex justify-content-end">
             @if (Route::has('password.request'))
-                <a class="link-dark d-flex justify-content-end text-decoration-none" href="{{ route('password.request') }}">
+                <a class="link-dark text-decoration-none" href="{{ route('password.request') }}">
                     {{ __('¿Contraseña olvidada?') }}
                 </a>
             @endif
@@ -53,7 +56,7 @@
 
         <!-- Boton de login -->
         <div class="d-flex align-items-center justify-content-center">
-            <button id="LogBot" class="ml-3 rounded-pill bg-black text-light">
+            <button id="LogBot" class="mt-4 rounded-pill bg-black text-light">
                 {{ __('Log in') }}
             </button>
         </div>
@@ -77,8 +80,6 @@
     }   
 
     a{
-        text-decoration: none;
-        color: red;
         transition: 0.5s;
     }
 

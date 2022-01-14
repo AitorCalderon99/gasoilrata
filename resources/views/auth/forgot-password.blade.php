@@ -1,3 +1,7 @@
+@extends('layouts.app')
+
+@section('content')
+
 <x-guest-layout>
     <!-- Estado de la sesion -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
@@ -19,12 +23,12 @@
             <x-input id="email" class="form-control rounded-pill" type="email" name="email" :value="old('email')" required autofocus />
         </div>
 
-        <div class="d-flex align-items-center justify-content-center">
-            <a class="text-sm mx-1" href="{{ route('login') }}">
+        <div class="d-flex align-items-center justify-content-center mt-4">
+            <a class="text-sm mx-1 text-decoration-none" href="{{ route('login') }}">
                 {{ __('Regresar') }}
             </a>
 
-            <button class="rounded-pill bg-black text-light">
+            <button id="Enviar" class="rounded-pill bg-black text-light">
                 {{ __('Enviar') }}
             </button>
         </div>
@@ -36,7 +40,7 @@
         font-family: "Roboto";
     }   
     
-    button{
+    #Enviar{
         width: 10em;
         height: 3em;
         border: none;
@@ -44,7 +48,7 @@
         transition: 0.5s;
     }
 
-    button:hover{
+    #Enviar:hover{
         background-color: white !important;
         color: #C5A880 !important;
     }
@@ -67,7 +71,6 @@
     }
 
     a{
-        text-decoration: none;
         transition: 0.5s;
     }
 
@@ -76,3 +79,4 @@
     }
 </style>
 
+@endsection

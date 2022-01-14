@@ -1,3 +1,7 @@
+@extends('layouts.app')
+
+@section('content')
+
 <x-guest-layout>
     <!-- Validacion de errores -->
     <x-auth-validation-errors class="mb-4" :errors="$errors" />
@@ -40,11 +44,11 @@
 
         <!-- Recordatorio + confirmar registro -->
         <div class="d-flex align-items-center justify-content-center mt-3">
-            <a class="text-sm mx-1" href="{{ route('login') }}">
+            <a class="text-sm mx-1 text-decoration-none" href="{{ route('login') }}">
                 {{ __('¿Ya tienes una cuenta?') }}
             </a>            
 
-            <button class="rounded-pill bg-black text-light mx-1">
+            <button id="Registro" class="rounded-pill bg-black text-light mx-1">
                 {{ __('Registrarse') }}
             </button>
         </div>
@@ -57,7 +61,6 @@
     }   
 
     a{
-        text-decoration: none;
         transition: 0.5s;
     }
 
@@ -65,14 +68,14 @@
         font-weight: bold;
     }
 
-    button{
+    #Registro{
         width: 10em;
         height: 3em;
         border: none;
         font-weight: 200;
     }
 
-    button:hover{
+    #Registro:hover{
         background-color: white !important;
         color: #C5A880 !important;
     }
@@ -95,3 +98,4 @@
     }
 </style>
 
+@endsection
