@@ -1,25 +1,29 @@
+@extends('layouts.app')
+
+@section('content')
+
 <x-guest-layout>
-    <!-- Validation Errors -->
+    <!-- Validacion de errores -->
     <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-    <form method="POST" action="{{ route('register') }}" class="container">
+    <form method="POST" action="{{ route('register') }}" class="container my-3">
         @csrf
 
-        <!-- Name -->
+        <!-- Nombre -->
         <div>
             <x-label for="name" :value="__('Nombre')" class="form-label fw-bold text-light"/>
 
             <x-input id="name" class="form-control rounded-pill" type="text" name="name" :value="old('name')" required autofocus />
         </div>
 
-        <!-- Email Address -->
+        <!-- Correo -->
         <div class="mt-4">
             <x-label for="email" :value="__('Correo')" class="form-label fw-bold text-light"/>
 
             <x-input id="email" class="form-control rounded-pill" type="email" name="email" :value="old('email')" required />
         </div>
 
-        <!-- Password -->
+        <!-- Contraseña -->
         <div class="mt-4">
             <x-label for="password" :value="__('Contraseña')" class="form-label fw-bold text-light"/>
 
@@ -29,7 +33,7 @@
                             required autocomplete="new-password" />
         </div>
 
-        <!-- Confirm Password -->
+        <!-- Confirmar contraseña -->
         <div class="mt-4">
             <x-label for="password_confirmation" :value="__('Confirmar contraseña')" class="form-label fw-bold text-light"/>
 
@@ -38,12 +42,13 @@
                             name="password_confirmation" required />
         </div>
 
-        <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
+        <!-- Recordatorio + confirmar registro -->
+        <div class="d-flex align-items-center justify-content-center mt-3">
+            <a class="text-sm mx-1 text-decoration-none" href="{{ route('login') }}">
                 {{ __('¿Ya tienes una cuenta?') }}
-            </a>
+            </a>            
 
-            <button class="ml-4">
+            <button id="Registro" class="rounded-pill bg-black text-light mx-1">
                 {{ __('Registrarse') }}
             </button>
         </div>
@@ -56,7 +61,6 @@
     }   
 
     a{
-        text-decoration: none;
         transition: 0.5s;
     }
 
@@ -64,11 +68,16 @@
         font-weight: bold;
     }
 
-    button{
+    #Registro{
         width: 10em;
         height: 3em;
         border: none;
         font-weight: 200;
+    }
+
+    #Registro:hover{
+        background-color: white !important;
+        color: #C5A880 !important;
     }
 
     #contrasenia > input{
@@ -83,5 +92,10 @@
     body{
         background-color: #C5A880;
     }
+
+    form{
+        width: 80% !important;
+    }
 </style>
 
+@endsection

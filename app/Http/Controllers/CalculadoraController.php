@@ -13,7 +13,7 @@ class CalculadoraController extends Controller
      */
     public function index()
     {
-        //
+        return view("calculadora");
     }
 
     /**
