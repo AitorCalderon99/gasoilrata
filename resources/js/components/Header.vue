@@ -10,7 +10,7 @@
   <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
 </svg>
     </button>
-    <a href="#" class="nav-item nav-link">GASOIL</a>
+    <a href="#" class="nav-item nav-link my-auto">GASOIL</a>
     <a href="#" class="nav-item nav-link"><img src="Logo.png" /></a>
     <div id="hamburguesa" class="collapse navbar-collapse">
       <div class="navbar-nav">
