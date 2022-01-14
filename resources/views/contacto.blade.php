@@ -1,26 +1,60 @@
 @extends('layouts.app')
 @section('content')
 
-    <div id="main">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2905.701793571246!2d-2.9045955845150373!3d43.25767127913678!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4e4fac87437727%3A0x364f27e82def0130!2sCIFP%20Txurdinaga%20LHII!5e0!3m2!1ses!2ses!4v1642074299000!5m2!1ses!2ses" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+<div id="main">
 
-        <div>
-            <p>idazkaria@fpTXurdinaga.com</p>
-        </div>
-        <div>
-            <p>C/ Doctor Ornilla 2, 48004 BILBAO</p>
-        </div>
-        <div>
-            <p>Horario:</p>
-            <div>
-                <p>Lunes: 9:00 - 15:00</p>
-                <p>Miércoles: 9:00 - 18:30</p>
-                <p>Martes, jueves y viernes: 9:00 - 14:00</p>
-            </div>
-        </div>
-        <div>
-            <p>944 125 712</p>
+    <iframe id="mapa" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2905.701793571246!2d-2.9045955845150373!3d43.25767127913678!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4e4fac87437727%3A0x364f27e82def0130!2sCIFP%20Txurdinaga%20LHII!5e0!3m2!1ses!2ses!4v1642074299000!5m2!1ses!2ses" allowfullscreen="" loading="lazy"></iframe>
+
+    <div class="contacto">
+        <p class="fs-6">
+            <img class="logos" src="img/mailLogo.png">
+            idazkaria@fpTXurdinaga.com
+        </p>
+    </div>
+    <div class="contacto">
+        <p class="fs-6">
+            <img class="logos" src="img/TxLogo.png">
+            C/ Doctor Ornilla 2, 48004 BILBAO
+        </p>
+        <img class="w-25" src="img/carretera.png">
+    </div>
+    <div id="carretera">
+    </div>
+    <div class="contacto">
+        <img src="img/mecanico.png" class="float-start w-50">
+        <p class="fs-6 ">
+            <img class="logos" src="img/casaLogo.png">
+            Horario:
+        </p>
+        <div class="">
+            <p class="fs-6">Lunes: 9:00 - 15:00</p>
+            <p class="fs-6">Miércoles: 9:00 - 18:30</p>
+            <p class="fs-6" >Martes, jueves y viernes: 9:00 - 14:00</p>
         </div>
     </div>
-    
+    <div class="contacto">
+        <p class="fs-4">
+            <img class="logos" src="img/telefonoLogo.png">
+            944 125 712
+        </p>
+    </div>
+</div>
+<style>
+    #mapa{
+        width: 100%;
+        height: 20%;
+    }
+    p{
+        
+    }
+    .logos{
+        width: 2rem;
+    }
+    #carretera{
+        
+    }
+    .contacto{
+        
+    }
+</style>
 @endsection
