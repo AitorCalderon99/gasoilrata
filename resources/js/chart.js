@@ -5,15 +5,13 @@ const labels = Utils.days({
 const cfg = {
     type: 'line',
     data: {
-        labels: ['a', 'b'],
+        labels: [],
         datasets: [{
-            data: [{
-                x: '2016-12-25',
-                y: 20
-            }, {
-                x: '2016-12-26',
-                y: 10
-            }]
+            data: [0, 0],
+            data: [2, 1],
+            data: [3, 5],
+            data: [4, 4],
+            data: [5, 1],
         }]
     },
     options : ''
