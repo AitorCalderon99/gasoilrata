@@ -54,19 +54,28 @@
     </div>
 
     <div class="d-flex align-items-center justify-content-center">
-        <button type="submit" id="Calcular" class="mt-2 rounded-pill text-light">
+        <button type="submit" class="Botones mt-2 rounded-pill text-light">
             Calcular Precio
         </button>
     </div>
 
     <div>
         <label>Consumo:</label>
-        <div id="caja">
-            <div id="caja2" class="text-light d-flex align-items-center justify-content-center">
+        <div id="cajaDTotal">
+            <div id="cajaLTotal" class="text-light d-flex align-items-center justify-content-center">
                 <h2>32.65L</h2>
             </div>
-            <h1>76,45€</h1>
+
+            <div id="textoTotal" class="d-flex align-items-center justify-content-center">
+                <p>76,45€</p>
+            </div>
         </div>
+    </div>
+
+    <div class="d-flex align-items-center justify-content-center">
+        <button type="submit" class="Botones mt-2 rounded-pill text-light">
+            Guardar
+        </button>
     </div>
 </form>
 
@@ -81,12 +90,14 @@
         margin: 0;
     }
 
-    #Calcular {
+    .Botones {
         background-color: #522d1c;
         border: none;
+        width: 10em;
+        height: 2em;
     }
 
-    #caja{
+    #cajaDTotal{
         background-color: #c5a880;
         width: 20em;
         height: 10em;
@@ -94,15 +105,16 @@
         border-radius: 15px 0px 15px 0px;
     }
 
-    #caja h1{
-        padding-left: auto;
-        padding-right: auto;
-        width: 100%;
+    #textoTotal{
+        font-size: 4.5em;
+        font-weight: bold;
     }
-    #caja2{
+
+    #cajaLTotal{
         background-color: #532e1c;
         width: 8em;
         height: 2.5em;
+        padding-top: 0.5em;
         border: 1px solid #532e1c;
         border-radius: 15px 0px 15px 0px;
     }
