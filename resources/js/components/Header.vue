@@ -15,11 +15,11 @@
     <div id="hamburguesa" class="collapse navbar-collapse">
       <div class="navbar-nav">
         <a href="/" class="nav-item">Inicio</a>
-        <a href="ranking.php" class="nav-item">Ranking Gasolineras</a>
+        <a href="ranking" class="nav-item">Ranking Gasolineras</a>
         <a href="calculadora" class="nav-item">Calculadora Consumos</a>
-        <a href="contacto.php" class="nav-item">Contacto</a>
+        <a href="contacto" class="nav-item">Contacto</a>
         <a href="login" class="nav-item">Login</a>
-        <a href="register.php" class="nav-item">Hacerse miembro</a>
+        <a href="registrarse" class="nav-item">Hacerse miembro</a>
       </div>
     </div>
   </nav>

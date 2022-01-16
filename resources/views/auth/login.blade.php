@@ -75,6 +75,10 @@
 </x-guest-layout>
 
 <style>
+    body {
+        background-color: #C5A880 !important;
+    }
+
     html * {
         font-family: "Roboto";
     }   

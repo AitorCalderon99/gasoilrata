@@ -28,6 +28,7 @@ Route::get('contacto', function () {
 });
 
 Route::get('login', [\App\Http\Controllers\Auth\AuthenticatedSessionController::class, "create"]);
+Route::get('registrarse', [\App\Http\Controllers\Auth\RegisteredUserController::class, "create"]);
 
 // Vistas con mantenimiento
 //Lo de las comillas es como tenemos que llamarlo en el href para que funcione
