@@ -5,6 +5,7 @@
  */
 
 require('./bootstrap');
+global.$ = global.jQuery = require('jquery');
 
 import { createApp } from 'vue'
 import App from './components/Header.vue'
@@ -38,6 +39,8 @@ const tarjeta = createApp(TarjetaDidactica).mount('#slider-tarjetas');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+/*
 Vue.component('headeras', require('./components/Header.vue').default);
 Vue.component('pie', require('./components/Footer.vue').default);
 Vue.component('TarjetaDidactica', require('./components/TarjetaDidactica.vue').default);
+*/

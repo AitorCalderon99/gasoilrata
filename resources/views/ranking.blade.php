@@ -28,3 +28,4 @@
         <script src="{{ asset('js/ranking.js') }}"></script>
     @endpush
 @endsection
+
