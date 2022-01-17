@@ -17,7 +17,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/dashboard';
+    public const HOME = '../../resources/views/index.blade.php';
 
     /**
      * The controller namespace for the application.
