@@ -8,15 +8,15 @@
     @stack('head')
 </head>
 <body>
-    <div id="app">
-        <Header/>
-    </div>
+    <!-- <div id="app">
+        <Header></Header>
+    </div> -->
 
     @yield('content')
 
-    <!-- <div id="app">
-        <Footer/>
-    </div> -->
+    <div id="app">
+        <Footer></Footer>
+    </div>
 
     <script src="{{ asset('js/app.js') }}"></script>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet"/>
