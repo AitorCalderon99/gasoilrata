@@ -11282,7 +11282,7 @@ textarea.form-control-lg {
   }
 }
 * {
-  font-family: "Hemi Head Rg";
+  font-family: "Hemi Head Rg", serif;
 }
 
 .container .head-text {
@@ -11297,5 +11297,5 @@ textarea.form-control-lg {
 .container .btn-532E1C {
   background-color: #532E1C;
   color: white;
-  font-family: "Hemi Head Rg";
+  font-family: "Hemi Head Rg", serif;
 }
