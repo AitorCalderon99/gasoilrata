@@ -6,17 +6,21 @@
 
 global.$ = global.jQuery = require('jquery');
 
-import BootstrapVue3 from 'bootstrap-vue-3'
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue-3/dist/bootstrap-vue-3.css'
+import BootstrapVue3 from 'bootstrap-vue-3';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap-vue-3/dist/bootstrap-vue-3.css';
 
 import { createApp } from 'vue';
 const app = createApp({});
-import Header from './components/Header.vue'
-import Footer from './components/Footer.vue'
+import Header from './components/Header.vue';
+import Footer from './components/Footer.vue';
+import TarjetaDidactica from './components/TarjetaDidactica.vue';
+import TablaPrecios from './components/TarjetaDidactica.vue';
 
 app.component('Header', Header);
 app.component('Footer', Footer);
+app.component('TarjetaDidactica', TarjetaDidactica);
+app.component('TablaPrecios', TablaPrecios);
 app.use(BootstrapVue3);
 app.mount('#app');
 
