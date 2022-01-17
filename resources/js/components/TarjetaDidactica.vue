@@ -7,17 +7,17 @@
   </div>
   <div class="carousel-inner">
     <div class="card carousel-item " :class="{active: index == 0}" v-for="(cuestion, index) in cuestiones" :key="cuestion">
-                <div class="adelante card-body">
-                    <h3 class="pregunta">
-                        {{ cuestion.pregunta }}
-                    </h3>
-                </div>
-                <div class="atras">
-                    <p class="respuesta">
-                        {{ cuestion.respuesta }}
-                    </p>
-                </div>
-            </div>
+        <div class="adelante card-body">
+            <h3 class="pregunta">
+                {{ cuestion.pregunta }}
+            </h3>
+        </div>
+        <div class="atras">
+            <p class="respuesta">
+                {{ cuestion.respuesta }}
+            </p>
+        </div>
+    </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -70,7 +70,6 @@ export default {
         }
         onBeforeMount(()=>{
             getCuestiones();
-            console.log(cuestiones);
         })
         return{
             cuestiones

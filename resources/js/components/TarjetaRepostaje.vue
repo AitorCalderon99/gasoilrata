@@ -1,16 +1,16 @@
 <template>
-    <div class="caja-display container rounded-top-left rounded-bottom-right">
-        <div class="row">
-            <div class="col-sm-3">28-11-2021</div>
+    <div class="caja-display card rounded-top-left rounded-bottom-right">
+        <div class="card-header">
+            <div class="">28-11-2021</div>
         </div>
-        <dov class="row">
-            <img src="#" alt="logo gasolinera" class="col-md-3">
-            <h3 class="col-md-6">Plaza Ernesto Ercoreka</h3>
+        <dov class="card-body">
+            <img src="#" alt="logo gasolinera" class="">
+            <h3 class="">Plaza Ernesto Ercoreka</h3>
         </dov>
-        <div class="row">
-            <div class="total col-">{{total}}</div>
-            <div class="litros col-3">30</div>
-            <div class="precio-litros col-6">1.445€</div>
+        <div class="card-footer">
+            <div class="">{{total}}</div>
+            <div class="">30</div>
+            <div class="">1.445€</div>
         </div>
     </div>
 </template>
