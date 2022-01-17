@@ -9,14 +9,14 @@
 </head>
 <body>
     <div id="app">
-        <headeras></headeras>
+        <Header/>
     </div>
 
     @yield('content')
 
-    <div id="app2">
-        <app></app>
-    </div>
+    <!-- <div id="app">
+        <Footer/>
+    </div> -->
 
     <script src="{{ asset('js/app.js') }}"></script>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet"/>
