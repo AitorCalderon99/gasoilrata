@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('index');
-});
+})->middleware(['auth'])->name('index');;
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -36,8 +36,7 @@ Route::resource("consumo", \App\Http\Controllers\ConsumosController::class);
 Route::resource("ranking", \App\Http\Controllers\RankingController::class);
 Route::resource("calculadora", \App\Http\Controllers\CalculadoraController::class);
 Route::resource("repostajes", \App\Http\Controllers\RepostajesController::class);
-Route::resource("usuarios", \App\Http\Controllers\UsuariosController::class);
+Route::resource("editarUsuario", \App\Http\Controllers\UsuariosController::class);
 Route::resource("vehiculos", \App\Http\Controllers\VehiculosController::class);
-
 
 require __DIR__.'/auth.php';

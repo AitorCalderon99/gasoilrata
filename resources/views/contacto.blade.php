@@ -33,8 +33,8 @@
                     <p class="fs-6">Lunes: 9:00 - 15:00</p>
                     <p class="fs-6">Miércoles: 9:00 - 18:30</p>
                     <p class="fs-6">Martes, jueves y viernes: 9:00 - 14:00</p>
-                    <p class="fs-4">
                 </div>
+                <p class="fs-4">
                 <img class="logos" src="img/telefonoLogo.png">
                 944 125 712
                 </p>
