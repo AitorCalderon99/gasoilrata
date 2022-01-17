@@ -9,6 +9,7 @@
 
     <div>
         <p class="fs-6">
+            <br>
             <img class="logos" src="img/mailLogo.png">
             idazkaria@fpTXurdinaga.com
         </p>
@@ -23,8 +24,8 @@
 
 
     <div class="d-flex align-items-left justify-content-left">
-        <img src="img/mecanico.png" id="mecanico">
-        <div>
+<!--        <img src="img/mecanico.png" id="mecanico">
+        <div>-->
             <p class="fs-6">
                 <img class="logos" src="img/casaLogo.png">
                 Horario:
@@ -36,13 +37,13 @@
                 <li class="fs-6">Martes, jueves y viernes: 9:00 - 14:00</li>
             </ul>
 
-            <p class="fs-4">
-                <img class="logos" src="img/telefonoLogo.png">
-                944 125 712
-            </p>
+
         </div>
+    <p class="fs-4">
+        <img class="logos" src="img/telefonoLogo.png">
+        944 125 712
+    </p>
     </div>
-</div>
 
 <style>
     #mapa {
@@ -52,12 +53,6 @@
 
     .logos {
         width: 2rem;
-    }
-
-    #carretera,
-    #mecanico {
-        max-width: 20em;
-        max-height: 14em;
     }
 
     #horario{
