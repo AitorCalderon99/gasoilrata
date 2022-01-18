@@ -8,7 +8,6 @@
 
 @section('content')
 <main>
-    <h1>Soy la vista INDEX</h1>
 
     <Tarjetas_didacticas></Tarjetas_didacticas>
     
@@ -17,5 +16,6 @@
     <div class="grafico-container">
         <canvas id="grafico" width="400" height="400"></canvas>
     </div>
+    
 </main>
 @endsection
