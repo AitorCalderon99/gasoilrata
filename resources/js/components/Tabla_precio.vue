@@ -1,5 +1,5 @@
 <template>
-    <table>
+    <table class="table table-hover table-responsive mt-5">
         <thead>
             <tr>
                 <th scope="col">Combustible</th>
