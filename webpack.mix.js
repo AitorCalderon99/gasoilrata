@@ -18,3 +18,7 @@ mix.js('resources/js/app.js', 'public/js')
     require('tailwindcss'),
     require('autoprefixer'),
 ]);
+
+mix.autoload({
+    jquery: ['$', 'window.jQuery']
+});
