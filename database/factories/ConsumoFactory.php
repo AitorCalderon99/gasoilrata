@@ -31,8 +31,9 @@ class ConsumoFactory extends Factory
             'kilometros' => $this->faker->numberBetween(10,5000),
             'litros' => $this->faker->numberBetween(0,500),
             'coste_litro'=> $this->faker->numberBetween(0.90,1.90),
-            'origen' => $faker->name(),
-            'destino' => $faker->name(),
+            'origen' => $faker->state(),
+            'destino' => $faker->state(),
+            'fecha' => $faker->dateTimeBetween('-6 months', 'now')->format('Y-m-d H:i:s'),
             'carburante' =>  $this->faker->randomElement(['gasolina 95', 'gasoleao a', 'gasolina 98', 'gasoleo a+']),
             'id_vehiculo'  => Vehiculo::pluck('id_vehiculo')->random(),
         ];

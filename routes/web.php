@@ -1,11 +1,8 @@
 <?php
 
-use App\Http\Controllers\consumosController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\repostajesController;
-use App\Http\Controllers\usuariosController;
-use App\Http\Controllers\vehiculosController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -22,16 +19,24 @@ Route::get('/', function () {
     return view('index');
 });
 
-// Vistas sin mantenimiento
-Route::get("home", [HomeController::class, "getHome"])->name("home");
-Route::get("login", [HomeController::class, "login"])->name("login");
-Route::get("contacto", [HomeController::class, "contacto"])->name("contacto");
-Route::get("calculadora", [HomeController::class, "calculadora"])->name("calculadora");
-Route::get("ranking", [HomeController::class, "ranking"])->name("ranking");
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+Route::get('contacto', function () {
+    return view('contacto');
+});
+
+Route::get('login', [\App\Http\Controllers\Auth\AuthenticatedSessionController::class, "create"]);
+Route::get('registrarse', [\App\Http\Controllers\Auth\RegisteredUserController::class, "create"]);
 
 // Vistas con mantenimiento
-Route::resource("consumo", ConsumosController::class);
-Route::resource("repostajes", RepostajesController::class);
-Route::resource("usuarios", UsuariosController::class);
-Route::resource("vehiculos", VehiculosController::class);
+//Lo de las comillas es como tenemos que llamarlo en el href para que funcione
+Route::resource("consumo", \App\Http\Controllers\ConsumosController::class);
+Route::resource("ranking", \App\Http\Controllers\RankingController::class);
+Route::resource("calculadora", \App\Http\Controllers\CalculadoraController::class);
+Route::resource("repostajes", \App\Http\Controllers\RepostajesController::class);
+Route::resource("editarUsuario", \App\Http\Controllers\UsuariosController::class);
+Route::resource("vehiculos", \App\Http\Controllers\VehiculosController::class);
 
+require __DIR__.'/auth.php';

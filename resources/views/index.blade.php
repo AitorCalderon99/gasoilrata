@@ -1,16 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <h1>PRUEBA INDEX</h1>
-    <div id="app">
-        <example-component></example-component>
-     </div>
-</body>
-<script src="{{ mix('/js/app.js') }}"></script>
-</html>
+@extends('layouts.app')
+
+@section('title', 'Pagina de Inicio')
+
+@push('head')
+    <script src="../js/chart.js"></script>
+@endpush
+
+@section('content')
+<main>
+    <h1>Soy la vista INDEX</h1>
+
+    <Tarjetas_didacticas></Tarjetas_didacticas>
+    
+    <Tabla_precio></Tabla_precio>
+
+    <div class="grafico-container">
+        <canvas id="grafico" width="400" height="400"></canvas>
+    </div>
+</main>
+@endsection
