@@ -4,36 +4,14 @@
     class="carousel slide"
     data-bs-ride="carousel"
   >
-    <div class="carousel-indicators">
-      <button
-        type="button"
-        data-bs-target="#carouselExampleIndicators"
-        data-bs-slide-to="0"
-        class="active"
-        aria-current="true"
-        aria-label="Slide 1"
-      ></button>
-      <button
-        type="button"
-        data-bs-target="#carouselExampleIndicators"
-        data-bs-slide-to="1"
-        aria-label="Slide 2"
-      ></button>
-      <button
-        type="button"
-        data-bs-target="#carouselExampleIndicators"
-        data-bs-slide-to="2"
-        aria-label="Slide 3"
-      ></button>
-    </div>
     <div class="carousel-inner">
       <div
-        class="carousel-item px-5 py-3 bg-warning bg-gradient"
+        class="carousel-item px-3 py-2 bg-warning bg-gradient"
         :class="{ active: index == 0 }"
         v-for="(cuestion, index) in cuestiones"
         :key="cuestion"
       >
-        <div class="card w-50 px-5 py-3 mx-auto">
+        <div class="card w-75 mx-auto">
           <div class="adelante card-body">
             <h3 class="pregunta card-title">
               {{ cuestion.pregunta }}
