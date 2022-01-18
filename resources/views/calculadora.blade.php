@@ -70,15 +70,17 @@
     </div>
 
     <div class="d-flex align-items-center justify-content-center">
-        <button type="submit" class="Botones mt-2 rounded-pill text-light">
+        <button type="submit" class="mt-2 rounded-pill text-light">
             Guardar
         </button>
     </div>
 </form>
 
+<!--Para subir lo estilos al header y asi que se muestren bien-->
+@push('head')
 <style>
-    html * {
-        font-family: "Roboto";
+    html *{
+        font-family: "Hemi head";
     }
 
     input::-webkit-outer-spin-button,
@@ -87,7 +89,7 @@
         margin: 0;
     }
 
-    .Botones {
+    button[type=submit] {
         background-color: #522d1c;
         border: none;
         width: 10em;
@@ -116,4 +118,5 @@
         border-radius: 15px 0px 15px 0px;
     }
 </style>
+@endpush
 @endsection
