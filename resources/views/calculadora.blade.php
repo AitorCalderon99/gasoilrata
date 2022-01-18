@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+<!--Para subir lo estilos al header y asi que se muestren bien-->
 @push('head')
 <style>
     html * {
@@ -12,7 +13,7 @@
         margin: 0;
     }
 
-    .Botones {
+    button[type=submit] {
         background-color: #522d1c;
         border: none;
         width: 10em;
