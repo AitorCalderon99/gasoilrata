@@ -1,5 +1,48 @@
 @extends('layouts.app')
 
+@push('head')
+<style>
+    html * {
+        font-family: "Hemi head";
+    }
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    .Botones {
+        background-color: #522d1c;
+        border: none;
+        width: 10em;
+        height: 2em;
+    }
+
+    #cajaDTotal{
+        background-color: #c5a880;
+        width: 20em;
+        height: 10em;
+        border: 1px solid #532e1c;
+        border-radius: 15px 0px 15px 0px;
+    }
+
+    #textoTotal{
+        font-size: 4.5em;
+        font-weight: bold;
+    }
+
+    #cajaLTotal{
+        background-color: #532e1c;
+        width: 8em;
+        height: 2.5em;
+        padding-top: 0.5em;
+        border: 1px solid #532e1c;
+        border-radius: 15px 0px 15px 0px;
+    }
+</style>
+@endpush
+
 @section('content')
 <form class="container my-3" method="POST" action="contacto">
     <h3 class="d-flex align-items-center justify-content-center text-center">
@@ -75,48 +118,4 @@
         </button>
     </div>
 </form>
-
-<!--Para subir lo estilos al header y asi que se muestren bien-->
-@push('head')
-<style>
-    html *{
-        font-family: "Hemi head";
-    }
-
-    input::-webkit-outer-spin-button,
-    input::-webkit-inner-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
-    }
-
-    button[type=submit] {
-        background-color: #522d1c;
-        border: none;
-        width: 10em;
-        height: 2em;
-    }
-
-    #cajaDTotal{
-        background-color: #c5a880;
-        width: 20em;
-        height: 10em;
-        border: 1px solid #532e1c;
-        border-radius: 15px 0px 15px 0px;
-    }
-
-    #textoTotal{
-        font-size: 4.5em;
-        font-weight: bold;
-    }
-
-    #cajaLTotal{
-        background-color: #532e1c;
-        width: 8em;
-        height: 2.5em;
-        padding-top: 0.5em;
-        border: 1px solid #532e1c;
-        border-radius: 15px 0px 15px 0px;
-    }
-</style>
-@endpush
 @endsection
