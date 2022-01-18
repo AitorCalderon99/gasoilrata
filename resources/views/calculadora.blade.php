@@ -75,24 +75,21 @@
     <div class="mb-3">
         <label> Coste litro </label>
         <div class="input-group">
-            <input type="text" class="form-control" placeholder="Coste calculable mediante JS.">
-            </input>
+            <input type="text" class="form-control" placeholder="Coste calculable mediante JS."/>
         </div>
     </div>
 
     <div class="mb-3">
         <label> Origen </label>
         <div class="input-group">
-            <input type="text" class="form-control" placeholder="Usa la insertada por el usuario. Se puede cambiar.">
-            </input>
+            <input type="text" class="form-control" placeholder="Usa la insertada por el usuario. Se puede cambiar."/>
         </div>
     </div>
 
     <div class="mb-3">
         <label> Destino </label>
         <div>
-            <input type="text" class="form-control" placeholder="Lugar">
-            </input>
+            <input type="text" class="form-control" placeholder="Lugar"/>
         </div>
     </div>
 
