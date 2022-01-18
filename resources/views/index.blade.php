@@ -2,6 +2,7 @@
 
 @section('title', 'Pagina de Inicio')
 
+<!--Para subir lo estilos al header y asi que se muestren bien-->
 @push('head')
     <script src="../js/chart.js"></script>
 @endpush
