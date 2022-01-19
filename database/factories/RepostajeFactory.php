@@ -29,6 +29,7 @@ class RepostajeFactory extends Factory
             'litros' => $this->faker->numberBetween(0,500),
             'precio_litro'=> $this->faker->randomFloat(2, 0.99, 1.99),
             'id_vehiculo'  => Vehiculo::pluck('id_vehiculo')->random(),
+
         ];
     }
 }

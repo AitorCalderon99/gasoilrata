@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Consumo;
+use App\Models\Repostaje;
 use Illuminate\Database\Seeder;
 
-class ConsumoSeeder extends Seeder
+class RepostajeSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,7 +14,6 @@ class ConsumoSeeder extends Seeder
      */
     public function run()
     {
-        Consumo::factory()->count(10)->create();
-
+        Repostaje::factory()->count(10)->create();
     }
 }
