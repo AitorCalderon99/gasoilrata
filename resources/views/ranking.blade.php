@@ -13,6 +13,7 @@
     <div class="head-text">
         <p>¡Encuentra las gasolineras cercanas con los precios más baratos!</p>
     </div>
+    <br/>
     <div class="foptions">
         <select class="form-select" aria-label="Default select example">
             <option selected>Seleccione el tipo de combustible</option>
