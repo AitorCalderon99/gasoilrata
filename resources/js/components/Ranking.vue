@@ -8,11 +8,8 @@
             <select class="selectComb form-select" aria-label="Default select example">
                 <option selected>Seleccione el tipo de combustible</option>
             </select>
-            <select class="form-select" aria-label="Default select example">
+            <select class="selectMun form-select" aria-label="Default select example">
                 <option selected>Seleccione el municipio</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
             </select>
         </div>
         <button type="button" class="btn btn-532E1C">Precio &nbsp;<i class="bi bi-arrow-down-short"></i></button>
@@ -27,7 +24,7 @@ export default {
 }
 var listado = "";
 
-//AXIOS
+//AXIOS (Ranking)
 axios
     .get('https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/EstacionesTerrestres/')
     .then(response => {
@@ -38,9 +35,12 @@ axios
             setCarburantes(combustibles[i]);
         }
 
-        //Municipio
+        //Municipios
+        var municipios = getMunicipios(response.data.ListaEESSPrecio);
 
-
+        for (let i = 0; i < municipios.length; i++) {
+            setMunicipios(municipios[i]);
+        }
     })
     .catch(error => console.log(error));
 
@@ -61,6 +61,24 @@ function setCarburantes(nombreCombustible) {
     $(".selectComb").append($('<option>', {
         value: nombreCombustible,
         text: nombreCombustible
+    }));
+}
+
+function getMunicipios(axiosResponse) {
+    var municipios = [];
+    for (let i = 0; i < axiosResponse.length; i++) {
+        municipios.push(axiosResponse[i]["Municipio"])
+    }
+
+    //Borrar duplicados
+    const municipiosSinDuplicados = new Set(municipios);
+    return [...municipiosSinDuplicados];
+}
+
+function setMunicipios(municipio) {
+    $(".selectMun").append($('<option>', {
+        value: municipio,
+        text: municipio
     }));
 }
 

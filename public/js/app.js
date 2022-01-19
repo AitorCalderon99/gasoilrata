@@ -22654,11 +22654,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* provided dependency */ var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Ranking"
 });
-var listado = ""; //AXIOS
+var listado = ""; //AXIOS (Ranking)
 
 axios__WEBPACK_IMPORTED_MODULE_0___default().get('https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/EstacionesTerrestres/').then(function (response) {
   //Carburantes
@@ -22666,8 +22678,14 @@ axios__WEBPACK_IMPORTED_MODULE_0___default().get('https://sedeaplicaciones.minet
 
   for (var i = 0; i < combustibles.length; i++) {
     setCarburantes(combustibles[i]);
-  } //Municipio
+  } //Municipios
 
+
+  var municipios = getMunicipios(response.data.ListaEESSPrecio);
+
+  for (var _i = 0; _i < municipios.length; _i++) {
+    setMunicipios(municipios[_i]);
+  }
 })["catch"](function (error) {
   return console.log(error);
 }); //Functions
@@ -22689,6 +22707,25 @@ function setCarburantes(nombreCombustible) {
   $(".selectComb").append($('<option>', {
     value: nombreCombustible,
     text: nombreCombustible
+  }));
+}
+
+function getMunicipios(axiosResponse) {
+  var municipios = [];
+
+  for (var i = 0; i < axiosResponse.length; i++) {
+    municipios.push(axiosResponse[i]["Municipio"]);
+  } //Borrar duplicados
+
+
+  var municipiosSinDuplicados = new Set(municipios);
+  return _toConsumableArray(municipiosSinDuplicados);
+}
+
+function setMunicipios(municipio) {
+  $(".selectMun").append($('<option>', {
+    value: municipio,
+    text: municipio
   }));
 }
 
@@ -22914,7 +22951,7 @@ var _hoisted_1 = {
   "class": "container"
 };
 
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"head-text\"><p>¡Encuentra las gasolineras cercanas con los precios más baratos!</p></div><br><div class=\"foptions\"><select class=\"selectComb form-select\" aria-label=\"Default select example\"><option selected>Seleccione el tipo de combustible</option></select><select class=\"form-select\" aria-label=\"Default select example\"><option selected>Seleccione el municipio</option><option value=\"1\">One</option><option value=\"2\">Two</option><option value=\"3\">Three</option></select></div><button type=\"button\" class=\"btn btn-532E1C\">Precio  <i class=\"bi bi-arrow-down-short\"></i></button>", 4);
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"head-text\"><p>¡Encuentra las gasolineras cercanas con los precios más baratos!</p></div><br><div class=\"foptions\"><select class=\"selectComb form-select\" aria-label=\"Default select example\"><option selected>Seleccione el tipo de combustible</option></select><select class=\"selectMun form-select\" aria-label=\"Default select example\"><option selected>Seleccione el municipio</option></select></div><button type=\"button\" class=\"btn btn-532E1C\">Precio  <i class=\"bi bi-arrow-down-short\"></i></button>", 4);
 
 var _hoisted_6 = [_hoisted_2];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
