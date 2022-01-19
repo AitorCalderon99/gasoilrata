@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Consumo;
+use App\Models\Vehiculo;
 use Illuminate\Database\Seeder;
 
-class ConsumoSeeder extends Seeder
+class VehiculoSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,7 +14,6 @@ class ConsumoSeeder extends Seeder
      */
     public function run()
     {
-        Consumo::factory()->count(10)->create();
-
+        Vehiculo::factory()->count(10)->create();
     }
 }

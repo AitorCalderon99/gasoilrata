@@ -21,8 +21,6 @@ class ConsumoFactory extends Factory
      * @return array
      */
 
-
-
     public function definition()
     {
         $faker = Faker\Factory::create('es_ES');
