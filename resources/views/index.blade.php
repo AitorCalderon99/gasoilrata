@@ -4,7 +4,7 @@
 
 <!--Para subir lo estilos al header y asi que se muestren bien-->
 @push('head')
-    <script src="../js/chart.js"></script>
+    
 @endpush
 
 @section('content')
@@ -14,9 +14,7 @@
     
     <Tabla_precio></Tabla_precio>
 
-    <div class="grafico-container">
-        <canvas id="grafico" width="400" height="400"></canvas>
-    </div>
+    <Grafico></Grafico>
     
 </main>
 @endsection
