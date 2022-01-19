@@ -95,7 +95,7 @@
     </div>
 
     <div class="d-flex align-items-center justify-content-center">
-        <button type="submit" class="Botones mt-2 rounded-pill text-light">
+        <button type="button" class="">
             Calcular Precio
         </button>
     </div>
@@ -119,4 +119,5 @@
         </button>
     </div>
 </form>
+<script src="{{ asset('js/calculadora.js') }}"></script>
 @endsection
