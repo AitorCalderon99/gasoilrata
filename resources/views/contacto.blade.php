@@ -13,7 +13,7 @@
     }
 
     img{
-        width: 10px;
+        width: 20%;
     }
     #horario {
         border: 1px solid black;
