@@ -1,0 +1,22 @@
+* {
+    font-family: "Hemi Head Rg", serif;
+
+}
+
+.head-text {
+    padding-top: 1em;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.form-select {
+    margin-bottom: 1em;
+}
+
+.btn-532E1C {
+    background-color: #532E1C;
+    color: white;
+    font-family: "Hemi Head Rg", serif;
+}
+
