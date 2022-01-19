@@ -1,6 +1,8 @@
 /* require('./bootstrap'); */
 
 import Alpine from 'alpinejs';
+const axios = require('axios');
+
 
 window.Alpine = Alpine;
 
