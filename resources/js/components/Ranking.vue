@@ -14,12 +14,6 @@
 
             </datalist>
 
-<!--            <div class="dropdownMun dropdown-menu dropdown-menu-right">
-                <a class="dropdown-item" href="#">Seleccione el municipio</a>
-            </div>-->
-<!--            <select class="selectMun form-select" aria-label="Default select example">
-                <option selected>Seleccione el municipio</option>
-            </select>-->
         </div>
         <button type="button" class="btn btn-532E1C">Precio &nbsp;<i class="bi bi-arrow-down-short"></i></button>
     </div>
@@ -85,7 +79,6 @@ function getMunicipios(axiosResponse) {
 }
 
 function setMunicipios(municipio) {
-    console.log(municipio);
     $("#datalistOptions").append($('<option>', {
         value: municipio
     }));

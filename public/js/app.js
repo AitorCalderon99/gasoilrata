@@ -22951,7 +22951,6 @@ function getMunicipios(axiosResponse) {
 }
 
 function setMunicipios(municipio) {
-  console.log(municipio);
   $("#datalistOptions").append($('<option>', {
     value: municipio
   }));
@@ -23215,7 +23214,7 @@ var _hoisted_1 = {
   "class": "container"
 };
 
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"head-text\"><p>¡Encuentra las gasolineras cercanas con los precios más baratos!</p></div><br><div class=\"foptions\"><select class=\"selectComb form-select\" aria-label=\"Default select example\"><option selected>Seleccione el tipo de combustible</option></select><input class=\"form-control\" list=\"datalistOptions\" id=\"exampleDataList\" placeholder=\"Elige el municipio\"><datalist id=\"datalistOptions\"></datalist><!--            &lt;div class=&quot;dropdownMun dropdown-menu dropdown-menu-right&quot;&gt;\n                &lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Seleccione el municipio&lt;/a&gt;\n            &lt;/div&gt;--><!--            &lt;select class=&quot;selectMun form-select&quot; aria-label=&quot;Default select example&quot;&gt;\n                &lt;option selected&gt;Seleccione el municipio&lt;/option&gt;\n            &lt;/select&gt;--></div><button type=\"button\" class=\"btn btn-532E1C\">Precio  <i class=\"bi bi-arrow-down-short\"></i></button>", 4);
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"head-text\"><p>¡Encuentra las gasolineras cercanas con los precios más baratos!</p></div><br><div class=\"foptions\"><select class=\"selectComb form-select\" aria-label=\"Default select example\"><option selected>Seleccione el tipo de combustible</option></select><input class=\"form-control\" list=\"datalistOptions\" id=\"exampleDataList\" placeholder=\"Elige el municipio\"><datalist id=\"datalistOptions\"></datalist></div><button type=\"button\" class=\"btn btn-532E1C\">Precio  <i class=\"bi bi-arrow-down-short\"></i></button>", 4);
 
 var _hoisted_6 = [_hoisted_2];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
