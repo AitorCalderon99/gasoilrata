@@ -4,25 +4,28 @@
     class="carousel slide"
     data-bs-ride="carousel"
   >
-    <div class="carousel-inner">
+    <div class="carousel-inner bg-warning bg-gradient contenedor-amarillo">
       <div
-        class="carousel-item px-3 py-2 bg-warning bg-gradient"
+        class="carousel-item"
         :class="{ active: index == 0 }"
         v-for="(cuestion, index) in cuestiones"
         :key="cuestion"
+        @click="voltear()"
       >
-        <div class="card w-75 mx-auto">
-          <div class="adelante card-body">
-            <h3 class="pregunta card-title">
-              {{ cuestion.pregunta }}
-            </h3>
+          <div class="card">
+            <div class="card-body">
+              <div class="adelante">
+                <h3>
+                  {{ cuestion.pregunta }}
+                </h3>
+              </div>
+              <div class="atras">
+                <p>
+                  {{ cuestion.respuesta }}
+                </p>
+              </div>
+            </div>
           </div>
-          <div class="atras">
-            <p class="respuesta">
-              {{ cuestion.respuesta }}
-            </p>
-          </div>
-        </div>
       </div>
     </div>
     <button
@@ -84,13 +87,69 @@ export default {
         }
       }
     };
+
+    const voltear = () => {
+      $(".card").toggleClass("flip-card");
+    };
+
     onBeforeMount(() => {
       getCuestiones();
-      console.log(cuestiones);
     });
+
     return {
       cuestiones,
+      voltear
     };
   },
+
 };
 </script>
+
+<style scoped lang="css">
+.carousel-inner {
+  height: 15rem;
+  margin: 1rem 0;
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+  background: white;
+  transition: box-shadow ease 0.3s;
+}
+
+.card:hover {
+  box-shadow: 0px 16px 24px 2px rgba(0,0,0,0.14) , 0px 6px 30px 5px rgba(0,0,0,0.12) , 0px 8px 10px -7px rgba(0,0,0,0.2) ;
+  cursor: pointer;
+}
+
+.card-body {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: all .8s ease;
+  transform-style: preserve-3d;
+}
+
+.adelante, .atras {
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.adelante {
+  transform: rotateX(0deg);
+}
+
+.atras {
+  transform: rotateY(180deg);
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 10px;
+}
+
+.flip-card {
+  transform: rotateY(180deg);
+}
+</style>
