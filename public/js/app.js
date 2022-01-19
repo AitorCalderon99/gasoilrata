@@ -22653,25 +22653,44 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* provided dependency */ var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Ranking"
 });
-var listado = "";
+var listado = ""; //AXIOS
+
 axios__WEBPACK_IMPORTED_MODULE_0___default().get('https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/EstacionesTerrestres/').then(function (response) {
-  //console.log(response.data.ListaEESSPrecio[0].test(/Precio*/));
-  var reg = /Precio*/;
-  console.log(response.data.ListaEESSPrecio[0]);
+  //Carburantes
+  var combustibles = getCarburantes(response.data.ListaEESSPrecio[0]);
 
-  for (var regKey in response.data.ListaEESSPrecio[1]) {
-    if (regKey.match(reg)) console.log(regKey.split("Precio ")[1]);
-  } //response.data.ListaEESSPrecio[0].forEach
+  for (var i = 0; i < combustibles.length; i++) {
+    setCarburantes(combustibles[i]);
+  } //Municipio
 
-
-  listado = response.data.ListaEESSPrecio;
 })["catch"](function (error) {
   return console.log(error);
-});
+}); //Functions
+
+function getCarburantes(axiosResponse) {
+  var reg = /Precio*/;
+  var combustibles = [];
+
+  for (var regKey in axiosResponse) {
+    if (axiosResponse.hasOwnProperty(regKey)) {
+      if (regKey.match(reg)) combustibles.push(regKey.split("Precio ")[1]);
+    }
+  }
+
+  return combustibles;
+}
+
+function setCarburantes(nombreCombustible) {
+  $(".selectComb").append($('<option>', {
+    value: nombreCombustible,
+    text: nombreCombustible
+  }));
+}
 
 /***/ }),
 
@@ -22895,7 +22914,7 @@ var _hoisted_1 = {
   "class": "container"
 };
 
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"head-text\"><p>¡Encuentra las gasolineras cercanas con los precios más baratos!</p></div><br><div class=\"foptions\"><select class=\"form-select\" aria-label=\"Default select example\"><option selected>Seleccione el tipo de combustible</option><option value=\"1\">One</option><option value=\"2\">Two</option><option value=\"3\">Three</option></select><select class=\"form-select\" aria-label=\"Default select example\"><option selected>Seleccione el municipio</option><option value=\"1\">One</option><option value=\"2\">Two</option><option value=\"3\">Three</option></select></div><button type=\"button\" class=\"btn btn-532E1C\">Precio  <i class=\"bi bi-arrow-down-short\"></i></button>", 4);
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"head-text\"><p>¡Encuentra las gasolineras cercanas con los precios más baratos!</p></div><br><div class=\"foptions\"><select class=\"selectComb form-select\" aria-label=\"Default select example\"><option selected>Seleccione el tipo de combustible</option></select><select class=\"form-select\" aria-label=\"Default select example\"><option selected>Seleccione el municipio</option><option value=\"1\">One</option><option value=\"2\">Two</option><option value=\"3\">Three</option></select></div><button type=\"button\" class=\"btn btn-532E1C\">Precio  <i class=\"bi bi-arrow-down-short\"></i></button>", 4);
 
 var _hoisted_6 = [_hoisted_2];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
