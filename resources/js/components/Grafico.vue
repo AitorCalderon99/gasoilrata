@@ -31,6 +31,7 @@ export default {
               '#E46651',
               '#00D8FF'
             ],
+            // rescatar datos de la api e insertarlo en este array
             data: [1.400, 1.521, 1.677]
           }
         ]
