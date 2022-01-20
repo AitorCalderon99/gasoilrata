@@ -22,10 +22,10 @@ class CreateUsersTable extends Migration
             // $table->rememberToken();
             // $table->timestamps();
             $table->increments('id_usuario');
-            $table->string('nombre', 30);
+            $table->string('name', 30);
             $table->string('email', 50)->unique();
             //$table->timestamp('email_verified_at')->nullable();
-            $table->string('ubicacion', 40)->notNullValue;
+            $table->string('ubicacion', 40)->nullable();
             $table->string('password');
             $table->rememberToken();
         });
