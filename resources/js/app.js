@@ -29,8 +29,9 @@ import Tarjetas_didacticas from './components/Tarjetas_didacticas';
 import Grafico from './components/Grafico';
 import Funcionamiento from './components/Funcionamiento';
 import Ranking from "./components/Ranking";
+import Cards from "./components/Cards";
 
-
+app.component('Cards', Cards);
 app.component('Cabecera', Cabecera);
 app.component('Pie', Pie);
 app.component('Tabla_precio', Tabla_precio);
