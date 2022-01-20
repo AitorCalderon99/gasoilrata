@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ConsumosController extends Controller
 {
@@ -13,7 +14,9 @@ class ConsumosController extends Controller
      */
     public function index()
     {
-        return view("consumo");
+        $prueba = DB::table('vehiculos')->select('nombre')->get();
+        return view("consumo", compact('prueba'));
+
     }
 
     /**
