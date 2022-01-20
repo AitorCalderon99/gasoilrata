@@ -1,21 +1,33 @@
 <template>
     <div class="container">
-        <div class="head-text">
-            <p>¡Encuentra las gasolineras cercanas con los precios más baratos!</p>
+        <div class="row">
+            <div class="col">
+                <div class="head-text">
+                    <p>¡Encuentra las gasolineras cercanas con los precios más baratos!</p>
+                </div>
+                <br/>
+                <div class="foptions">
+                    <select class="selectComb form-select" aria-label="Default select example">
+                        <option selected>Seleccione el tipo de combustible</option>
+                    </select>
+
+                    <input class="form-control" list="datalistOptions" id="exampleDataList"
+                           placeholder="Elige el municipio">
+                    <datalist id="datalistOptions">
+
+                    </datalist>
+                    <button type="button" class="btn btn-532E1C">Precio &nbsp;<i class="bi bi-arrow-down-short"></i>
+                    </button>
+                </div>
+            </div>
         </div>
-        <br/>
-        <div class="foptions">
-            <select class="selectComb form-select" aria-label="Default select example">
-                <option selected>Seleccione el tipo de combustible</option>
-            </select>
-
-            <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Elige el municipio">
-            <datalist id="datalistOptions">
-
-            </datalist>
-
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <Cards></Cards>
+                </div>
+            </div>
         </div>
-        <button type="button" class="btn btn-532E1C">Precio &nbsp;<i class="bi bi-arrow-down-short"></i></button>
     </div>
 </template>
 

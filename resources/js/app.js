@@ -34,7 +34,9 @@ import Grafico from "./components/Grafico";
 import Ranking from "./components/Ranking";
 import Vehiculo_seleccion from "./components/Vehiculo_seleccion";
 import Tarjetas_consumos from "./components/Tarjetas_consumos";
+import Cards from "./components/Cards";
 
+app.component('Cards', Cards);
 app.component('Cabecera', Cabecera);
 app.component('Pie', Pie);
 app.component('Tabla_precio', Tabla_precio);
