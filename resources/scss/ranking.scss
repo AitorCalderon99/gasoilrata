@@ -1,7 +1,6 @@
 @import '~bootstrap/scss/bootstrap';
 *{
-    font-family: "Hemi Head Rg", serif;
-
+    font-family: "Hemi Head Rg", Roboto, serif;
 }
 
 .container{
@@ -15,8 +14,8 @@
         margin-bottom: 1em;
     }
     .btn-532E1C{
+        margin-top: 1em;
         background-color: #532E1C;
         color: white;
-        font-family: "Hemi Head Rg", serif;
     }
 }
