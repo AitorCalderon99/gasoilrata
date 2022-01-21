@@ -7,17 +7,12 @@
 
 @section('content')
 
-    <div id="main">
+    <main>
         <h3>WOW! que cantidad de dinero has ahorrado utilizando la calculadora de consumo</h3>
 
-        <h2>SELECCIONE VEHÍCULO</h2>
-        <select>
+        <Vehiculo_seleccion></Vehiculo_seleccion>
 
-            <option value="prueba1">prueba1</option>
-            <option value="prueba1">prueba2</option>
-            <option value="prueba1">prueba3</option>
-
-        </select>
-    </div>
+        <Tarjetas_consumos :datos="{{$tabla_consumos}}"></Tarjetas_consumos>
+    </main>
 
 @endsection
