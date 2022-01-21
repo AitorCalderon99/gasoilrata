@@ -1,56 +1,17 @@
 <template>
-  <div
-    id="carouselExampleIndicators"
-    class="carousel slide"
-    data-bs-ride="carousel"
-  >
-    <div class="carousel-inner bg-warning bg-gradient contenedor-amarillo">
-      <div
-        class="carousel-item"
-        :class="{ active: index == 0 }"
-        v-for="(cuestion, index) in cuestiones"
-        :key="cuestion"
-        @click="voltear()"
-      >
-          <div class="card">
-            <div class="card-body">
-              <div class="adelante">
-                <h3>
-                  {{ cuestion.pregunta }}
-                </h3>
-              </div>
-              <div class="atras">
-                <p>
-                  {{ cuestion.respuesta }}
-                </p>
-              </div>
-            </div>
-          </div>
-      </div>
+  <div id="content">
+    <div @click="previousQuestion()" id="prev" ><img :class="{firstCard: firstCard}" src="/images/rightArrow.png" alt=""></div>
+    <div id="card">
+      <div @click="toggleQuestionAnswer()" v-if="question" id="cardQuestion">{{cuestiones[numPregunta].pregunta}}</div>
+      <div @click="toggleQuestionAnswer()" v-if="answer" id="cardAnswer">{{cuestiones[numRespuesta].respuesta}}</div>
     </div>
-    <button
-      class="carousel-control-prev"
-      type="button"
-      data-bs-target="#carouselExampleIndicators"
-      data-bs-slide="prev"
-    >
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button
-      class="carousel-control-next"
-      type="button"
-      data-bs-target="#carouselExampleIndicators"
-      data-bs-slide="next"
-    >
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
+    
+    <div @click="nextQuestion()" id="next" ><img :class="{lastCard: lastCard}" src="/images/rightArrow.png" alt=""></div>
   </div>
 </template>
 
 <script>
-import { onBeforeMount, reactive } from "@vue/runtime-core";
+import { onBeforeMount, reactive, ref } from "@vue/runtime-core";
 export default {
   setup() {
     //NO BORRAR
@@ -92,64 +53,92 @@ export default {
       $(".card").toggleClass("flip-card");
     };
 
+    const numPregunta = ref(0);
+    const numRespuesta = ref(0);
+
+    const question = ref(true);
+    const answer = ref(false);
+
+    const firstCard = ref(true);
+    const lastCard = ref(false);
+
+    const toggleQuestionAnswer = ()=>{
+      question.value = !question.value;
+      answer.value = !answer.value;
+    }
+
+    const nextQuestion = ()=>{
+      if (numPregunta.value + 1 >= cuestiones.length) {
+        lastCard.value = true;
+        return;
+      }
+      numPregunta.value ++;
+      numRespuesta.value ++;
+      question.value = true;
+      answer.value = false;
+      firstCard.value = false;
+    }
+
+    const previousQuestion = ()=>{
+      if (numPregunta.value <= 0) {
+        firstCard.value = true;
+        return;
+      }
+      numPregunta.value --;
+      numRespuesta.value --;
+      question.value = true;
+      answer.value = false;
+      lastCard.value = false;
+    }
+
     onBeforeMount(() => {
       getCuestiones();
     });
 
     return {
       cuestiones,
-      voltear
+      voltear,
+      numPregunta,
+      numRespuesta,
+      question,
+      answer,
+      nextQuestion,
+      previousQuestion,
+      toggleQuestionAnswer,
+      firstCard,
+      lastCard
     };
   },
 
 };
 </script>
-
-<style scoped lang="css">
-.carousel-inner {
-  height: 15rem;
-  margin: 1rem 0;
-}
-
-.card {
-  width: 100%;
-  height: 100%;
-  background: white;
-  transition: box-shadow ease 0.3s;
-}
-
-.card:hover {
-  box-shadow: 0px 16px 24px 2px rgba(0,0,0,0.14) , 0px 6px 30px 5px rgba(0,0,0,0.12) , 0px 8px 10px -7px rgba(0,0,0,0.2) ;
-  cursor: pointer;
-}
-
-.card-body {
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  transition: all .8s ease;
-  transform-style: preserve-3d;
-}
-
-.adelante, .atras {
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-}
-
-.adelante {
-  transform: rotateX(0deg);
-}
-
-.atras {
-  transform: rotateY(180deg);
-  position: absolute;
-  right: 0;
-  left: 0;
-  top: 10px;
-}
-
-.flip-card {
-  transform: rotateY(180deg);
-}
+<style lang="scss" scoped>
+  #content{
+    display: grid;
+    grid-template-columns: 1fr 8fr 1fr;
+    >#prev{
+      cursor: pointer;
+      >img{
+        rotate: (180deg);
+        &.firstCard{
+          filter: opacity(25%);
+        }
+      }
+    }
+    >#card{
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    >#next{
+      cursor: pointer;
+      >img{
+        &.lastCard{
+          filter: opacity(25%);
+        }
+      }
+    }
+  }
 </style>
+

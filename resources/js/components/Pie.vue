@@ -1,6 +1,6 @@
 <template>
   <footer>
-    <div>&copy;GasoilRata</div>
+    <div id="company">&copy;GasoilRata</div>
 
     <ul>
       <li>Contacto</li>
@@ -8,7 +8,7 @@
       <li>Tecnología</li>
     </ul>
 
-    <div>
+    <div id="socialNetworks">
       <a
         class="btn btn-primary btn-floating m-1"
         style="background-color: #3b5998; border: none"
@@ -72,25 +72,34 @@
   </footer>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 html * {
   font-family: "Roboto";
   font-style: italic;
+  box-sizing: border-box;
 }
 
 footer {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr;
   background-color: #c5a880;
-  padding-left: 2em;
-  padding-right: 2em;
+  >#company{
+    font-size: 11px;
+  }
 }
 
 ul {
+  background-color: red;
+  padding: 0px;
   display: flex;
-  flex-flow: row nowrap;
-  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  >li{
+    margin-left: 5px;
+    font-size: 11px;
+  }
 }
+
 
 footer div {
   margin-top: auto;

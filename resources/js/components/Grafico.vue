@@ -27,9 +27,9 @@ export default {
         datasets: [
           {
             backgroundColor: [
-              '#522d1c',
-              '#522d1c',
-              '#522d1c'
+              '#529d1c',
+              '#222d1c',
+              '#162d1a'
             ],
             // rescatar datos de la api e insertarlo en este array
             data: [1.400, 1.521, 1.677]
