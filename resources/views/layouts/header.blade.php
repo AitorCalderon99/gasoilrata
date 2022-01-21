@@ -33,8 +33,14 @@
             @endguest
 
             @auth
-            <a href="">{{ Auth::user()->name }}</a>
-            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Cerrar Sesión</a>
+            <a href="" class="nav-item">{{ Auth::user()->name }}</a>
+            <a href="consumo" class="nav-item">Consumos</a>
+            <a href="repostajes" class="nav-item">Repostajes</a>
+            <!-- no encuentra el controlador de repostajes ?? -->
+            <a href="{{ route('logout') }}" class="nav-item" 
+              onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                Cerrar Sesión
+            </a>
             <form action="{{ route('logout') }}" method="POST" id="logout-form">
               @csrf
             </form>
