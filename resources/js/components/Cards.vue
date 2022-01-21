@@ -3,17 +3,17 @@
     <div class="row">
         <div id="cajaDTotal" class="containerSpacing">
 
-            <div class="col bg-black">
-                <img src="/images/gasPumps/gas2.svg">
+            <div id="imageContainer" class="col-auto">
+                <img src="/images/gasPumps/gas4.svg">
             </div>
-            <div class="col-9 bg-white">
+            <div class="col-8 bg-white flexLeft">
                 <div id="textoTotal" class="d-flex align-items-center justify-content-center">
-                    aaaaaaaaaaaaaaaaaaa
+                    aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
                 </div>
             </div>
-            <div class="col bg-gray-100">
+            <div id="priceContainer" class="col-3 bg-gray-100 flexContainer">
                 <div class="precio">
-                    111
+                    1,333€
                 </div>
             </div>
         </div>
@@ -42,12 +42,68 @@ export default {
 }
 </script>
 
-<style scoped>
 
-.precio {
-    background-color: gray;
-    border: 5px none #1C6EA4;
-    border-radius: 12px;
+<style lang="scss" scoped>
+* {
+    box-sizing: border-box;
+
+    #cajaDTotal {
+        background-color: #c5a880;
+        border: 1px solid #532e1c;
+        border-radius: 15px 0px 15px 0px;
+        min-width: 35px;
+
+        #imageContainer {
+            min-width: 20px;
+            padding: 2px;
+
+            img {
+                width: 25px;
+                height: auto;
+            }
+        }
+
+        > #priceContainer {
+            width: fit-content;
+        }
+    }
+
+    .flexLeft {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+
+        #textoTotal {
+            font-size: 11px;
+            font-weight: bolder;
+            @media (min-width: 600px) {
+                font-size: 14px;
+            }
+        }
+    }
+
+    .flexContainer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .precio {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: gray;
+            border: 5px none #1C6EA4;
+            border-radius: 12px;
+            height: 70%;
+            margin-right: 3px;
+            padding: 5px;
+            font-size: 11px;
+            @media (min-width: 600px) {
+                font-size: 17px;
+            }
+            /*padding-right: 2em;*/
+        }
+    }
 
 }
 
@@ -56,19 +112,5 @@ export default {
     align-content: center;
 }
 
-#cajaDTotal {
-    background-color: #c5a880;
-    border: 1px solid #532e1c;
-    border-radius: 15px 0px 15px 0px;
-}
-
-#textoTotal {
-    font-size: large;
-    font-weight: bolder;
-}
-
-img {
-    height: 2.7em;
-}
 
 </style>

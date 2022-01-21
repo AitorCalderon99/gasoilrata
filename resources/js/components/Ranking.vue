@@ -24,7 +24,7 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <Cards></Cards>
+                    <Cardscopy></Cardscopy>
                 </div>
             </div>
         </div>
