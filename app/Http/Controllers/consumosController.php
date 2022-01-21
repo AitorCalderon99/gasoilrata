@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 
 class ConsumosController extends Controller
 {
@@ -14,8 +15,8 @@ class ConsumosController extends Controller
      */
     public function index()
     {
-        $prueba = DB::table('vehiculos')->select('nombre')->get();
-        return view("consumo", compact('prueba'));
+        $tabla_consumos = DB::table('consumos')->get();
+        return view("consumo")->with('tabla_consumos', $tabla_consumos);
 
     }
 
