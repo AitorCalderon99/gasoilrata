@@ -8,10 +8,14 @@ window.Alpine = Alpine;
 
 Alpine.start();
 
-/* import "./bootstrap" */
+/* import BootstrapVue3 */
 import BootstrapVue3 from 'bootstrap-vue-3'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue-3/dist/bootstrap-vue-3.css'
+
+/* import VueSweetAlert2 */
+import VueSweetalert2 from 'vue-sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
 
 global.$ = global.jQuery = require('jquery');
 
@@ -47,4 +51,6 @@ app.component('Vehiculo_seleccion', Vehiculo_seleccion);
 app.component('Tarjetas_consumos', Tarjetas_consumos);
 
 app.use(BootstrapVue3);
+app.use(VueSweetalert2);
+
 app.mount('#app');
