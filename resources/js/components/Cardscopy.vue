@@ -78,5 +78,11 @@ export default {
     50% { opacity: 0; }
 }
 
+.precio{
+    background-color: gray;
+    border: 5px none #1C6EA4;
+    border-radius: 12px;
+    margin-right: 10%;
+}
 
 </style>
