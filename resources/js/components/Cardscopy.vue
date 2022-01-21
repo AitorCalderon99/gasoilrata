@@ -38,7 +38,15 @@ export default {
             var num = Math.floor(Math.random() * (8 - 1 + 1) + 1);
             var img = imagesArray[num - 1];
             //CREACION ELEMENTO CON JQUERY
-            $('#imgContainer').prepend('<img src= "'+ img + '" class="rounded mx-auto d-block" style="width: 50px; height: auto;"/>');
+            $('#imgContainer').prepend('<img id="imageAnimate" src= "' + img + '" class="rounded mx-auto d-block animate" style="width: 50px; height: auto;"/>')
+
+            $('#imageAnimate').mouseover(() => {
+                //Efecto jquery
+                $('#imageAnimate').addClass('fade')
+                setTimeout(function () { $("#imageAnimate").removeClass('fade') }, 1000) // 1000 milliseconds
+            })
+
+
         }
 
         onMounted(() => {
@@ -60,6 +68,14 @@ export default {
     border-radius: 15px 0px 15px 0px;
     min-width: 35px;
 
+}
+.fade {
+    animation: fadeinout .5s;
+}
+
+@keyframes fadeinout {
+    0%,100% { opacity: 1; }
+    50% { opacity: 0; }
 }
 
 
