@@ -16,6 +16,7 @@
             src: url("https://www.dafont.com/hemi-head.font");
         }
     </style>
+    <style href="{{ asset('css/header.css') }}"></style>
     @stack('head')
 </head>
 <body>
