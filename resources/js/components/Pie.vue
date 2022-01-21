@@ -1,8 +1,12 @@
 <template>
   <footer>
-    <div>@Copyright</div>
+    <div>&copy;GasoilRata</div>
 
-    <div>Contacto - Aviso legal - Tecnologia</div>
+    <ul>
+      <li>Contacto</li>
+      <li>Aviso legal</li>
+      <li>Tecnología</li>
+    </ul>
 
     <div>
       <a
@@ -69,25 +73,31 @@
 </template>
 
 <style scoped>
-  html * {
-    font-family: "Roboto";
-    font-style: italic;
-  }
-  
-  footer {
-    display: flex;
-    justify-content: space-between;
-    background-color: #c5a880;
-    padding-left: 2em;
-    padding-right: 2em;
-  }
+html * {
+  font-family: "Roboto";
+  font-style: italic;
+}
 
-  footer div {
-    margin-top: auto;
-    margin-bottom: auto;
-  }
+footer {
+  display: flex;
+  justify-content: space-between;
+  background-color: #c5a880;
+  padding-left: 2em;
+  padding-right: 2em;
+}
 
-  svg {
-    margin-bottom: 0.2em;
-  }
+ul {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 1rem;
+}
+
+footer div {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+svg {
+  margin-bottom: 0.2em;
+}
 </style>
