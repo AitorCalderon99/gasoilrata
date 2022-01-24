@@ -23,6 +23,8 @@ global.$ = global.jQuery = require('jquery');
 import { createApp } from 'vue';
 const app = createApp({});
 
+// PROVIDES (para mandar a todos los hijos)
+app.provide("id_user", document.querySelector("meta[name='id_user']").getAttribute('content'));
 
 //Aqui se añaden todos los componentes
 
