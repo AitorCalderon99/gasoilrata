@@ -51,7 +51,7 @@ class ConsumosController extends Controller
      */
     public function show($id)
     {
-        return DB::table('consumos')->where('id_vehiculo', $id)->get();
+        return Consumo::all();
     }
 
     /**
