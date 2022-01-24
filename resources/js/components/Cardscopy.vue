@@ -26,9 +26,9 @@
 
 <script>
 
-import {onMounted, ref} from "vue";
+import {onMounted} from "vue";
 import axios from 'axios';
-import {onBeforeMount} from "@vue/runtime-core";
+import {onBeforeMount, reactive, ref} from "@vue/runtime-core";
 
 var data = [];
 
@@ -36,7 +36,7 @@ var data = [];
 export default {
     name: "Cardscopy",
     setup() {
-        let allGasolineras = [];
+        const allGasolineras = ref([]);
 
         const getAllGasolineras = async () => {
             let url = 'https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/EstacionesTerrestres/';
@@ -47,10 +47,9 @@ export default {
                 console.log('Error: ' + err);
                 return;
             }
-            allGasolineras = response.data.ListaEESSPrecio;
+            allGasolineras.value = response.data.ListaEESSPrecio;
             console.log(response.data.ListaEESSPrecio);
-            console.log(allGasolineras);
-            console.log(allGasolineras[0]);
+            console.log(allGasolineras.value[0]);
         }
 
 
