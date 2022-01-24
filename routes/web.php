@@ -2,7 +2,11 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\ConsumosController;
+use App\Http\Controllers\CalculadoraController;
+use App\Http\Controllers\RankingController;
+use App\Http\Controllers\RepostajesController;
+use App\Http\Controllers\VehiculosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,16 +31,18 @@ Route::get('contacto', function () {
     return view('contacto');
 });
 
-Route::get('login', [\App\Http\Controllers\Auth\AuthenticatedSessionController::class, "create"]);
-Route::get('registrarse', [\App\Http\Controllers\Auth\RegisteredUserController::class, "create"]);
+Route::get('login', [AuthenticatedSessionController::class, "create"]);
+Route::get('registrarse', [RegisteredUserController::class, "create"]);
 
 // Vistas con mantenimiento
 //Lo de las comillas es como tenemos que llamarlo en el href para que funcione
-Route::resource("consumo", \App\Http\Controllers\ConsumosController::class);
-Route::resource("ranking", \App\Http\Controllers\RankingController::class);
-Route::resource("calculadora", \App\Http\Controllers\CalculadoraController::class);
-Route::resource("repostajes", \App\Http\Controllers\RepostajesController::class);
-Route::resource("editarUsuario", \App\Http\Controllers\UsuariosController::class);
-Route::resource("vehiculos", \App\Http\Controllers\VehiculosController::class);
+Route::resource("consumo", ConsumosController::class);
+Route::resource("ranking", RankingController::class);
+Route::resource("calculadora", CalculadoraController::class);
+Route::resource("repostajes", RepostajesController::class);
+Route::resource("editarUsuario", UsuariosController::class);
+Route::resource("vehiculos", VehiculosController::class);
+
+// Route::post("/vehiculos", [VehiculosController::class, "store"]);
 
 require __DIR__.'/auth.php';
