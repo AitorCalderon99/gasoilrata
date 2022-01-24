@@ -12,7 +12,7 @@
                     </select>
 
                     <input class="form-control" list="datalistOptions" id="exampleDataList"
-                           placeholder="Elige el municipio">
+                           placeholder="Elige el municipio" v-model="municipioEnviar">
                     <datalist id="datalistOptions">
 
                     </datalist>
@@ -24,7 +24,7 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <Cardscopy></Cardscopy>
+                    <Cardscopy :municipioRecibido="municipioEnviar"></Cardscopy>
                 </div>
             </div>
         </div>
@@ -33,16 +33,33 @@
 
 <script>
 import axios from "axios";
+import Cardscopy from "./Cardscopy";
 
 export default {
-    name: "Ranking"
+    name: "Ranking",
+    data() {
+        return {
+            municipioEnviar: null
+        }
+    },
+    components: {
+        Cardscopy
+    },
+    methods: {
+        enviarMunicipio(){
+            this.municipioEnviar = municipioEnviar;
+        }
+    }
 }
 var listado = "";
+
+var lista = [];
 
 //AXIOS (Ranking)
 axios
     .get('https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/EstacionesTerrestres/')
     .then(response => {
+        lista = response.data.ListaEESSPrecio;
         //Carburantes
         var combustibles = getCarburantes(response.data.ListaEESSPrecio[0]);
 
@@ -58,6 +75,7 @@ axios
         }
     })
     .catch(error => console.log(error));
+
 
 //Functions
 function getCarburantes(axiosResponse) {
