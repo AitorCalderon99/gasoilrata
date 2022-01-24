@@ -12,7 +12,7 @@
                     </select>
 
                     <input class="form-control" list="datalistOptions" id="exampleDataList"
-                           placeholder="Elige el municipio" v-model="municipioEnviar">
+                           placeholder="Elige el municipio"  v-model="municipioEnviar">
                     <datalist id="datalistOptions">
 
                     </datalist>

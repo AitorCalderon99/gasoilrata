@@ -1,7 +1,7 @@
 <template>
     <p>Recibido: {{municipioRecibido}}, {{combustibleRecibido}}</p>
     <div class="principalContainer">
-        <div v-for="gasolinera in allGasolineras" :key="gasolinera" class="card mb-3 principalContainer" >
+        <div v-for="gasolinera in filteredGasolineras" :key="gasolinera" class="card mb-3 principalContainer" >
             <div  class="cajaDTotal row g-0 row justify-content-center align-items-center">
                 <div class="col-2 imgContainer">
                     <img src= "/images/gasPumps/gas2.svg" class="imageAnimate rounded mx-auto d-block animate" style="width: 50px; height: auto;"/>
@@ -38,6 +38,20 @@ export default {
         municipioRecibido: null,
         combustibleRecibido: null
     },
+    computed:{
+        filteredGasolineras: function () {
+            return this.allGasolineras.filter((gasolinera) =>{
+                if (this.municipioRecibido == null && this.combustibleRecibido == null)
+                    return true
+                else if (this.combustibleRecibido == null)
+                    return gasolinera.Municipio.match(this.municipioRecibido);
+                else
+                    //includes
+                    gasolinera.
+                     gasolinera.Municipio.match(this.municipioRecibido);
+            })
+        }
+    },
     setup() {
         const allGasolineras = ref([]);
 
@@ -58,6 +72,8 @@ export default {
             console.log(response.data);
 
         }
+
+
 
 
         //methods
