@@ -3,8 +3,8 @@
     <h1 class="ms-5">Seleccione un vehículo</h1>
 
     <div class="select-agregar row w-50 mx-auto">
-      <select @change="getVehiculos()" v-model="vehiculos" class="col-10">
-        <option v-for="v in vehiculos" :key="v.id_vehiculo" value="v.id_vehiculo">
+      <select v-model="vehiculos" class="col-10">
+        <option v-for="v in vehiculos.value" :key="v.id_vehiculo" :value="v.id_vehiculo">
           {{ v.nombre }}
         </option>
       </select>
@@ -44,7 +44,7 @@ export default {
       //     console.log("que es esto");
       //     return;
       //   }
-    //   console.log(response);
+      
       vehiculos.value = response.data;
       console.log(vehiculos.value);
     };
