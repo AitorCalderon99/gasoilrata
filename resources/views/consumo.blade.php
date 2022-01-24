@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title','Mis consumos')
+
 <!--Para subir lo estilos al header y asi que se muestren bien-->
 @push('head')
     
