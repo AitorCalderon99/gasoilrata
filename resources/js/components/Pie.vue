@@ -92,7 +92,6 @@ footer {
 }
 
 ul {
-  
   padding: 0px;
   display: flex;
   justify-content: center;
