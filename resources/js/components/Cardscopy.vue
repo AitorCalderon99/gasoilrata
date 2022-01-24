@@ -1,15 +1,14 @@
 <template>
-    <div  class="principalContainer">
-        jimniopmo0miop
-        <button @click="pruebas(allGasolineras[0])">Prueba</button>
-        <div v-for="gasolinera in allGasolineras" :key="gasolinera" class="card mb-3" id="principalContainer">
-            <div id="cajaDTotal" class="row g-0 row justify-content-center align-items-center">
-                <div id="imgContainer" class="col-2 ">
-                    <img id="imgLeftCard">
+    <p>Recibido: {{municipioRecibido}}, {{combustibleRecibido}}</p>
+    <div class="principalContainer">
+        <div v-for="gasolinera in filteredGasolineras" :key="gasolinera" class="card mb-3 principalContainer" >
+            <div  class="cajaDTotal row g-0 row justify-content-center align-items-center">
+                <div class="col-2 imgContainer">
+                    <img src= "/images/gasPumps/gas2.svg" class="imageAnimate rounded mx-auto d-block animate" style="width: 50px; height: auto;"/>
                 </div>
                 <div class="col-8">
                     <div class="card-body">
-                        <p class="card-tex">This is a wider card with supporting text below as a natural lead-in to
+                        <p class="card-text">{{ gasolinera.Direcci&oacute;n }} - {{gasolinera.Localidad}}
                         </p>
                     </div>
                 </div>
@@ -35,6 +34,24 @@ var data = [];
 
 export default {
     name: "Cardscopy",
+    props:{
+        municipioRecibido: null,
+        combustibleRecibido: null
+    },
+    computed:{
+        filteredGasolineras: function () {
+            return this.allGasolineras.filter((gasolinera) =>{
+                if (this.municipioRecibido == null && this.combustibleRecibido == null)
+                    return true
+                else if (this.combustibleRecibido == null)
+                    return gasolinera.Municipio.match(this.municipioRecibido);
+                else
+                    //includes
+                    gasolinera.
+                     gasolinera.Municipio.match(this.municipioRecibido);
+            })
+        }
+    },
     setup() {
         const allGasolineras = ref([]);
 
@@ -43,22 +60,26 @@ export default {
             let response;
             try {
                 response = await axios.get(url);
+
             } catch (err) {
                 console.log('Error: ' + err);
                 return;
+
+            } finally {
+                displayPics();
             }
             allGasolineras.value = response.data.ListaEESSPrecio;
-            console.log(response.data.ListaEESSPrecio);
-            console.log(allGasolineras.value[0]);
+            console.log(response.data);
+
         }
+
 
 
 
         //methods
-        const pruebas =(x)=>{
-            console.log(x);
-        }
+
         const displayPics = () => {
+            console.log("Ejecutando display pics");
             var imagesArray = [];
 
             for (let i = 1; i < 9; i++) {
@@ -81,32 +102,34 @@ export default {
 
         }
 
-        onMounted(() => {
-            displayPics();
 
+        onMounted(() => {
 
         });
-        onBeforeMount(()=>{
+        onBeforeMount(() => {
             getAllGasolineras();
+
         })
 
-        return{
+
+        return {
             allGasolineras,
-            pruebas
         }
 
     }
+
 }
+
 </script>
 
 
 <style lang="scss" scoped>
 
-#principalContainer {
+.principalContainer {
     margin-top: 1.5em;
 }
 
-#cajaDTotal {
+.cajaDTotal {
     background-color: #c5a880;
     border: 1px solid #532e1c;
     border-radius: 15px 0 15px 0;
