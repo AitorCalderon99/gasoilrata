@@ -1,5 +1,5 @@
 <template>
-    <p>Municipio recibido: {{municipioRecibido}}</p>
+    <p>Recibido: {{municipioRecibido}}, {{combustibleRecibido}}</p>
     <div class="principalContainer">
         <div v-for="gasolinera in allGasolineras" :key="gasolinera" class="card mb-3 principalContainer" >
             <div  class="cajaDTotal row g-0 row justify-content-center align-items-center">
@@ -36,7 +36,7 @@ export default {
     name: "Cardscopy",
     props:{
         municipioRecibido: null,
-        carburanteRecibido: null
+        combustibleRecibido: null
     },
     setup() {
         const allGasolineras = ref([]);

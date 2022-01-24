@@ -7,7 +7,7 @@
                 </div>
                 <br/>
                 <div class="foptions">
-                    <select class="selectComb form-select" aria-label="Default select example">
+                    <select class="selectComb form-select" aria-label="Default select example" v-model="combustibleEnviar">
                         <option selected>Seleccione el tipo de combustible</option>
                     </select>
 
@@ -24,7 +24,7 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <Cardscopy :municipioRecibido="municipioEnviar"></Cardscopy>
+                    <Cardscopy :combustibleRecibido="combustibleEnviar" :municipioRecibido="municipioEnviar"></Cardscopy>
                 </div>
             </div>
         </div>
@@ -39,7 +39,8 @@ export default {
     name: "Ranking",
     data() {
         return {
-            municipioEnviar: null
+            municipioEnviar: null,
+            combustibleEnviar: null
         }
     },
     components: {
