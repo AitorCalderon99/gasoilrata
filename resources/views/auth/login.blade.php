@@ -3,12 +3,12 @@
 <!--Para subir lo estilos al header y asi que se muestren bien-->
 @push('head')
 <style>
-    html {
+    body {
         background-color: #C5A880 !important;
     }
 
     html * {
-        font-family: "Roboto";
+        font-family: "Hemi head";
     }   
 
     a{
