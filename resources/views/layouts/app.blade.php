@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @if (Auth::check()) 
-         <meta name="id_user" content="{{ Auth::user()->id }}" />
-    @endif 
+        <meta name="id_user" content="{{ Auth::user()->id }}" />
+    @else
+        <meta name="id_user" content="{{ 0 }}" />
+    @endif
     <link rel="stylesheet" href="{{ asset('css/header.css') }}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>@yield('title')</title>
@@ -27,8 +29,6 @@
         @include('layouts.header')
         
         @yield('content')
-        
-        
 
         <footer>
             <Pie></Pie>
