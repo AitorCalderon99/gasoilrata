@@ -24,7 +24,7 @@ class VehiculosController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -35,7 +35,10 @@ class VehiculosController extends Controller
      */
     public function store(Request $request)
     {
-
+        $vehiculo = new Vehiculo;
+        $vehiculo -> nombre = $request -> vehiculo;
+        $vehiculo -> id_user = $request -> idUser;
+        $vehiculo -> save();
     }
 
     /**
@@ -46,7 +49,8 @@ class VehiculosController extends Controller
      */
     public function show($id)
     {
-        //
+        // return Vehiculo::find($id);
+        return Vehiculo::all();
     }
 
     /**
