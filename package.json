@@ -34,8 +34,9 @@
         "@j-t-mcc/vue3-chartjs": "^1.2.0",
         "boostrap": "^2.0.0",
         "bootstrap-vue-3": "^0.1.0",
-        "vue-sweetalert2": "^5.0.2",
         "chart.js": "^3.7.0",
-        "jquery": "^3.6.0"
+        "jquery": "^3.6.0",
+        "vue-axios": "^3.4.0",
+        "vue-sweetalert2": "^5.0.2"
     }
 }
