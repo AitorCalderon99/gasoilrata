@@ -14,7 +14,7 @@
         margin: 0;
     }
 
-    button[type=submit] {
+    button[type=submit], #calcular{
         background-color: #522d1c;
         border: none;
         width: 10em;
@@ -42,7 +42,39 @@
         border: 1px solid #532e1c;
         border-radius: 15px 0px 15px 0px;
     }
+
+    /*Para que al calcular el precio se "desactiven" los campos de textos*/
+    .desaparecer{
+        background-color: white !important;
+        color: #b8b7b7 !important;
+        border: solid 1px #b8b7b7 !important;
+    }
+
+    .desaparecer:hover{
+        cursor: wait;
+    }
+
+    .esperar{
+        color: #b8b7b7 !important;
+    }
+
+    .esperar:hover{
+        cursor: wait;
+    }
+
+    .multiple:hover{
+        cursor: wait;
+    }
+
+    .calculo:hover{
+        cursor: wait;
+    }
+
+    .subirHov:hover{
+        cursor: not-allowed;
+    }
 </style>
+
 @endpush
 
 @section('content')
@@ -64,7 +96,7 @@
     <div class="mb-3">
         <label> Kilometros a realizar </label>
         <div class="input-group">
-            <input type="number" min="0" class="form-control" id="km">
+            <input type="number" min="0" class="form-control" value="23" id="km">
             <span class="input-group-text">
                 km
             </span>
@@ -95,7 +127,7 @@
     <div class="mb-3">
         <label> Consumo </label>
         <div class="input-group">
-            <input type="number" min="0" class="form-control" id="consumo">
+            <input type="number" min="0" class="form-control bg-white" id="consumo">
             <span class="input-group-text">
                 L/100
             </span>
@@ -105,26 +137,26 @@
     <div class="mb-3">
         <label> Coste litro </label>
         <div class="input-group">
-            <input type="text" class="form-control" placeholder="Precio del combustible por litro" id="coste"/>
+            <input type="text" class="form-control bg-white" readonly placeholder="Precio del combustible por litro" id="coste"/>
         </div>
     </div>
 
     <div class="mb-3">
         <label> Origen </label>
         <div class="input-group">
-            <input type="text" class="form-control" placeholder="Usa la insertada por el usuario. Se puede cambiar."/>
+            <input type="text" class="form-control bg-white" placeholder="Usa la insertada por el usuario. Se puede cambiar."/>
         </div>
     </div>
 
     <div class="mb-3">
         <label> Destino </label>
         <div>
-            <input type="text" class="form-control" placeholder="Lugar"/>
+            <input type="text" class="form-control bg-white" placeholder="Lugar"/>
         </div>
     </div>
 
     <div class="d-flex align-items-center justify-content-center">
-        <button type="button" class="Botones mt-2 rounded-pill" id="calcular">
+        <button type="button" class="mt-2 rounded-pill text-light" id="calcular">
             Calcular Precio
         </button>
     </div>
@@ -143,9 +175,11 @@
     </div>
 
     <div class="d-flex align-items-center justify-content-center">
-        <button type="submit" class="mt-2 rounded-pill text-light">
+        <button type="submit" id="subir" class="mt-2 rounded-pill text-light">
             Guardar
         </button>
     </div>
 </form>
+
+
 @endsection
