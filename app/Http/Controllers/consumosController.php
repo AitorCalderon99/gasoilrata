@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Consumo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
@@ -18,6 +19,7 @@ class ConsumosController extends Controller
         $tabla_consumos = DB::table('consumos')->get();
         return view("consumo")->with('tabla_consumos', $tabla_consumos);
 
+        // $task = Consumo::all();
     }
 
     /**

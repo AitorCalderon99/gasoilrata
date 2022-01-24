@@ -3,20 +3,55 @@
         <h1 class="ms-5">Seleccione un vehículo</h1>
 
         <div class="select-agregar row w-50 mx-auto">
-            <select class="col-10">
-                <option value="prueba">prueba</option>
+            <select @change="showVehiculo()" v-model="vehiculo" class="col-10">
+                <option v-for="v in vehiculos" :key="v" value="v">{{v}}</option>
             </select>
-            <button type="button" class="btn btn-outline-secondary col" @click="showVehiculo">+</button>
+            <button type="button" class="btn btn-outline-secondary col" @click="showVehiculo()">+</button>
         </div>
 
     </div>
 </template>
 
 <script>
+/* import { reactive, onBeforeMount } from '@vue/runtime-core' */
+import {reactive ,onBeforeMount} from 'vue';
+import axios from 'axios';
 export default {
-    methods: {
-        showVehiculo() {
-            const { value: vehiculo } = this.$swal.fire(
+    setup() {
+        const vehiculos = reactive([]);
+        const vehiculo = ref('');
+        const getVehiculos =async()=>{
+            let response;
+            try {
+                response = await axios.get('/vehiculos');
+            } catch (error) {
+                //marcar error
+                return;
+            }
+
+            if (response.data != 200) {
+                //marcar error
+                return;
+            }
+            vehiculos = response.data;
+        }
+        const saveVehiculo = async(id)=>{
+            let response;
+            try {
+                response = await axios.post('/vehiculo', id);
+            } catch (error) {
+                //marcar error
+                return;
+            }
+
+            if (response.data != 200) {
+                //marcar error
+                return;
+            }
+            await getVehiculos();
+        }
+        const addVehiculo = async()=>{
+            vehiculo.value = this.$swal.fire(
                 {
                     titleText : 'Añade tu coche al garaje virtual',
                     input : 'text',
@@ -31,11 +66,26 @@ export default {
                 }
             )
             console.log(vehiculo);
-            if (vehiculo) {this.$swal.fire('${vehiculo} se ha añadido al garaje.')}
-        },
+            if (vehiculo.value != '') {
+                this.$swal.fire('${vehiculo} se ha añadido al garaje.')
+                return;    
+            }
+            await saveVehiculo(user.id);
+        }
+
+        onBeforeMount(() => {
+            getVehiculos();
+        });
+        return{
+            showVehiculo,
+            vehiculos,
+            addVehiculo
+        }
     },
 }
 </script>
 
-<style scoped>
+
+<style lang="scss" scoped>
+
 </style>
