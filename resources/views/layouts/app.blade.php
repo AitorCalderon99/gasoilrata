@@ -22,14 +22,17 @@
     <style href="{{ asset('css/header.css') }}"></style>
     @stack('head')
 </head>
-<body>
-    <div id="app">
+<body id="app">
+
         @include('layouts.header')
         
         @yield('content')
         
-        <Pie></Pie>
-    </div>
+        
+
+        <footer>
+            <Pie></Pie>
+        </footer>
     
     <script src="{{ asset('js/app.js') }}"></script>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet"/>
