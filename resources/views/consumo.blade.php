@@ -8,11 +8,11 @@
 @section('content')
 
     <main>
-        <h3>WOW! que cantidad de dinero has ahorrado utilizando la calculadora de consumo</h3>
+        <h3>WOW! que cantidad de dinero que has ahorrado utilizando la calculadora de consumo</h3>
 
         <Vehiculo_seleccion></Vehiculo_seleccion>
 
-        <Tarjetas_consumos :datos="{{$tabla_consumos}}"></Tarjetas_consumos>
+        <Tarjetas_consumos></Tarjetas_consumos>
     </main>
 
 @endsection

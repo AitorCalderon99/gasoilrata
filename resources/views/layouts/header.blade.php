@@ -34,8 +34,8 @@
 
             @auth
             <a href="" class="nav-item">{{ Auth::user()->name }}</a>
-            <a href="consumo" class="nav-item">Consumos</a>
-            <a href="repostajes" class="nav-item">Repostajes</a>
+            <a href="consumo" class="nav-item">Mis Consumos</a>
+            <a href="repostajes" class="nav-item">Mis Repostajes</a>
             <!-- no encuentra el controlador de repostajes ?? -->
             <a href="{{ route('logout') }}" class="nav-item" 
               onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
