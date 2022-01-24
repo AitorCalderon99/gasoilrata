@@ -10,24 +10,37 @@
 </template>
 
 <script>
+import { onBeforeMount, inject } from '@vue/runtime-core';
+import axios from 'axios';
+import Swal from 'sweetalert2';
 import Tarjeta_consumo from "./Tarjeta_consumo.vue";
 
 export default {
   setup() {
-        // id: 1,
-        // fecha: "28-11-2022",
-        // viaje: "Bilbao-Valencia",
-        // distancia: 748,
-        // combustible: "Gasóleo Premium",
-        // euro_litro: 1.507,
-        // litro: 60.54,
+    const Swal = require('sweetalert2');
+    const id_user = inject("id_user");
+
+    const getConsumos = async() => {
+      let response;
+            try {
+                response = await axios.get('/consumos/'+id_user);
+            } catch (error) {
+                // await Swal.fire(error.title, error.message, "error");
+                return;
+            }
+
+            if (response.data != 200) {
+                //marcar error
+                return;
+            }
+    }
+
+    onBeforeMount( () => {
+      getConsumos();
+    })
   },
   components: {
     Tarjeta_consumo,
   },
-
-  props: {
-        datos: Object,
-    }
 };
 </script>
