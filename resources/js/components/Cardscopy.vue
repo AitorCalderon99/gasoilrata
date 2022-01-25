@@ -1,21 +1,21 @@
 <template>
-    <p>Recibido: {{municipioRecibido}}, {{combustibleRecibido}}</p>
+<!--    <p>Recibido: {{ municipioRecibido }}, {{ combustibleRecibido }}</p>-->
     <div class="principalContainer">
-        <div v-for="gasolinera in filteredGasolineras" :key="gasolinera" class="card mb-3 principalContainer" >
-            <div  class="cajaDTotal row g-0 row justify-content-center align-items-center">
+        <div v-for="(gasolinera,index) in filteredGasolineras" :key="gasolinera" class="card mb-3 principalContainer">
+            <div class="cajaDTotal row g-0 row justify-content-center align-items-center">
                 <div class="col-2 imgContainer">
-                    <img src= "/images/gasPumps/gas2.svg" class="imageAnimate rounded mx-auto d-block animate" style="width: 50px; height: auto;"/>
+                    <img :src="'/images/gasPumps/gas'+Math.floor(Math.random() * (8 - 1 + 1) + 1) +'.svg'" class="imageAnimate rounded mx-auto d-block animate"
+                         style="width: 50px; height: auto;"/>
                 </div>
                 <div class="col-8">
                     <div class="card-body">
-                        <p class="card-text">{{ gasolinera.Direcci&oacute;n }} - {{gasolinera.Localidad}}
+                        <p class="card-text">{{ gasolinera.Direcci&oacute;n }} - {{ gasolinera.Localidad }}
                         </p>
                     </div>
                 </div>
                 <div class="col-2">
-                    <p class="precio">
-                        {{ gasolinera["Precio "+combustibleRecibido]}}€
-
+                    <p class="precio" :id="'gas'+index">
+                        {{ gasolinera["Precio " + combustibleRecibido] }}€
                     </p>
                 </div>
             </div>
@@ -35,13 +35,13 @@ var data = [];
 
 export default {
     name: "Cardscopy",
-    props:{
+    props: {
         municipioRecibido: null,
         combustibleRecibido: null
     },
-    computed:{
+    computed: {
         filteredGasolineras: function () {
-            return this.allGasolineras.filter((gasolinera) =>{
+            return this.allGasolineras.filter((gasolinera) => {
                 if (this.municipioRecibido == null && this.combustibleRecibido == null)
                     return false;
                 else if (this.combustibleRecibido == null)
@@ -50,19 +50,18 @@ export default {
                     const reg = /Precio*/;
                     for (const fila in gasolinera) {
 
-                            if (fila.includes(this.combustibleRecibido)) {
-                                if (gasolinera[fila] !== "")
-                                {
-                                    if (this.municipioRecibido == null)
-                                        return gasolinera;
-                                    else {
-                                        return gasolinera.Municipio.match(this.municipioRecibido);
-                                    }
+                        if (fila.includes(this.combustibleRecibido)) {
+                            if (gasolinera[fila] !== "") {
+                                if (this.municipioRecibido == null)
+                                    return gasolinera;
+                                else {
+                                    return gasolinera.Municipio.match(this.municipioRecibido);
                                 }
                             }
+                        }
                     }
 
-                   return false;
+                    return false;
                 }
 
 
@@ -88,8 +87,6 @@ export default {
             allGasolineras.value = response.data.ListaEESSPrecio;
 
         }
-
-
 
 
         //methods
@@ -141,6 +138,18 @@ export default {
 
 <style lang="scss" scoped>
 
+#gas0{
+    background-color: #FFD700;
+}
+#gas1{
+    background-color: silver;
+}
+#gas2{
+    background-color: #cd7f32;
+}
+
+
+
 .principalContainer {
     margin-top: 1.5em;
 }
@@ -167,7 +176,7 @@ export default {
 }
 
 .precio {
-    background-color: gray;
+    background-color: white;
     border: 5px none #1C6EA4;
     border-radius: 12px;
     margin-right: 10%;
