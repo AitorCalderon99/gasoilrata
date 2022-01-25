@@ -1,12 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <h1>PRUEBA REPOSTAJES</h1>
-</body>
-</html>
+@extends('layouts.app')
+
+@section('title', 'Mis repostajes')
+
+@push('head')
+    
+@endpush
+
+@section('content')
+<main>
+
+    <div class="crear-repostaje">
+        <h1>¿Quieres crear un nuevo repostaje?</h1>
+        <a class="btn btn-primary" href="/repostajes/create">Crear</a>
+    </div>
+
+    <h1>¡Revisa el historial de repostajes para ahorrarte un dinerito!</h1>
+
+    <Vehiculo_seleccion></Vehiculo_seleccion>
+
+    <Tarjetas_repostajes></Tarjetas_respostajes>
+    
+</main>
+@endsection
