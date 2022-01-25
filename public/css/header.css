@@ -57,3 +57,9 @@ svg {
     padding: 0.2em;
     border-radius: 0.3em;
 }
+
+#Inicio:active {
+    background-color: black;
+    color: white;
+    padding: 0.1em;
+}
