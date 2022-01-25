@@ -31,6 +31,11 @@ export default {
         respuesta:
           "El carné de conducir tiene una vigencia de 10 años y según la Ley de Tráfico, circular con el carné caducado conlleva una multa de 200 euros. Pero no solo eso, si estamos implicados en algún accidente el seguro probablemente se lave las manos (sea a terceros o todo riesgo). ",
       },
+      {
+        pregunta: "¿Te la suda todo?",
+        respuesta:
+          "Pues no deberia.",
+      },
     ];
 
     const numerosSalidos = [];
@@ -119,7 +124,7 @@ export default {
     >#prev{
       cursor: pointer;
       >img{
-        rotate: (180deg);
+        transform: rotate(180deg);
         &.firstCard{
           filter: opacity(25%);
         }
