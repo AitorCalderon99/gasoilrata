@@ -3,8 +3,8 @@
     <div id="company">&copy;GasoilRata</div>
 
     <ul>
-      <li>Contacto</li>
-      <li>Aviso legal</li>
+      <li><a href="/contacto">Contacto</a></li>
+      <li><a href="/avisolegal">Aviso legal</a></li>
     </ul>
 
     <div id="socialNetworks">
