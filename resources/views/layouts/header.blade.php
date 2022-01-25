@@ -11,13 +11,17 @@
     </div>
 
     <div class="titulo-contenedor contenedor d-flex align-items-center justify-content-center">
-        <p class="nav-item">GASOILRATA</p>
+        <p class="nav-item">
+            <a id="Inicio" href="index.php">
+                GASOILRATA
+            </a>
+        </p>
     </div>
 
     <div class="logo-contenedor contenedor">
-        <a href="index.php" class="nav-item mr-2 nav-link d-flex align-items-center justify-content-end">
+        <div href="index.php" class="nav-item mr-2 nav-link d-flex align-items-center justify-content-end">
             <img id="Logo" src="Logo.png" alt="Logo de GasoilRat" />
-        </a>
+        </div>
     </div>
 
     <div id="hamburguesa" class="collapse navbar-collapse">
