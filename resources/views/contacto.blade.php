@@ -26,6 +26,45 @@
         margin-left: auto;
         margin-right: auto;
     }
+
+    #cajaTarjeta {
+        background-color: transparent;
+        width: 220px;
+        height: 300px;
+        border: 1px solid #eeeeee;
+        perspective: 1000px;
+    }
+
+    #tarjeta {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        transition: transform 0.4s;
+        transform-style: preserve-3d;
+    }
+
+    #cajaTarjeta:hover #tarjeta {
+        transform: rotateX(180deg);
+    }
+
+    #pregunta, #respuesta {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+    }
+
+    #pregunta {
+        background-color: #cccccc;
+        color: #111111;
+    }
+
+    #respuesta {
+        background-color: #8ebf42;
+        color: #eeeeee;
+        transform: rotateX(180deg);
+    }
 </style>
 @endpush
 
@@ -70,5 +109,19 @@
             <img id="carretera" src="img/carretera.png">
         </article>
     </section>
+
+    <div id="cajaTarjeta">
+        <div id="tarjeta">
+            <div id="pregunta">
+                <h2>He aqui la pregunta</h2>
+            </div>
+
+            <div id="respuesta">
+                <h2>Y la respuesta</h2>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection
+
+  
