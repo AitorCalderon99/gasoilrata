@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-<!--Para subir lo estilos al header y asi que se muestren bien-->
+<!--Para subir los estilos al header y asi que se muestren bien-->
 @push('head')
 <style>
     body {
@@ -20,9 +20,9 @@
     }
 
     #LogBot{
-        width: 10em;
+        width: 8em;
         height: 3em;
-        border: none;
+        border: none !important;
         font-weight: 200;
         transition: 0.5s;
     }

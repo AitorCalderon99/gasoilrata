@@ -20,10 +20,11 @@
     }
 
     #Registro{
-        width: 10em;
+        width: 12em;
         height: 3em;
-        border: none;
+        border: none !important;
         font-weight: 200;
+        transition: 0.5s;
     }
 
     #Registro:hover{
@@ -86,6 +87,20 @@
                 required />
         </div>
 
+        <!-- Ubicacion -->
+        <div class="mt-4">
+            <x-label for="ubicacion" 
+            :value="__('Ubicacion')" 
+            class="form-label fw-bold text-light"/>
+
+            <x-input id="ubicacion" 
+                class="form-control rounded-pill" 
+                type="text" 
+                name="ubicacion" 
+                :value="old('ubicacion')" 
+                required />
+        </div>
+
         <!-- Contraseña -->
         <div class="mt-4">
             <x-label for="password" 
@@ -118,7 +133,7 @@
                 {{ __('¿Ya tienes una cuenta?') }}
             </a>
 
-            <x-button id="Registro" class="rounded-pill bg-black text-light mx-1">
+            <x-button id="Registro" class="rounded-pill bg-black text-light ml-3">
                 {{ __('Registrarse') }}
             </x-button>
         </div>
