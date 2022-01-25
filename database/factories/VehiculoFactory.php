@@ -24,7 +24,7 @@ class VehiculoFactory extends Factory
     {
         return [
             'nombre' => 'Vehiculo: '.$this->faker->randomDigitNotNull(),
-            'id_usuario'  => User::pluck('id_usuario')->random(),
+            'id_user'  => User::pluck('id')->random()
         ];
     }
 }

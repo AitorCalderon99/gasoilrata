@@ -14,6 +14,6 @@ class Vehiculo extends Model
     protected $fillable = [
         'id_vehiculo',
         'nombre',
-        'id_usuario',
+        'id_user',
     ];
 }
