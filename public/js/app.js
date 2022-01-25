@@ -23920,48 +23920,45 @@ var _hoisted_1 = {
 var _hoisted_2 = {
   "class": "cajaDTotal row g-0 row justify-content-center align-items-center"
 };
-
-var _hoisted_3 = /*#__PURE__*/_withScopeId(function () {
-  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-    "class": "col-2 imgContainer"
-  }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-    src: "/images/gasPumps/gas2.svg",
-    "class": "imageAnimate rounded mx-auto d-block animate",
-    style: {
-      "width": "50px",
-      "height": "auto"
-    }
-  })], -1
-  /* HOISTED */
-  );
-});
-
-var _hoisted_4 = {
+var _hoisted_3 = {
+  "class": "col-2 imgContainer"
+};
+var _hoisted_4 = ["src"];
+var _hoisted_5 = {
   "class": "col-8"
 };
-var _hoisted_5 = {
+var _hoisted_6 = {
   "class": "card-body"
 };
-var _hoisted_6 = {
+var _hoisted_7 = {
   "class": "card-text"
 };
-var _hoisted_7 = {
+var _hoisted_8 = {
   "class": "col-2"
 };
-var _hoisted_8 = ["id"];
+var _hoisted_9 = ["id"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("    <p>Recibido: {{ municipioRecibido }}, {{ combustibleRecibido }}</p>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($options.filteredGasolineras, function (gasolinera, index) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
       key: gasolinera,
       "class": "card mb-3 principalContainer"
-    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(gasolinera.Dirección) + " - " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(gasolinera.Localidad), 1
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+      src: '/images/gasPumps/gas' + Math.floor(Math.random() * (8 - 1 + 1) + 1) + '.svg',
+      "class": "imageAnimate rounded mx-auto d-block animate",
+      style: {
+        "width": "50px",
+        "height": "auto"
+      }
+    }, null, 8
+    /* PROPS */
+    , _hoisted_4)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(gasolinera.Dirección) + " - " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(gasolinera.Localidad), 1
     /* TEXT */
-    )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+    )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
       "class": "precio",
       id: 'gas' + index
     }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(gasolinera["Precio " + $props.combustibleRecibido]) + "€ ", 9
     /* TEXT, PROPS */
-    , _hoisted_8)])])]);
+    , _hoisted_9)])])]);
   }), 128
   /* KEYED_FRAGMENT */
   ))])], 2112

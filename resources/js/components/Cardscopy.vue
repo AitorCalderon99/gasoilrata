@@ -4,7 +4,7 @@
         <div v-for="(gasolinera,index) in filteredGasolineras" :key="gasolinera" class="card mb-3 principalContainer">
             <div class="cajaDTotal row g-0 row justify-content-center align-items-center">
                 <div class="col-2 imgContainer">
-                    <img src="/images/gasPumps/gas2.svg" class="imageAnimate rounded mx-auto d-block animate"
+                    <img :src="'/images/gasPumps/gas'+Math.floor(Math.random() * (8 - 1 + 1) + 1) +'.svg'" class="imageAnimate rounded mx-auto d-block animate"
                          style="width: 50px; height: auto;"/>
                 </div>
                 <div class="col-8">
