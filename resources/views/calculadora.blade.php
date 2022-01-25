@@ -23,7 +23,7 @@
 
     #cajaDTotal{
         background-color: #c5a880;
-        width: 20em;
+        width: 25em;
         height: 10em;
         border: 1px solid #532e1c;
         border-radius: 15px 0px 15px 0px;
@@ -38,7 +38,6 @@
         background-color: #532e1c;
         width: 8em;
         height: 2.5em;
-        padding-top: 0.5em;
         border: 1px solid #532e1c;
         border-radius: 15px 0px 15px 0px;
     }
@@ -96,7 +95,7 @@
     <div class="mb-3">
         <label> Kilometros a realizar </label>
         <div class="input-group">
-            <input type="number" min="0" class="form-control" value="23" id="km">
+            <input type="number" min="0" class="form-control" id="km">
             <span class="input-group-text">
                 km
             </span>
@@ -144,14 +143,14 @@
     <div class="mb-3">
         <label> Origen </label>
         <div class="input-group">
-            <input type="text" class="form-control bg-white" placeholder="Usa la insertada por el usuario. Se puede cambiar."/>
+            <input type="text" class="form-control bg-white" placeholder="Lugar de inicio de su viaje."/>
         </div>
     </div>
 
     <div class="mb-3">
         <label> Destino </label>
         <div>
-            <input type="text" class="form-control bg-white" placeholder="Lugar"/>
+            <input type="text" class="form-control bg-white" placeholder="Su destino."/>
         </div>
     </div>
 
