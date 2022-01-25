@@ -14,7 +14,8 @@
                 </div>
                 <div class="col-2">
                     <p class="precio">
-                        1,333€
+                        {{ gasolinera["Precio "+combustibleRecibido]}}€
+
                     </p>
                 </div>
             </div>
@@ -42,9 +43,9 @@ export default {
         filteredGasolineras: function () {
             return this.allGasolineras.filter((gasolinera) =>{
                 if (this.municipioRecibido == null && this.combustibleRecibido == null)
-                    return true
+                    return false;
                 else if (this.combustibleRecibido == null)
-                    return gasolinera.Municipio.match(this.municipioRecibido);
+                    return false;
                 else {
                     const reg = /Precio*/;
                     for (const fila in gasolinera) {
@@ -58,9 +59,7 @@ export default {
                                         return gasolinera.Municipio.match(this.municipioRecibido);
                                     }
                                 }
-
                             }
-
                     }
 
                    return false;
