@@ -17,6 +17,7 @@ class Consumo extends Model
         'coste_litro',
         'origen',
         'destino',
+        'fecha',
         'carburante',
         'id_vehiculo',
     ];
