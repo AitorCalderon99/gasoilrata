@@ -45,10 +45,28 @@ export default {
                     return true
                 else if (this.combustibleRecibido == null)
                     return gasolinera.Municipio.match(this.municipioRecibido);
-                else
-                    //includes
-                    gasolinera.
-                     gasolinera.Municipio.match(this.municipioRecibido);
+                else {
+                    const reg = /Precio*/;
+                    for (const fila in gasolinera) {
+
+                            if (fila.includes(this.combustibleRecibido)) {
+                                if (gasolinera[fila] !== "")
+                                {
+                                    if (this.municipioRecibido == null)
+                                        return gasolinera;
+                                    else {
+                                        return gasolinera.Municipio.match(this.municipioRecibido);
+                                    }
+                                }
+
+                            }
+
+                    }
+
+                   return false;
+                }
+
+
             })
         }
     },
@@ -69,7 +87,6 @@ export default {
                 displayPics();
             }
             allGasolineras.value = response.data.ListaEESSPrecio;
-            console.log(response.data);
 
         }
 

@@ -22852,22 +22852,20 @@ var data = [];
       var _this = this;
 
       return this.allGasolineras.filter(function (gasolinera) {
-        if (_this.municipioRecibido == null && _this.combustibleRecibido == null) return true;else if (_this.combustibleRecibido == null) return gasolinera.Municipio.match(_this.municipioRecibido);else {//includes
+        if (_this.municipioRecibido == null && _this.combustibleRecibido == null) return true;else if (_this.combustibleRecibido == null) return gasolinera.Municipio.match(_this.municipioRecibido);else {
+          var reg = /Precio*/;
 
-          /*
-                              const reg = /Precio*!/;
-                              for (const regKey in axiosResponse) {
-          
-                                  if (axiosResponse.hasOwnProperty(regKey)) {
-                                      if (regKey.match(reg)){
-                                              if (regKey.includes(this.combustibleRecibido)){
-          
-                                              }
-                                      }
-                                  }
-                              }
-          
-                              gasolinera.*/
+          for (var fila in gasolinera) {
+            if (fila.includes(_this.combustibleRecibido)) {
+              if (gasolinera[fila] !== "") {
+                if (_this.municipioRecibido == null) return gasolinera;else {
+                  return gasolinera.Municipio.match(_this.municipioRecibido);
+                }
+              }
+            }
+          }
+
+          return false;
         }
       });
     }
@@ -22905,9 +22903,8 @@ var data = [];
 
               case 14:
                 allGasolineras.value = response.data.ListaEESSPrecio;
-                console.log(response.data);
 
-              case 16:
+              case 15:
               case "end":
                 return _context.stop();
             }
