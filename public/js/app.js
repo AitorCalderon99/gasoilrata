@@ -23248,6 +23248,9 @@ __webpack_require__.r(__webpack_exports__);
     }, {
       pregunta: "¿Te pueden multar por circular con el carnet caducado?",
       respuesta: "El carné de conducir tiene una vigencia de 10 años y según la Ley de Tráfico, circular con el carné caducado conlleva una multa de 200 euros. Pero no solo eso, si estamos implicados en algún accidente el seguro probablemente se lave las manos (sea a terceros o todo riesgo). "
+    }, {
+      pregunta: "¿Te la suda todo?",
+      respuesta: "Pues no deberia."
     }];
     var numerosSalidos = [];
 
@@ -37774,7 +37777,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "#content[data-v-76e4c686] {\n  display: grid;\n  grid-template-columns: 1fr 8fr 1fr;\n}\n#content > #prev[data-v-76e4c686] {\n  cursor: pointer;\n}\n#content > #prev > img[data-v-76e4c686] {\n  rotate: 180deg;\n}\n#content > #prev > img.firstCard[data-v-76e4c686] {\n  filter: opacity(25%);\n}\n#content > #card[data-v-76e4c686] {\n  cursor: pointer;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n#content > #next[data-v-76e4c686] {\n  cursor: pointer;\n}\n#content > #next > img.lastCard[data-v-76e4c686] {\n  filter: opacity(25%);\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "#content[data-v-76e4c686] {\n  display: grid;\n  grid-template-columns: 1fr 8fr 1fr;\n}\n#content > #prev[data-v-76e4c686] {\n  cursor: pointer;\n}\n#content > #prev > img[data-v-76e4c686] {\n  transform: rotate(180deg);\n}\n#content > #prev > img.firstCard[data-v-76e4c686] {\n  filter: opacity(25%);\n}\n#content > #card[data-v-76e4c686] {\n  cursor: pointer;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n#content > #next[data-v-76e4c686] {\n  cursor: pointer;\n}\n#content > #next > img.lastCard[data-v-76e4c686] {\n  filter: opacity(25%);\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
