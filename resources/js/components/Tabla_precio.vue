@@ -37,14 +37,8 @@ import axios from 'axios';
 export default {
     setup() {
         const today95 = ref(0);
-        const yesterday95 = ref(0);
-        const week95 = ref(0);
         const today98 = ref(0);
-        const yesterday98 = ref(0);
-        const week98 = ref(0);
         const todayDiesel = ref(0);
-        const yesterdayDiesel = ref(0);
-        const weekDiesel = ref(0);
 
         const data = ref([]);
         const g95 = ref([]);
