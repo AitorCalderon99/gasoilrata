@@ -12,7 +12,7 @@
 
     <div class="titulo-contenedor contenedor d-flex align-items-center justify-content-center">
         <p class="nav-item">
-            <a id="Inicio" href="index.php">
+            <a id="Inicio" href="/">
                 GASOILRATA
             </a>
         </p>
