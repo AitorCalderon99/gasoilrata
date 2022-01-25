@@ -34,8 +34,11 @@
 <script>
 import { onBeforeMount, ref } from '@vue/runtime-core';
 import axios from 'axios';
+import {useStore} from "vuex";
 export default {
     setup() {
+        const store = useStore();
+
         const today95 = ref(0);
         const today98 = ref(0);
         const todayDiesel = ref(0);
@@ -69,6 +72,10 @@ export default {
             today95.value = g95Price.toFixed(2);
             today98.value = g98Price.toFixed(2);
             todayDiesel.value = dieselPrice.toFixed(2);
+
+            store.commit('setg95Price', today95.value);
+            /* store.mutations.setPrice('g98',today98.value);
+            store.mutations.setPrice('diesel',todayDiesel.value); */
         }
 
         const getData =async()=>{

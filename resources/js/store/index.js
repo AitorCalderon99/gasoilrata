@@ -9,23 +9,8 @@ export default createStore({
         }
     },
     mutations: {
-        setPrice(type, price){
-            switch (type) {
-                case 'g95':
-                    state.prices.g95 = price;
-                    break;
-            
-                case 'g98':
-                    state.prices.g98 = price;
-                    break;
-            
-                case 'diesel':
-                    state.prices.diesel = price;
-                    break;
-            
-                default:
-                    break;
-            }
+        setg95Price(state, price){
+            state.prices.g95 = price;
         }
     }
 
