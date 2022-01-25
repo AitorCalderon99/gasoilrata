@@ -17,13 +17,15 @@ import 'bootstrap-vue-3/dist/bootstrap-vue-3.css'
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 
+import store from "./store";
+
 global.$ = global.jQuery = require('jquery');
 
 
 import { createApp } from 'vue';
 const app = createApp({});
 
-// PROVIDES (para mandar a todos los hijos)
+// PROVIDES/INJECT (para mandar a todos los hijos)
 app.provide("id_user", document.querySelector("meta[name='id_user']").getAttribute('content'));
 
 //Aqui se añaden todos los componentes
@@ -55,5 +57,6 @@ app.component('Tarjetas_consumos', Tarjetas_consumos);
 
 app.use(BootstrapVue3);
 app.use(VueSweetalert2);
+app.use(store)
 
 app.mount('#app');

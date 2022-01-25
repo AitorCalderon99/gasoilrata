@@ -10,7 +10,8 @@
 </template>
 
 <script>
-import Vue3ChartJs from '@j-t-mcc/vue3-chartjs'
+import Vue3ChartJs from '@j-t-mcc/vue3-chartjs';
+import {useStore} from "vuex";
 
 export default {
   name: 'App',
@@ -18,6 +19,7 @@ export default {
     Vue3ChartJs,
   },
   setup () {
+    const store = useStore();
     const barChart = {
       id: 'bar',
       type: 'bar',
@@ -32,7 +34,7 @@ export default {
               '#162d1a'
             ],
             // rescatar datos de la api e insertarlo en este array
-            data: [1.400, 1.521, 1.677]
+            data: [store.state.prices.g95, 1.521, 1.677]
           }
         ]
       }

@@ -2,7 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Consumo;
+use Carbon\Carbon;
+use DateTime;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Date;
+use Illuminate\Support\Facades\DB;
+use SebastianBergmann\Environment\Console;
 
 class CalculadoraController extends Controller
 {
@@ -34,7 +40,19 @@ class CalculadoraController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // $fecha = Carbon::now();
+        $fecha = date("Y-m-d");
+        $consumo = new Consumo;
+        $consumo -> kilometros = $request -> km;
+        $consumo -> litros = $request -> consumo;
+        $consumo -> coste_litro = $request -> coste;
+        $consumo -> origen = $request -> origen;
+        $consumo -> destino = $request -> destino;
+        $consumo -> fecha = $fecha;
+        $consumo -> carburante = $request -> carburante;
+        $consumo -> id_vehiculo = $request -> vehiculo;
+        $consumo -> save();
+        return view("calculadora");
     }
 
     /**
