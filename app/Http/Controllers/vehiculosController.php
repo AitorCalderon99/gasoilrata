@@ -49,8 +49,7 @@ class VehiculosController extends Controller
      */
     public function show($id)
     {
-        // return Vehiculo::find($id);
-        return Vehiculo::all();
+        return Vehiculo::where('id_user', '=', $id)->get();
     }
 
     /**
