@@ -11,8 +11,9 @@
     <div id="socialNetworks">
       <a
         class="btn btn-primary btn-floating m-1"
-        href="#!"
+        href="https://www.facebook.com/"
         role="button"
+        target="_blank"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -31,8 +32,9 @@
 
       <a
         class="btn btn-primary btn-floating m-1"
-        href="#!"
+        href="https://twitter.com/"
         role="button"
+        target="_blank"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -51,8 +53,9 @@
 
       <a
         class="btn btn-primary btn-floating m-1"
-        href="#!"
+        href="https://www.instagram.com/"
         role="button"
+        target="_blank"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
