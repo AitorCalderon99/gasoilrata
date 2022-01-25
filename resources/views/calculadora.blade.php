@@ -23,14 +23,15 @@
 
     #cajaDTotal{
         background-color: #c5a880;
-        width: 25em;
+        max-width: 25em;
         height: 10em;
+        margin: auto;
         border: 1px solid #532e1c;
         border-radius: 15px 0px 15px 0px;
     }
 
     #textoTotal{
-        font-size: 4.5em;
+        font-size: 3em;
         font-weight: bold;
     }
 
@@ -155,7 +156,7 @@
         </button>
     </div>
 
-    <div>
+    <div class="caja-container">
         <label>Consumo:</label>
         <div id="cajaDTotal">
             <div id="cajaLTotal" class="text-light d-flex align-items-center justify-content-center">
