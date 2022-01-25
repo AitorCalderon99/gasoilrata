@@ -13,7 +13,7 @@ class RespostajesController extends Controller
      */
     public function index()
     {
-        //
+        return view("repostajes");
     }
 
     /**

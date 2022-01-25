@@ -86,12 +86,7 @@
         tus viajes.
     </h3>
 
-    <div class="mb-3">
-        <label>Vehículo a utilizar: (CARGAR DATOS DEL CLIENTE)</label>
-        <select id="vehiculo">
-            
-        </select>
-    </div>
+    <Vehiculo_seleccion></Vehiculo_seleccion>
 
     <div class="mb-3">
         <label> Kilometros a realizar </label>
