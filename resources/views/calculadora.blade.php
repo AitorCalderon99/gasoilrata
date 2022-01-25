@@ -77,7 +77,8 @@
 @endpush
 
 @section('content')
-<form class="container my-3" method="POST" action="contacto">
+<form class="container my-3" method="POST" action="/calculadora">
+    @csrf
     <h3 class="d-flex align-items-center justify-content-center text-center mb-7">
         Un buen viaje necesita de una buena planificación.
         <br>
@@ -90,7 +91,7 @@
     <div class="mb-3">
         <label> Kilometros a realizar </label>
         <div class="input-group">
-            <input type="number" min="0" class="form-control" id="km">
+            <input type="number" min="0" class="form-control" id="km" name="km">
             <span class="input-group-text">
                 km
             </span>
@@ -99,7 +100,7 @@
 
     <div class="mb-3">
         <label>Tipo de carburante utilizado:</label>
-        <select id="carburante" class="form-select">
+        <select id="carburante" class="form-select" name="carburante">
             <option selected disabled>Seleccione el carburante</option>
             <option value="Biodiesel">Biodiesel</option>
             <option value="Bioetanol">Bioetanol</option>
@@ -121,7 +122,7 @@
     <div class="mb-3">
         <label> Consumo </label>
         <div class="input-group">
-            <input type="number" min="0" class="form-control bg-white" id="consumo">
+            <input type="number" min="0" class="form-control bg-white" id="consumo" name="consumo">
             <span class="input-group-text">
                 L/100
             </span>
@@ -131,21 +132,21 @@
     <div class="mb-3">
         <label> Coste litro </label>
         <div class="input-group">
-            <input type="text" class="form-control bg-white" readonly placeholder="Precio del combustible por litro" id="coste"/>
+            <input type="text" class="form-control bg-white" readonly placeholder="Precio del combustible por litro" id="coste" name="coste"/>
         </div>
     </div>
 
     <div class="mb-3">
         <label> Origen </label>
         <div class="input-group">
-            <input type="text" class="form-control bg-white" placeholder="Lugar de inicio de su viaje."/>
+            <input type="text" class="form-control bg-white" placeholder="Lugar de inicio de su viaje." name="origen"/>
         </div>
     </div>
 
     <div class="mb-3">
         <label> Destino </label>
         <div>
-            <input type="text" class="form-control bg-white" placeholder="Su destino."/>
+            <input type="text" class="form-control bg-white" placeholder="Su destino." name="destino"/>
         </div>
     </div>
 
