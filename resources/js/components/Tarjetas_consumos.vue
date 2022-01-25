@@ -1,10 +1,6 @@
 <template>
-  <div>
-    <div>{{consumos}}</div>
-    <Tarjeta_consumo
-      v-for="consumo in consumos"
-      :key="consumo.id_consumo"
-    ></Tarjeta_consumo>
+  <div class="tarjetas-container">
+    <Tarjeta_consumo v-for="consumo in consumos.value" :key="consumo" :consumo="consumo"></Tarjeta_consumo>
   </div>
 </template>
 
@@ -15,6 +11,12 @@ import Swal from 'sweetalert2';
 import Tarjeta_consumo from "./Tarjeta_consumo.vue";
 
 export default {
+  name: "Tarjetas_consumos",
+
+  components: {
+    Tarjeta_consumo,
+  },
+
   setup() {
     const Swal = require('sweetalert2');
     const id_user = inject("id_user");
@@ -38,10 +40,11 @@ export default {
 
     onBeforeMount( () => {
       getConsumos();
-    })
-  },
-  components: {
-    Tarjeta_consumo,
+    });
+
+    return {
+      consumos
+    }
   },
 };
 </script>

@@ -1,16 +1,16 @@
 <template>
   <div class="select-container">
-    <h1 class="ms-5">Seleccione un vehículo</h1>
+    <h1 class="ms-5 mx-auto">Seleccione un vehículo</h1>
 
-    <div class="select-agregar row w-50 mx-auto">
-      <select v-model="vehiculos" class="col-10">
+    <div class="select-agregar row w-75 mx-auto">
+      <select v-model="vehiculos" class="col">
         <option v-for="v in vehiculos.value" :key="v.id_vehiculo" :value="v.id_vehiculo">
           {{ v.nombre }}
         </option>
       </select>
       <button
         type="button"
-        class="btn btn-outline-secondary col"
+        class="btn btn-outline-secondary col-2"
         @click="addVehiculo()"
       >
         +
@@ -62,11 +62,13 @@ export default {
         return;
       }
 
+      Swal.fire(vehiculo + " se ha añadido al garaje.");
+
       if (response.data != 200) {
         //marcar error
         return;
       }
-      await getVehiculos();
+      getVehiculos();
     };
 
     const addVehiculo = async () => {
@@ -86,7 +88,6 @@ export default {
       });
 
       if (vehiculo) {
-        Swal.fire(vehiculo + " se ha añadido al garaje.");
         saveVehiculo(vehiculo);
       }
     };
@@ -94,6 +95,7 @@ export default {
     onBeforeMount(() => {
       getVehiculos();
     });
+
     return {
       getVehiculos,
       vehiculos,
