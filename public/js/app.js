@@ -22852,7 +22852,7 @@ var data = [];
       var _this = this;
 
       return this.allGasolineras.filter(function (gasolinera) {
-        if (_this.municipioRecibido == null && _this.combustibleRecibido == null) return true;else if (_this.combustibleRecibido == null) return gasolinera.Municipio.match(_this.municipioRecibido);else {
+        if (_this.municipioRecibido == null && _this.combustibleRecibido == null) return false;else if (_this.combustibleRecibido == null) return false;else {
           var reg = /Precio*/;
 
           for (var fila in gasolinera) {
@@ -23600,17 +23600,12 @@ var _hoisted_5 = {
 var _hoisted_6 = {
   "class": "card-text"
 };
-
-var _hoisted_7 = /*#__PURE__*/_withScopeId(function () {
-  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-    "class": "col-2"
-  }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
-    "class": "precio"
-  }, " 1,333€ ")], -1
-  /* HOISTED */
-  );
-});
-
+var _hoisted_7 = {
+  "class": "col-2"
+};
+var _hoisted_8 = {
+  "class": "precio"
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Recibido: " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.municipioRecibido) + ", " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.combustibleRecibido), 1
   /* TEXT */
@@ -23620,7 +23615,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       "class": "card mb-3 principalContainer"
     }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(gasolinera.Dirección) + " - " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(gasolinera.Localidad), 1
     /* TEXT */
-    )])]), _hoisted_7])]);
+    )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(gasolinera["Precio " + $props.combustibleRecibido]) + "€ ", 1
+    /* TEXT */
+    )])])]);
   }), 128
   /* KEYED_FRAGMENT */
   ))])], 64
