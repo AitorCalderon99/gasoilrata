@@ -17,6 +17,8 @@ import 'bootstrap-vue-3/dist/bootstrap-vue-3.css'
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 
+import store from "./store";
+
 global.$ = global.jQuery = require('jquery');
 
 
@@ -55,5 +57,6 @@ app.component('Tarjetas_consumos', Tarjetas_consumos);
 
 app.use(BootstrapVue3);
 app.use(VueSweetalert2);
+app.use(store)
 
 app.mount('#app');
