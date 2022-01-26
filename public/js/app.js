@@ -23060,8 +23060,9 @@ var data = [];
     filteredGasolineras: function filteredGasolineras() {
       var _this = this;
 
-      var precio = this.estadoPrecio ? ">" : "<";
-
+      //En esta funcion se ordena por precio y filtra las gasolineras por combustible y municipio
+      // ORDENAR
+      //en este if tenemos un toggle click de precio, por defecto lo ponemos en ordenacion ascendente por precio, si no sera desc
       if (this.estadoPrecio) {
         return this.allGasolineras.sort(function (a, b) {
           return a["Precio " + _this.combustibleRecibido] < b["Precio " + _this.combustibleRecibido] ? 1 : -1;
@@ -23074,9 +23075,13 @@ var data = [];
         }).filter(function (gasolinera) {
           return extracted.call(_this, gasolinera);
         });
-      }
+      } //FILTRAR
+      //este metodo se encarga de devolver las gasolineras, dependiendo de la casuistica devolverá ninguna, todas, solo filtradas por combustible
+      // o filtradas tambien por municipio
+
 
       function extracted(gasolinera) {
+        //en los dos primeros if no devolvemos ningun registro
         if (this.municipioRecibido == null && this.combustibleRecibido == null) return false;else if (this.combustibleRecibido == null) return false;else {
           var reg = /Precio*/;
 
@@ -23084,12 +23089,15 @@ var data = [];
             //console.log(gasolinera["Precio "+this.combustibleRecibido])
             if (fila.includes(this.combustibleRecibido)) {
               if (gasolinera[fila] !== "") {
-                if (this.municipioRecibido == null) return gasolinera;else {
+                if (this.municipioRecibido == null) //Filtramos SOLO por COMBUSTIBLE
+                  return gasolinera;else {
+                  //Filtramos por combustible y municipio
                   return gasolinera.Municipio.match(this.municipioRecibido);
                 }
               }
             }
-          }
+          } //Este return nunca se deberia de llegar, pero por si acaso ocurriese un error no returneamos nada
+
 
           return false;
         }
@@ -23097,7 +23105,7 @@ var data = [];
     }
   },
   setup: function setup() {
-    var allGasolineras = (0,_vue_runtime_core__WEBPACK_IMPORTED_MODULE_3__.ref)([]);
+    var allGasolineras = (0,_vue_runtime_core__WEBPACK_IMPORTED_MODULE_3__.ref)([]); //AXIOS CON ASYNC AWAIT PARA CONSEGUIR DATOS DE LA API
 
     var getAllGasolineras = /*#__PURE__*/function () {
       var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
@@ -23956,11 +23964,11 @@ var _hoisted_8 = {
 };
 var _hoisted_9 = ["id"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("    <p>Recibido: {{ municipioRecibido }}, {{ combustibleRecibido }}</p>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($options.filteredGasolineras, function (gasolinera, index) {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("    <p>Recibido: {{ municipioRecibido }}, {{ combustibleRecibido }}</p>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("  bucle para recorrer las gasolineras con los filtros mencionados en el apartado de script  "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($options.filteredGasolineras, function (gasolinera, index) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
       key: gasolinera,
       "class": "card mb-3 principalContainer"
-    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("  Se coge una imagen random de una carpeta con una funcion  "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
       src: '/images/gasPumps/gas' + Math.floor(Math.random() * (8 - 1 + 1) + 1) + '.svg',
       "class": "imageAnimate rounded mx-auto d-block animate",
       style: {
@@ -23969,7 +23977,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }
     }, null, 8
     /* PROPS */
-    , _hoisted_4)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(gasolinera.Dirección) + " - " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(gasolinera.Localidad), 1
+    , _hoisted_4)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("  El codigo despues del & es para tildar la o ya que en la api tienen tildes las palabras            "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(gasolinera.Dirección) + " - " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(gasolinera.Localidad), 1
     /* TEXT */
     )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
       "class": "precio",

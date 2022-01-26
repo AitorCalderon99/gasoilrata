@@ -1,14 +1,18 @@
 <template>
-<!--    <p>Recibido: {{ municipioRecibido }}, {{ combustibleRecibido }}</p>-->
+    <!--    <p>Recibido: {{ municipioRecibido }}, {{ combustibleRecibido }}</p>-->
+    <!--  bucle para recorrer las gasolineras con los filtros mencionados en el apartado de script  -->
     <div class="principalContainer">
         <div v-for="(gasolinera,index) in filteredGasolineras" :key="gasolinera" class="card mb-3 principalContainer">
             <div class="cajaDTotal row g-0 row justify-content-center align-items-center">
                 <div class="col-2 imgContainer">
-                    <img :src="'/images/gasPumps/gas'+Math.floor(Math.random() * (8 - 1 + 1) + 1) +'.svg'" class="imageAnimate rounded mx-auto d-block animate"
+                    <!--  Se coge una imagen random de una carpeta con una funcion  -->
+                    <img :src="'/images/gasPumps/gas'+Math.floor(Math.random() * (8 - 1 + 1) + 1) +'.svg'"
+                         class="imageAnimate rounded mx-auto d-block animate"
                          style="width: 50px; height: auto;"/>
                 </div>
                 <div class="col-8">
                     <div class="card-body">
+                        <!--  El codigo despues del & es para tildar la o ya que en la api tienen tildes las palabras            -->
                         <p class="card-text">{{ gasolinera.Direcci&oacute;n }} - {{ gasolinera.Localidad }}
                         </p>
                     </div>
@@ -42,25 +46,29 @@ export default {
     },
     computed: {
         filteredGasolineras: function () {
+            //En esta funcion se ordena por precio y filtra las gasolineras por combustible y municipio
 
-
-            let precio = this.estadoPrecio ? ">" : "<";
-
-            if(this.estadoPrecio){
-                return this.allGasolineras.sort((a, b) => (a["Precio "+this.combustibleRecibido] < b["Precio "+this.combustibleRecibido]? 1 : -1))
+            // ORDENAR
+            //en este if tenemos un toggle click de precio, por defecto lo ponemos en ordenacion ascendente por precio, si no sera desc
+            if (this.estadoPrecio) {
+                return this.allGasolineras.sort((a, b) => (a["Precio " + this.combustibleRecibido] < b["Precio " + this.combustibleRecibido] ? 1 : -1))
                     .filter((gasolinera) => {
                         return extracted.call(this, gasolinera);
                     })
 
-            }
-            else {
-                return this.allGasolineras.sort((a, b) => (a["Precio "+this.combustibleRecibido] > b["Precio "+this.combustibleRecibido]? 1 : -1))
+            } else {
+                return this.allGasolineras.sort((a, b) => (a["Precio " + this.combustibleRecibido] > b["Precio " + this.combustibleRecibido] ? 1 : -1))
                     .filter((gasolinera) => {
                         return extracted.call(this, gasolinera);
                     })
             }
 
+            //FILTRAR
+
+            //este metodo se encarga de devolver las gasolineras, dependiendo de la casuistica devolverá ninguna, todas, solo filtradas por combustible
+            // o filtradas tambien por municipio
             function extracted(gasolinera) {
+                //en los dos primeros if no devolvemos ningun registro
                 if (this.municipioRecibido == null && this.combustibleRecibido == null)
                     return false;
                 else if (this.combustibleRecibido == null)
@@ -73,14 +81,16 @@ export default {
                         if (fila.includes(this.combustibleRecibido)) {
                             if (gasolinera[fila] !== "") {
                                 if (this.municipioRecibido == null)
+                                    //Filtramos SOLO por COMBUSTIBLE
                                     return gasolinera;
                                 else {
+                                    //Filtramos por combustible y municipio
                                     return gasolinera.Municipio.match(this.municipioRecibido);
                                 }
                             }
                         }
                     }
-
+                    //Este return nunca se deberia de llegar, pero por si acaso ocurriese un error no returneamos nada
                     return false;
                 }
             }
@@ -89,6 +99,7 @@ export default {
     setup() {
         const allGasolineras = ref([]);
 
+        //AXIOS CON ASYNC AWAIT PARA CONSEGUIR DATOS DE LA API
         const getAllGasolineras = async () => {
             let url = 'https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/EstacionesTerrestres/';
             let response;
@@ -108,7 +119,6 @@ export default {
 
 
         //methods
-
 
 
         const displayPics = () => {
@@ -158,16 +168,17 @@ export default {
 
 <style lang="scss" scoped>
 
-#gas0{
+#gas0 {
     background-color: #FFD700;
 }
-#gas1{
+
+#gas1 {
     background-color: silver;
 }
-#gas2{
+
+#gas2 {
     background-color: #cd7f32;
 }
-
 
 
 .principalContainer {
