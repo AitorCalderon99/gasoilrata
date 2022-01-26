@@ -7,6 +7,7 @@
         <option v-for="v in vehiculos.value" :key="v.id_vehiculo" :value="v.id_vehiculo">
           {{ v.nombre }}
         </option>
+        <option v-if="vehiculos.value <= 0" disabled>No has añadido ningún vehículo</option>
       </select>
       <button
         type="button"
