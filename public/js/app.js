@@ -23275,11 +23275,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   },
   components: {
     Cardscopy: _Cardscopy__WEBPACK_IMPORTED_MODULE_1__["default"]
-  },
-  methods: {
-    enviarMunicipio: function enviarMunicipio() {
-      this.municipioEnviar = municipioEnviar;
-    }
   }
 });
 var listado = "";
@@ -23315,7 +23310,8 @@ function getCarburantes(axiosResponse) {
   }
 
   return combustibles;
-}
+} //Creacion elemento DOM JQUERY carburante
+
 
 function setCarburantes(nombreCombustible) {
   $(".selectComb").append($('<option/>', {
@@ -23334,7 +23330,8 @@ function getMunicipios(axiosResponse) {
 
   var municipiosSinDuplicados = new Set(municipios);
   return _toConsumableArray(municipiosSinDuplicados);
-}
+} //Creacion elemento DOM JQUERY municipio
+
 
 function setMunicipios(municipio) {
   $("#datalistOptions").append($('<option>', {
@@ -24193,7 +24190,7 @@ var _hoisted_15 = {
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Cardscopy = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Cardscopy");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [_hoisted_4, _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [_hoisted_4, _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("        Two way binding con v-model            "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
     "class": "selectComb form-select",
     "aria-label": "Default select example",
     "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
@@ -24211,13 +24208,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   }, null, 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.municipioEnviar]]), _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.municipioEnviar]]), _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Evento toggle click ranking                    "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     type: "button",
     "class": "btn btn-532E1C",
     onClick: _cache[2] || (_cache[2] = function ($event) {
       return $data.isActive = !$data.isActive;
     })
-  }, _hoisted_12)])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Cardscopy, {
+  }, _hoisted_12)])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("        Los parametros se pasan a el componente hijo CardsCopy, son recogidos a traves de Props            "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Cardscopy, {
     combustibleRecibido: $data.combustibleEnviar,
     municipioRecibido: $data.municipioEnviar,
     estadoPrecio: $data.isActive
