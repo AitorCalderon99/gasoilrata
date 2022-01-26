@@ -98,7 +98,7 @@
                 type="text" 
                 name="ubicacion" 
                 :value="old('ubicacion')" 
-                required />
+                />
         </div>
 
         <!-- Contraseña -->

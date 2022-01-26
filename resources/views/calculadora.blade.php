@@ -86,11 +86,7 @@
         Con esta herramienta serás capaz de calcular el coste aproximado de
         tus viajes.
     </h3>
-    {{-- @if (Auth::check()) 
-        <meta name="id_user" content="{{ Auth::user()->id }}" />
-    @else
-        <meta name="id_user" content="{{ 0 }}" />
-    @endif --}}
+
     <Vehiculo_seleccion></Vehiculo_seleccion>
 
     <div class="mb-3">
@@ -173,6 +169,7 @@
             </div>
         </div>
     </div>
+
     @if (Auth::check()) 
         <div class="d-flex align-items-center justify-content-center">
             <button type="submit" id="subir" class="mt-2 rounded-pill text-light">

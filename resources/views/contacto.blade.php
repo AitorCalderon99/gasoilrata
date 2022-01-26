@@ -29,8 +29,10 @@
 
     #cajaTarjeta {
         background-color: transparent;
-        width: 220px;
-        height: 300px;
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+        height: 200px;
         border: 1px solid #eeeeee;
         perspective: 1000px;
     }
@@ -42,10 +44,6 @@
         text-align: center;
         transition: transform 0.4s;
         transform-style: preserve-3d;
-    }
-
-    #cajaTarjeta:hover #tarjeta {
-        transform: rotateX(180deg);
     }
 
     #pregunta, #respuesta {
@@ -66,6 +64,22 @@
         transform: rotateX(180deg);
     }
 </style>
+
+<script>
+    $(document).ready(function () {
+        ad=0;
+        if(ad==0){
+        $('#pregunta').on('click', function () {
+            $('#cajaTarjeta #tarjeta').css('transform', 'rotateX(180deg)');
+            ad=ad+1;
+        }); 
+        }       
+        $('#respuesta').on('click', function () {
+            $('#cajaTarjeta #tarjeta').css('transform', 'rotateX(-180deg)');
+            ad=ad-1;
+        }); 
+    });
+</script>
 @endpush
 
 @section('content')

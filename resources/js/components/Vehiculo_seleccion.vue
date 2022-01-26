@@ -11,6 +11,7 @@
       </select>
       <button
         type="button"
+        id="masVehiculo"
         class="btn btn-outline-secondary col-2"
         @click="addVehiculo()"
       >

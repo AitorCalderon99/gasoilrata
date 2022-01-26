@@ -26,7 +26,7 @@
         <a href="calculadora" class="nav-item">Calculadora Consumos</a>
         <a href="contacto" class="nav-item">Contacto</a>
         <a href="login" class="nav-item">Login</a>
-        <a href="registrarse" class="nav-item">Hacerse miembro</a>
+        <a href="register" class="nav-item">Hacerse miembro</a>
       </div>
     </div>
 
