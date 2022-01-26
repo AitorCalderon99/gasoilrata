@@ -99,6 +99,12 @@
         </div>
     </div>
 
+    @if(empty($km))
+        <p>Data does not exist</p>
+    @else
+        <p>Your data is here!</p>
+    @endif
+
     <div class="mb-3">
         <label>Tipo de carburante utilizado:</label>
         <select id="carburante" class="form-select" name="carburante">

@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
 use SebastianBergmann\Environment\Console;
 
+use function PHPUnit\Framework\isEmpty;
+
 class CalculadoraController extends Controller
 {
     /**
@@ -40,19 +42,33 @@ class CalculadoraController extends Controller
      */
     public function store(Request $request)
     {
-        // $fecha = Carbon::now();
-        $fecha = date("Y-m-d");
-        $consumo = new Consumo;
-        $consumo -> kilometros = $request -> km;
-        $consumo -> litros = $request -> consumo;
-        $consumo -> coste_litro = $request -> coste;
-        $consumo -> origen = $request -> origen;
-        $consumo -> destino = $request -> destino;
-        $consumo -> fecha = $fecha;
-        $consumo -> carburante = $request -> carburante;
-        $consumo -> id_vehiculo = $request -> vehiculo;
-        $consumo -> save();
-        return view("calculadora");
+        $km = $request -> km;
+        $litros = $request -> consumo;
+        $coste = $request -> coste;
+        $origen = $request -> origen;
+        $destino = $request -> destino;
+        $carburante = $request -> carburante;
+        $vehiculo = $request -> vehiculo;
+        // Obligatorios: km, litros, coste, idV
+        if(isEmpty($km) || $km == null){
+            return view("calculadora", ["km" => "Error al insertar"]);
+        }else{
+            // $fecha = Carbon::now();
+            $fecha = date("Y-m-d");
+            $consumo = new Consumo;
+            $consumo -> kilometros = $request -> km;
+            $consumo -> litros = $request -> consumo;
+            $consumo -> coste_litro = $request -> coste;
+            $consumo -> origen = $request -> origen;
+            $consumo -> destino = $request -> destino;
+            $consumo -> fecha = $fecha;
+            $consumo -> carburante = $request -> carburante;
+            $consumo -> id_vehiculo = $request -> vehiculo;
+            $consumo -> save();
+            return view("calculadora");
+        }
+
+        
     }
 
     /**
