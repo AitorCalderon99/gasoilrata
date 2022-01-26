@@ -3,7 +3,20 @@
 @section('title', 'Crear repostaje')
 
 @push('head')
-
+<style>
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+    
+    #botones button{
+        background-color: #522d1c;
+        border: none;
+        width: 10em;
+        height: 2em;
+    }
+</style>
 @endpush
 
 @section('content')
@@ -56,9 +69,9 @@
             </div>
         </div>
 
-        <div class="d-flex align-items-center justify-content-center">
-            <a href="../repostajes" class="btn btn-primary">Volver</a>
-            <a href="" class="btn btn-primary">Guardar</a>
+        <div class="d-flex align-items-center justify-content-center" id="botones">
+            <button type="button" href="../repostajes" class="mt-2 rounded-pill text-light">Volver</button>
+            <button type="submit" href="" class="mt-2 ml-3 rounded-pill text-light">Guardar</button>
         </div>
     </form>
 
