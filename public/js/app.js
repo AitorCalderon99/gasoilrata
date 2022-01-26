@@ -23053,17 +23053,23 @@ var data = [];
   name: "Cardscopy",
   props: {
     municipioRecibido: null,
-    combustibleRecibido: null
+    combustibleRecibido: null,
+    estadoPrecio: null
   },
   computed: {
     filteredGasolineras: function filteredGasolineras() {
       var _this = this;
 
-      return this.allGasolineras.filter(function (gasolinera) {
+      var precio = this.estadoPrecio ? ">" : "<";
+      console.log(precio);
+      return this.allGasolineras.sort(function (a, b) {
+        return a["Precio " + _this.combustibleRecibido] > b["Precio " + _this.combustibleRecibido] ? 1 : -1;
+      }).filter(function (gasolinera) {
         if (_this.municipioRecibido == null && _this.combustibleRecibido == null) return false;else if (_this.combustibleRecibido == null) return false;else {
           var reg = /Precio*/;
 
           for (var fila in gasolinera) {
+            //console.log(gasolinera["Precio "+this.combustibleRecibido])
             if (fila.includes(_this.combustibleRecibido)) {
               if (gasolinera[fila] !== "") {
                 if (_this.municipioRecibido == null) return gasolinera;else {
@@ -23106,18 +23112,17 @@ var data = [];
 
               case 11:
                 _context.prev = 11;
-                displayPics();
                 return _context.finish(11);
 
-              case 14:
+              case 13:
                 allGasolineras.value = response.data.ListaEESSPrecio;
 
-              case 15:
+              case 14:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[1, 7, 11, 14]]);
+        }, _callee, null, [[1, 7, 11, 13]]);
       }));
 
       return function getAllGasolineras() {
@@ -23244,7 +23249,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   data: function data() {
     return {
       municipioEnviar: null,
-      combustibleEnviar: null
+      combustibleEnviar: null,
+      isActive: false
     };
   },
   components: {
@@ -24146,22 +24152,22 @@ var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 /* HOISTED */
 );
 
-var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-  type: "button",
-  "class": "btn btn-532E1C"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Precio  "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Precio  ");
+
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "bi bi-arrow-down-short"
-})], -1
+}, null, -1
 /* HOISTED */
 );
 
-var _hoisted_11 = {
+var _hoisted_12 = [_hoisted_10, _hoisted_11];
+var _hoisted_13 = {
   "class": "container"
 };
-var _hoisted_12 = {
+var _hoisted_14 = {
   "class": "row"
 };
-var _hoisted_13 = {
+var _hoisted_15 = {
   "class": "col"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -24185,12 +24191,19 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   }, null, 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.municipioEnviar]]), _hoisted_9, _hoisted_10])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Cardscopy, {
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.municipioEnviar]]), _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    type: "button",
+    "class": "btn btn-532E1C",
+    onClick: _cache[2] || (_cache[2] = function ($event) {
+      return $data.isActive = !$data.isActive;
+    })
+  }, _hoisted_12)])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Cardscopy, {
     combustibleRecibido: $data.combustibleEnviar,
-    municipioRecibido: $data.municipioEnviar
+    municipioRecibido: $data.municipioEnviar,
+    estadoPrecio: $data.isActive
   }, null, 8
   /* PROPS */
-  , ["combustibleRecibido", "municipioRecibido"])])])])]);
+  , ["combustibleRecibido", "municipioRecibido", "estadoPrecio"])])])])]);
 }
 
 /***/ }),
