@@ -37,11 +37,18 @@ export default {
     name: "Cardscopy",
     props: {
         municipioRecibido: null,
-        combustibleRecibido: null
+        combustibleRecibido: null,
+        estadoPrecio: null
     },
     computed: {
         filteredGasolineras: function () {
-            return this.allGasolineras.filter((gasolinera) => {
+
+
+            let precio = this.estadoPrecio ? ">" : "<";
+            console.log(precio);
+
+            return this.allGasolineras.sort((a, b) => (a["Precio "+this.combustibleRecibido] > b["Precio "+this.combustibleRecibido]? 1 : -1))
+                .filter((gasolinera) => {
                 if (this.municipioRecibido == null && this.combustibleRecibido == null)
                     return false;
                 else if (this.combustibleRecibido == null)
@@ -49,6 +56,7 @@ export default {
                 else {
                     const reg = /Precio*/;
                     for (const fila in gasolinera) {
+                        //console.log(gasolinera["Precio "+this.combustibleRecibido])
 
                         if (fila.includes(this.combustibleRecibido)) {
                             if (gasolinera[fila] !== "") {
@@ -82,7 +90,7 @@ export default {
                 return;
 
             } finally {
-                displayPics();
+                //displayPics();
             }
             allGasolineras.value = response.data.ListaEESSPrecio;
 
@@ -90,6 +98,8 @@ export default {
 
 
         //methods
+
+
 
         const displayPics = () => {
             console.log("Ejecutando display pics");

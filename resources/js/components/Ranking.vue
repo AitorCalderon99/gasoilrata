@@ -16,7 +16,8 @@
                     <datalist id="datalistOptions">
 
                     </datalist>
-                    <button type="button" class="btn btn-532E1C">Precio &nbsp;<i class="bi bi-arrow-down-short"></i>
+                    <button type="button" class="btn btn-532E1C" @click="isActive = !isActive">Precio &nbsp;<i class="bi bi-arrow-down-short"></i>
+
                     </button>
                 </div>
             </div>
@@ -24,7 +25,7 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <Cardscopy :combustibleRecibido="combustibleEnviar" :municipioRecibido="municipioEnviar"></Cardscopy>
+                    <Cardscopy :combustibleRecibido="combustibleEnviar" :municipioRecibido="municipioEnviar" :estadoPrecio="isActive"></Cardscopy>
                 </div>
             </div>
         </div>
@@ -40,13 +41,15 @@ export default {
     data() {
         return {
             municipioEnviar: null,
-            combustibleEnviar: null
+            combustibleEnviar: null,
+            isActive: false
         }
     },
     components: {
         Cardscopy
     },
     methods: {
+
         enviarMunicipio(){
             this.municipioEnviar = municipioEnviar;
         }
