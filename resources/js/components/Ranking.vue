@@ -19,8 +19,7 @@
 
                     </datalist>
                     <!-- Evento toggle click ranking                    -->
-                    <button type="button" class="btn btn-532E1C" @click="isActive = !isActive">Precio &nbsp;<i
-                        class="bi bi-arrow-down-short"></i>
+                    <button type="button" class="foo btn btn-532E1C" @click="isActive = !isActive; animatePrecio(isActive)">Precio &nbsp;<i class="fas fa-long-arrow-alt-up"></i>
 
                     </button>
                 </div>
@@ -48,7 +47,10 @@ export default {
         return {
             municipioEnviar: null,
             combustibleEnviar: null,
-            isActive: false
+            isActive: false,
+            animatePrecio
+
+
         }
     },
     components: {
@@ -82,6 +84,39 @@ axios
 
 
 //Functions
+
+function animatePrecio(input) {
+    /*$({deg: 0}).animate({deg: 180}, {
+        step: function(now, fx){
+            $(".fa-long-arrow-alt-up").css({
+                transform: "rotate(" + now + "deg)"
+            });
+
+
+        }
+    });*/
+
+
+    let orientation = input ? 180 : 0;
+
+    let sum = orientation - 360;
+
+    console.log("Orientation= " + orientation);
+    console.log("Sum= " + sum);
+
+
+    $({deg: orientation}).animate({deg: sum}, {
+        step: function(now, fx){
+            $(".fa-long-arrow-alt-up").css({
+                transform: "rotate(" + now + "deg)"
+            });
+
+
+        }
+    });
+
+
+}
 function getCarburantes(axiosResponse) {
     const reg = /Precio*/;
     var combustibles = [];
