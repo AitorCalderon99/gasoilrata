@@ -45,10 +45,22 @@ export default {
 
 
             let precio = this.estadoPrecio ? ">" : "<";
-            console.log(precio);
 
-            return this.allGasolineras.sort((a, b) => (a["Precio "+this.combustibleRecibido] > b["Precio "+this.combustibleRecibido]? 1 : -1))
-                .filter((gasolinera) => {
+            if(this.estadoPrecio){
+                return this.allGasolineras.sort((a, b) => (a["Precio "+this.combustibleRecibido] < b["Precio "+this.combustibleRecibido]? 1 : -1))
+                    .filter((gasolinera) => {
+                        return extracted.call(this, gasolinera);
+                    })
+
+            }
+            else {
+                return this.allGasolineras.sort((a, b) => (a["Precio "+this.combustibleRecibido] > b["Precio "+this.combustibleRecibido]? 1 : -1))
+                    .filter((gasolinera) => {
+                        return extracted.call(this, gasolinera);
+                    })
+            }
+
+            function extracted(gasolinera) {
                 if (this.municipioRecibido == null && this.combustibleRecibido == null)
                     return false;
                 else if (this.combustibleRecibido == null)
@@ -71,9 +83,7 @@ export default {
 
                     return false;
                 }
-
-
-            })
+            }
         }
     },
     setup() {
