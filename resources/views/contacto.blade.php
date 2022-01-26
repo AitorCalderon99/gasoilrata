@@ -30,10 +30,11 @@
     /*Estilo de las tarjetas didacticas*/
     #cajaTarjeta {
         background-color: transparent;
-        width: 90%;
+        width: 85%;
         margin-left: auto;
         margin-right: auto;
-        height: 200px;
+        height: 20em;
+        /*Esto es el tamaño de cuanto sale la caja en perspectiva*/
         perspective: 1000px;
     }
 
@@ -57,7 +58,7 @@
         background-color: #cccccc;
         color: #111111;
     }
-
+    
     #respuesta {
         background-color: #8ebf42;
         color: #eeeeee;
@@ -65,6 +66,7 @@
     }
 </style>
 
+<!--Para la animacion de que se de la vuelta la tarjeta-->
 <script>
     $(document).ready(function () {
         $('#pregunta').on('click', function () {
@@ -121,12 +123,19 @@
 
     <div id="cajaTarjeta">
         <div id="tarjeta">
-            <div id="pregunta">
-                <h2>He aqui la pregunta</h2>
+            <div id="pregunta" class="d-flex align-items-center justify-content-center">
+                <h2>
+                    ¿Te pueden multar por circular con el carnet caducado?
+                </h2>
             </div>
 
-            <div id="respuesta">
-                <h2>Y la respuesta</h2>
+            <div id="respuesta" class="d-flex align-items-center justify-content-center">
+                <h2 class="mx-5">
+                    El carné de conducir tiene una vigencia de 10 años y según la 
+                    Ley de Tráfico, circular con el carné caducado conlleva una multa
+                    de 200 euros. Pero no solo eso, si estamos implicados en algún accidente 
+                    el seguro problablemente se lave las manos (sea a terceros o a todo riesgo).
+                </h2>
             </div>
         </div>
     </div>
