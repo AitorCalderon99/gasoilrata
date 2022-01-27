@@ -45,7 +45,9 @@ class RepostajesController extends Controller
      */
     public function show($id)
     {
-        //
+        // return Consumo::where('id_vehiculo', '=', $id);
+        return Consumo::all();
+        // filtrar para poner vehiculo_id => algo
     }
 
     /**
