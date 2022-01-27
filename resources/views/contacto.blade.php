@@ -27,7 +27,9 @@
         margin-right: auto;
     }
 
+    /*ESTILO PARA LAS TARJETAS*/
     /*Estilo de las tarjetas didacticas*/
+    /*
     #cajaTarjeta {
         background-color: transparent;
         width: 85%;
@@ -35,6 +37,7 @@
         margin-right: auto;
         height: 20em;
         /*Esto es el tamaño de cuanto sale la caja en perspectiva*/
+        /*
         perspective: 1000px;
     }
 
@@ -63,10 +66,12 @@
         background-color: #8ebf42;
         color: #eeeeee;
         transform: rotateX(180deg);
-    }
+    }*/
 </style>
 
+<!-- SE PUEDE USAR EN CUALQUIER OTRO SITIO-->
 <!--Para la animacion de que se de la vuelta la tarjeta-->
+<!--
 <script>
     $(document).ready(function () {
         $('#pregunta').on('click', function () {
@@ -77,6 +82,7 @@
         }); 
     });
 </script>
+-->
 @endpush
 
 @section('content')
@@ -121,6 +127,8 @@
         </article>
     </section>
 
+    <!--CAJA PARA LAS TARJETAS-->
+    <!--
     <div id="cajaTarjeta">
         <div id="tarjeta">
             <div id="pregunta" class="d-flex align-items-center justify-content-center">
@@ -139,6 +147,7 @@
             </div>
         </div>
     </div>
+    -->
 </div>
 @endsection
 
