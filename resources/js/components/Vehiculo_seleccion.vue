@@ -48,7 +48,6 @@ export default {
       //   }
       
       vehiculos.value = response.data;
-      console.log(vehiculos.value);
     };
 
     const saveVehiculo = async (vehiculo) => {
