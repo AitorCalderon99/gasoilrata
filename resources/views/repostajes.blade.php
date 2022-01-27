@@ -3,7 +3,7 @@
 @section('title', 'Mis repostajes')
 
 @push('head')
-    
+
 @endpush
 
 @section('content')
@@ -11,7 +11,7 @@
 
     <div class="crear-repostaje">
         <h1>¿Quieres crear un nuevo repostaje?</h1>
-        <a class="btn btn-primary" href="/repostajes/create">Crear</a>
+        <a class="btn btn-primary" href="crearRepostajes">Crear</a>
     </div>
 
     <h1>¡Revisa el historial de repostajes para ahorrarte un dinerito!</h1>
@@ -19,6 +19,10 @@
     <Vehiculo_seleccion></Vehiculo_seleccion>
 
     <Tarjetas_repostajes></Tarjetas_repostajes>
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 5199e0167567d520ab81e5818af942e462a8338f
 </main>
 @endsection

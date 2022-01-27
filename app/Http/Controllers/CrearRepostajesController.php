@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class RankingController extends Controller
+class CrearRepostajesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class RankingController extends Controller
      */
     public function index()
     {
-        return view("ranking");
+        return view('crearRepostajes');
     }
 
     /**
@@ -34,7 +34,7 @@ class RankingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**

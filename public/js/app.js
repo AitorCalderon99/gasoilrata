@@ -23306,7 +23306,7 @@ function animatePrecio(input) {
           $(".fa-long-arrow-alt-up").css({
               transform: "rotate(" + now + "deg)"
           });
-          }
+        }
   });*/
   var orientation = input ? 180 : 0;
   var sum = orientation - 360;
@@ -23513,6 +23513,29 @@ __webpack_require__.r(__webpack_exports__);
   },
   setup: function setup(consumo) {
     console.log(consumo);
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Tarjeta_repostaje.vue?vue&type=script&lang=js":
+/*!***********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Tarjeta_repostaje.vue?vue&type=script&lang=js ***!
+  \***********************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: "tarjeta_respostaje",
+  props: {
+    repostaje: Object
+  },
+  setup: function setup(repostaje) {
+    console.log(repostaje);
   }
 });
 
@@ -23726,6 +23749,98 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Tarjetas_repostajes.vue?vue&type=script&lang=js":
+/*!*************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Tarjetas_repostajes.vue?vue&type=script&lang=js ***!
+  \*************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _Tarjeta_repostaje_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Tarjeta_repostaje.vue */ "./resources/js/components/Tarjeta_repostaje.vue");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: "Tarjetas_repostajes",
+  components: {
+    Tarjeta_repostaje: _Tarjeta_repostaje_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
+  },
+  setup: function setup() {
+    var repostajes = (0,vue__WEBPACK_IMPORTED_MODULE_1__.reactive)([]);
+    var id_vehiculo = 1; // traer el id del coche seleccionado aquí
+
+    var getRepostajes = /*#__PURE__*/function () {
+      var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+        var response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+                _context.next = 3;
+                return axios__WEBPACK_IMPORTED_MODULE_2___default().get('repostajes/' + 1);
+
+              case 3:
+                response = _context.sent;
+                _context.next = 10;
+                break;
+
+              case 6:
+                _context.prev = 6;
+                _context.t0 = _context["catch"](0);
+                sweetalert2__WEBPACK_IMPORTED_MODULE_3___default().fire(_context.t0.message, "", "error");
+                return _context.abrupt("return");
+
+              case 10:
+                // if (response.data != 200) {
+                //     //marcar error
+                //     return;
+                // }
+                console.log(response.data);
+                repostajes.value = response.data;
+
+              case 12:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[0, 6]]);
+      }));
+
+      return function getRepostajes() {
+        return _ref.apply(this, arguments);
+      };
+    }();
+
+    (0,vue__WEBPACK_IMPORTED_MODULE_1__.onBeforeMount)(function () {
+      getRepostajes();
+    });
+    return {
+      repostajes: repostajes
+    };
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Vehiculo_seleccion.vue?vue&type=script&lang=js":
 /*!************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Vehiculo_seleccion.vue?vue&type=script&lang=js ***!
@@ -23827,7 +23942,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 6:
                 _context2.prev = 6;
                 _context2.t0 = _context2["catch"](0);
-                Sawl.fire(_context2.t0.title, "error");
+                Sawl.fire("Tienes que iniciar sesión para guardar vehículos", "error");
                 return _context2.abrupt("return");
 
               case 10:
@@ -23967,14 +24082,14 @@ var _hoisted_1 = {
   "class": "principalContainer"
 };
 var _hoisted_2 = {
-  "class": "cajaDTotal row g-0 row justify-content-center align-items-center"
+  "class": "cajaDTotal g-0 row justify-content-center align-items-center"
 };
 var _hoisted_3 = {
-  "class": "col-2 imgContainer"
+  "class": "col-sm-2 imgContainer"
 };
 var _hoisted_4 = ["src"];
 var _hoisted_5 = {
-  "class": "col-8"
+  "class": "col-sm-8"
 };
 var _hoisted_6 = {
   "class": "card-body"
@@ -23983,7 +24098,7 @@ var _hoisted_7 = {
   "class": "card-text"
 };
 var _hoisted_8 = {
-  "class": "col-2"
+  "class": "col-sm-2"
 };
 var _hoisted_9 = ["id"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -24375,6 +24490,73 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Tarjeta_repostaje.vue?vue&type=template&id=0026b5c8&scoped=true":
+/*!***************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Tarjeta_repostaje.vue?vue&type=template&id=0026b5c8&scoped=true ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+
+var _withScopeId = function _withScopeId(n) {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.pushScopeId)("data-v-0026b5c8"), n = n(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.popScopeId)(), n;
+};
+
+var _hoisted_1 = {
+  "class": "tarjeta"
+};
+var _hoisted_2 = {
+  "class": "fecha-carburante-container"
+};
+var _hoisted_3 = {
+  "class": "fecha"
+};
+
+var _hoisted_4 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+    "class": "carburante"
+  }, "IMAGEN", -1
+  /* HOISTED */
+  );
+});
+
+var _hoisted_5 = {
+  "class": "gasolinera"
+};
+var _hoisted_6 = {
+  "class": "total"
+};
+var _hoisted_7 = {
+  "class": "coste-litro-container"
+};
+var _hoisted_8 = {
+  "class": "coste-litro"
+};
+var _hoisted_9 = {
+  "class": "litros"
+};
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.repostaje.fecha), 1
+  /* TEXT */
+  ), _hoisted_4]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.repostaje.gasolinera), 1
+  /* TEXT */
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.repostaje.precio_litro * $props.repostaje.litros) + " km", 1
+  /* TEXT */
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.repostaje.precio_litro) + " €/L", 1
+  /* TEXT */
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.repostaje.litros) + " L", 1
+  /* TEXT */
+  )])]);
+}
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Tarjetas_consumos.vue?vue&type=template&id=44eef36b":
 /*!***************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Tarjetas_consumos.vue?vue&type=template&id=44eef36b ***!
@@ -24480,6 +24662,39 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Tarjetas_repostajes.vue?vue&type=template&id=6424bca8":
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Tarjetas_repostajes.vue?vue&type=template&id=6424bca8 ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var _hoisted_1 = {
+  "class": "tarjetas-container"
+};
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_Tarjeta_repostaje = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Tarjeta_repostaje");
+
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.repostajes.value, function (repostaje) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Tarjeta_repostaje, {
+      key: repostaje,
+      repostaje: repostaje
+    }, null, 8
+    /* PROPS */
+    , ["repostaje"]);
+  }), 128
+  /* KEYED_FRAGMENT */
+  ))]);
+}
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Vehiculo_seleccion.vue?vue&type=template&id=28c2310e":
 /*!****************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Vehiculo_seleccion.vue?vue&type=template&id=28c2310e ***!
@@ -24566,6 +24781,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Vehiculo_seleccion__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/Vehiculo_seleccion */ "./resources/js/components/Vehiculo_seleccion.vue");
 /* harmony import */ var _components_Tarjetas_consumos__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/Tarjetas_consumos */ "./resources/js/components/Tarjetas_consumos.vue");
 /* harmony import */ var _components_Cardscopy__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/Cardscopy */ "./resources/js/components/Cardscopy.vue");
+/* harmony import */ var _components_Tarjetas_repostajes__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/Tarjetas_repostajes */ "./resources/js/components/Tarjetas_repostajes.vue");
+/* harmony import */ var _components_Tarjeta_repostaje__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./components/Tarjeta_repostaje */ "./resources/js/components/Tarjeta_repostaje.vue");
 /* require('./bootstrap'); */
 
 
@@ -24601,6 +24818,8 @@ app.provide("id_user", document.querySelector("meta[name='id_user']").getAttribu
 
 
 
+
+
 app.component('Cardscopy', _components_Cardscopy__WEBPACK_IMPORTED_MODULE_16__["default"]);
 app.component('Cabecera', _components_Cabecera__WEBPACK_IMPORTED_MODULE_8__["default"]);
 app.component('Pie', _components_Pie__WEBPACK_IMPORTED_MODULE_9__["default"]);
@@ -24610,6 +24829,8 @@ app.component('Grafico', _components_Grafico__WEBPACK_IMPORTED_MODULE_12__["defa
 app.component('Ranking', _components_Ranking__WEBPACK_IMPORTED_MODULE_13__["default"]);
 app.component('Vehiculo_seleccion', _components_Vehiculo_seleccion__WEBPACK_IMPORTED_MODULE_14__["default"]);
 app.component('Tarjetas_consumos', _components_Tarjetas_consumos__WEBPACK_IMPORTED_MODULE_15__["default"]);
+app.component('Tarjetas_repostajes', _components_Tarjetas_repostajes__WEBPACK_IMPORTED_MODULE_17__["default"]);
+app.component('Tarjeta_repostaje', _components_Tarjeta_repostaje__WEBPACK_IMPORTED_MODULE_18__["default"]);
 app.use(bootstrap_vue_3__WEBPACK_IMPORTED_MODULE_1__["default"]);
 app.use((vue_sweetalert2__WEBPACK_IMPORTED_MODULE_4___default()));
 app.use(_store__WEBPACK_IMPORTED_MODULE_6__["default"]);
@@ -38171,6 +38392,30 @@ ___CSS_LOADER_EXPORT___.push([module.id, "\n.tarjeta[data-v-fc1d338e] {\r\n    b
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Tarjeta_repostaje.vue?vue&type=style&index=0&id=0026b5c8&scoped=true&lang=css":
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Tarjeta_repostaje.vue?vue&type=style&index=0&id=0026b5c8&scoped=true&lang=css ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, "\n.tarjeta[data-v-0026b5c8] {\r\n    background-color: #c5a880;\r\n    border: #532e1c solid medium;\r\n    width: 90%;\r\n    margin: 1rem auto;\r\n    border-radius: 10px 0px;\r\n\r\n    display: flex;\r\n    flex-flow: row wrap;\r\n    justify-content: space-between;\r\n    gap: 0.5em;\r\n    cursor: pointer;\r\n    transition: all .2s ease-in;\n}\n.tarjeta[data-v-0026b5c8]:hover {\r\n    box-shadow: 0px 16px 24px 2px rgba(0,0,0,0.14) , 0px 6px 30px 5px rgba(0,0,0,0.12) , 0px 8px 10px -7px rgba(0,0,0,0.2) ;\n}\n.fecha-carburante-container[data-v-0026b5c8] {\r\n    display: flex;\r\n    flex-flow: column nowrap;\n}\n.fecha[data-v-0026b5c8] {\r\n    background-color: #532e1c;\r\n    border-radius: 0 0 10px 0;\r\n    text-align: center;\r\n    color: white;\r\n    font-size: small;\r\n\r\n    flex: 1 1 content;\n}\n.carburante[data-v-0026b5c8] {\r\n    font-size: small;\n}\n.gasolinera[data-v-0026b5c8] {\r\n    flex: 1 1 60%;\r\n    text-align: center;\n}\n.coste-litro-container[data-v-0026b5c8] {\r\n    display: flex;\r\n    flex-flow: row nowrap;\r\n    justify-content: flex-end;\r\n\r\n    width: 6rem;\r\n    background-color: #532e1c;\r\n    border-radius: 10px 0 0 0;\n}\n.coste-litro[data-v-0026b5c8], .litros[data-v-0026b5c8] {\r\n    display: none;\n}\n.coste[data-v-0026b5c8] {\r\n    font-size: large;\r\n    padding: 0 1rem;\r\n    color: white;\n}\r\n", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-14.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Cardscopy.vue?vue&type=style&index=0&id=e8592906&lang=scss&scoped=true":
 /*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-14.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Cardscopy.vue?vue&type=style&index=0&id=e8592906&lang=scss&scoped=true ***!
@@ -38188,7 +38433,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "#gas0[data-v-e8592906] {\n  background-color: #FFD700;\n}\n#gas1[data-v-e8592906] {\n  background-color: silver;\n}\n#gas2[data-v-e8592906] {\n  background-color: #cd7f32;\n}\n.principalContainer[data-v-e8592906] {\n  margin-top: 1.5em;\n}\n.cajaDTotal[data-v-e8592906] {\n  background-color: #c5a880;\n  border: 1px solid #532e1c;\n  border-radius: 15px 0 15px 0;\n  min-width: 35px;\n}\n.fade[data-v-e8592906] {\n  -webkit-animation: fadeinout-e8592906 0.5s;\n          animation: fadeinout-e8592906 0.5s;\n}\n@-webkit-keyframes fadeinout-e8592906 {\n0%, 100% {\n    opacity: 1;\n}\n50% {\n    opacity: 0;\n}\n}\n@keyframes fadeinout-e8592906 {\n0%, 100% {\n    opacity: 1;\n}\n50% {\n    opacity: 0;\n}\n}\n.precio[data-v-e8592906] {\n  background-color: white;\n  border: 5px none #1C6EA4;\n  border-radius: 12px;\n  margin-right: 10%;\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  padding: 8px 10px;\n  display: flex;\n  text-align: center;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "@media (max-width: 515px) {\n.precio[data-v-e8592906], .card-text[data-v-e8592906] {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n.col-sm-2[data-v-e8592906] {\n    margin-bottom: 0.5em;\n    margin-left: 0.5em;\n}\n}\n#gas0[data-v-e8592906] {\n  background-color: #FFD700;\n}\n#gas1[data-v-e8592906] {\n  background-color: silver;\n}\n#gas2[data-v-e8592906] {\n  background-color: #cd7f32;\n}\n.principalContainer[data-v-e8592906] {\n  margin-top: 1.5em;\n}\n.cajaDTotal[data-v-e8592906] {\n  background-color: #c5a880;\n  border: 1px solid #532e1c;\n  border-radius: 15px 0 15px 0;\n  min-width: 35px;\n}\n.fade[data-v-e8592906] {\n  -webkit-animation: fadeinout-e8592906 0.5s;\n          animation: fadeinout-e8592906 0.5s;\n}\n@-webkit-keyframes fadeinout-e8592906 {\n0%, 100% {\n    opacity: 1;\n}\n50% {\n    opacity: 0;\n}\n}\n@keyframes fadeinout-e8592906 {\n0%, 100% {\n    opacity: 1;\n}\n50% {\n    opacity: 0;\n}\n}\n.precio[data-v-e8592906] {\n  background-color: white;\n  border: 5px none #1C6EA4;\n  border-radius: 12px;\n  margin-right: 10%;\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  padding: 8px 10px;\n  display: flex;\n  text-align: center;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -50358,6 +50603,36 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Tarjeta_repostaje.vue?vue&type=style&index=0&id=0026b5c8&scoped=true&lang=css":
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Tarjeta_repostaje.vue?vue&type=style&index=0&id=0026b5c8&scoped=true&lang=css ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_11_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_11_use_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Tarjeta_repostaje_vue_vue_type_style_index_0_id_0026b5c8_scoped_true_lang_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[1]!../../../node_modules/vue-loader/dist/stylePostLoader.js!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Tarjeta_repostaje.vue?vue&type=style&index=0&id=0026b5c8&scoped=true&lang=css */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Tarjeta_repostaje.vue?vue&type=style&index=0&id=0026b5c8&scoped=true&lang=css");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_11_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_11_use_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Tarjeta_repostaje_vue_vue_type_style_index_0_id_0026b5c8_scoped_true_lang_css__WEBPACK_IMPORTED_MODULE_1__["default"], options);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_11_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_11_use_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Tarjeta_repostaje_vue_vue_type_style_index_0_id_0026b5c8_scoped_true_lang_css__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-14.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Cardscopy.vue?vue&type=style&index=0&id=e8592906&lang=scss&scoped=true":
 /*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-14.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Cardscopy.vue?vue&type=style&index=0&id=e8592906&lang=scss&scoped=true ***!
@@ -54129,14 +54404,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Cabecera_vue_vue_type_template_id_5497f71d_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Cabecera.vue?vue&type=template&id=5497f71d&scoped=true */ "./resources/js/components/Cabecera.vue?vue&type=template&id=5497f71d&scoped=true");
 /* harmony import */ var _Cabecera_vue_vue_type_style_index_0_id_5497f71d_scoped_true_lang_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Cabecera.vue?vue&type=style&index=0&id=5497f71d&scoped=true&lang=css */ "./resources/js/components/Cabecera.vue?vue&type=style&index=0&id=5497f71d&scoped=true&lang=css");
-/* harmony import */ var C_Users_ik_2dw3_Desktop_reto2_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 const script = {}
 
 ;
 
 
-const __exports__ = /*#__PURE__*/(0,C_Users_ik_2dw3_Desktop_reto2_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(script, [['render',_Cabecera_vue_vue_type_template_id_5497f71d_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render],['__scopeId',"data-v-5497f71d"],['__file',"resources/js/components/Cabecera.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(script, [['render',_Cabecera_vue_vue_type_template_id_5497f71d_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render],['__scopeId',"data-v-5497f71d"],['__file',"resources/js/components/Cabecera.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -54159,7 +54434,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Cardscopy_vue_vue_type_template_id_e8592906_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Cardscopy.vue?vue&type=template&id=e8592906&scoped=true */ "./resources/js/components/Cardscopy.vue?vue&type=template&id=e8592906&scoped=true");
 /* harmony import */ var _Cardscopy_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Cardscopy.vue?vue&type=script&lang=js */ "./resources/js/components/Cardscopy.vue?vue&type=script&lang=js");
 /* harmony import */ var _Cardscopy_vue_vue_type_style_index_0_id_e8592906_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Cardscopy.vue?vue&type=style&index=0&id=e8592906&lang=scss&scoped=true */ "./resources/js/components/Cardscopy.vue?vue&type=style&index=0&id=e8592906&lang=scss&scoped=true");
-/* harmony import */ var C_Users_ik_2dw3_Desktop_reto2_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
@@ -54167,7 +54442,7 @@ __webpack_require__.r(__webpack_exports__);
 ;
 
 
-const __exports__ = /*#__PURE__*/(0,C_Users_ik_2dw3_Desktop_reto2_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_Cardscopy_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Cardscopy_vue_vue_type_template_id_e8592906_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render],['__scopeId',"data-v-e8592906"],['__file',"resources/js/components/Cardscopy.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_Cardscopy_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Cardscopy_vue_vue_type_template_id_e8592906_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render],['__scopeId',"data-v-e8592906"],['__file',"resources/js/components/Cardscopy.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -54189,13 +54464,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Grafico_vue_vue_type_template_id_7b7da92a__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Grafico.vue?vue&type=template&id=7b7da92a */ "./resources/js/components/Grafico.vue?vue&type=template&id=7b7da92a");
 /* harmony import */ var _Grafico_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Grafico.vue?vue&type=script&lang=js */ "./resources/js/components/Grafico.vue?vue&type=script&lang=js");
-/* harmony import */ var C_Users_ik_2dw3_Desktop_reto2_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_Users_ik_2dw3_Desktop_reto2_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Grafico_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Grafico_vue_vue_type_template_id_7b7da92a__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/Grafico.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Grafico_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Grafico_vue_vue_type_template_id_7b7da92a__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/Grafico.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -54217,14 +54492,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Pie_vue_vue_type_template_id_194eb91e_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Pie.vue?vue&type=template&id=194eb91e&scoped=true */ "./resources/js/components/Pie.vue?vue&type=template&id=194eb91e&scoped=true");
 /* harmony import */ var _Pie_vue_vue_type_style_index_0_id_194eb91e_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Pie.vue?vue&type=style&index=0&id=194eb91e&lang=scss&scoped=true */ "./resources/js/components/Pie.vue?vue&type=style&index=0&id=194eb91e&lang=scss&scoped=true");
-/* harmony import */ var C_Users_ik_2dw3_Desktop_reto2_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 const script = {}
 
 ;
 
 
-const __exports__ = /*#__PURE__*/(0,C_Users_ik_2dw3_Desktop_reto2_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(script, [['render',_Pie_vue_vue_type_template_id_194eb91e_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render],['__scopeId',"data-v-194eb91e"],['__file',"resources/js/components/Pie.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(script, [['render',_Pie_vue_vue_type_template_id_194eb91e_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render],['__scopeId',"data-v-194eb91e"],['__file',"resources/js/components/Pie.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -54246,13 +54521,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Ranking_vue_vue_type_template_id_49a4ea9b__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Ranking.vue?vue&type=template&id=49a4ea9b */ "./resources/js/components/Ranking.vue?vue&type=template&id=49a4ea9b");
 /* harmony import */ var _Ranking_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Ranking.vue?vue&type=script&lang=js */ "./resources/js/components/Ranking.vue?vue&type=script&lang=js");
-/* harmony import */ var C_Users_ik_2dw3_Desktop_reto2_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_Users_ik_2dw3_Desktop_reto2_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Ranking_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Ranking_vue_vue_type_template_id_49a4ea9b__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/Ranking.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Ranking_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Ranking_vue_vue_type_template_id_49a4ea9b__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/Ranking.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -54274,13 +54549,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Tabla_precio_vue_vue_type_template_id_01628074__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Tabla_precio.vue?vue&type=template&id=01628074 */ "./resources/js/components/Tabla_precio.vue?vue&type=template&id=01628074");
 /* harmony import */ var _Tabla_precio_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Tabla_precio.vue?vue&type=script&lang=js */ "./resources/js/components/Tabla_precio.vue?vue&type=script&lang=js");
-/* harmony import */ var C_Users_ik_2dw3_Desktop_reto2_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_Users_ik_2dw3_Desktop_reto2_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Tabla_precio_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Tabla_precio_vue_vue_type_template_id_01628074__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/Tabla_precio.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Tabla_precio_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Tabla_precio_vue_vue_type_template_id_01628074__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/Tabla_precio.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -54303,7 +54578,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Tarjeta_consumo_vue_vue_type_template_id_fc1d338e_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Tarjeta_consumo.vue?vue&type=template&id=fc1d338e&scoped=true */ "./resources/js/components/Tarjeta_consumo.vue?vue&type=template&id=fc1d338e&scoped=true");
 /* harmony import */ var _Tarjeta_consumo_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Tarjeta_consumo.vue?vue&type=script&lang=js */ "./resources/js/components/Tarjeta_consumo.vue?vue&type=script&lang=js");
 /* harmony import */ var _Tarjeta_consumo_vue_vue_type_style_index_0_id_fc1d338e_scoped_true_lang_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Tarjeta_consumo.vue?vue&type=style&index=0&id=fc1d338e&scoped=true&lang=css */ "./resources/js/components/Tarjeta_consumo.vue?vue&type=style&index=0&id=fc1d338e&scoped=true&lang=css");
-/* harmony import */ var C_Users_ik_2dw3_Desktop_reto2_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
@@ -54311,7 +54586,38 @@ __webpack_require__.r(__webpack_exports__);
 ;
 
 
-const __exports__ = /*#__PURE__*/(0,C_Users_ik_2dw3_Desktop_reto2_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_Tarjeta_consumo_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Tarjeta_consumo_vue_vue_type_template_id_fc1d338e_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render],['__scopeId',"data-v-fc1d338e"],['__file',"resources/js/components/Tarjeta_consumo.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_Tarjeta_consumo_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Tarjeta_consumo_vue_vue_type_template_id_fc1d338e_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render],['__scopeId',"data-v-fc1d338e"],['__file',"resources/js/components/Tarjeta_consumo.vue"]])
+/* hot reload */
+if (false) {}
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
+
+/***/ }),
+
+/***/ "./resources/js/components/Tarjeta_repostaje.vue":
+/*!*******************************************************!*\
+  !*** ./resources/js/components/Tarjeta_repostaje.vue ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _Tarjeta_repostaje_vue_vue_type_template_id_0026b5c8_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Tarjeta_repostaje.vue?vue&type=template&id=0026b5c8&scoped=true */ "./resources/js/components/Tarjeta_repostaje.vue?vue&type=template&id=0026b5c8&scoped=true");
+/* harmony import */ var _Tarjeta_repostaje_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Tarjeta_repostaje.vue?vue&type=script&lang=js */ "./resources/js/components/Tarjeta_repostaje.vue?vue&type=script&lang=js");
+/* harmony import */ var _Tarjeta_repostaje_vue_vue_type_style_index_0_id_0026b5c8_scoped_true_lang_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Tarjeta_repostaje.vue?vue&type=style&index=0&id=0026b5c8&scoped=true&lang=css */ "./resources/js/components/Tarjeta_repostaje.vue?vue&type=style&index=0&id=0026b5c8&scoped=true&lang=css");
+/* harmony import */ var C_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+
+
+
+
+;
+
+
+const __exports__ = /*#__PURE__*/(0,C_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_Tarjeta_repostaje_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Tarjeta_repostaje_vue_vue_type_template_id_0026b5c8_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render],['__scopeId',"data-v-0026b5c8"],['__file',"resources/js/components/Tarjeta_repostaje.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -54333,13 +54639,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Tarjetas_consumos_vue_vue_type_template_id_44eef36b__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Tarjetas_consumos.vue?vue&type=template&id=44eef36b */ "./resources/js/components/Tarjetas_consumos.vue?vue&type=template&id=44eef36b");
 /* harmony import */ var _Tarjetas_consumos_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Tarjetas_consumos.vue?vue&type=script&lang=js */ "./resources/js/components/Tarjetas_consumos.vue?vue&type=script&lang=js");
-/* harmony import */ var C_Users_ik_2dw3_Desktop_reto2_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_Users_ik_2dw3_Desktop_reto2_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Tarjetas_consumos_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Tarjetas_consumos_vue_vue_type_template_id_44eef36b__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/Tarjetas_consumos.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Tarjetas_consumos_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Tarjetas_consumos_vue_vue_type_template_id_44eef36b__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/Tarjetas_consumos.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -54362,7 +54668,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Tarjetas_didacticas_vue_vue_type_template_id_76e4c686_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Tarjetas_didacticas.vue?vue&type=template&id=76e4c686&scoped=true */ "./resources/js/components/Tarjetas_didacticas.vue?vue&type=template&id=76e4c686&scoped=true");
 /* harmony import */ var _Tarjetas_didacticas_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Tarjetas_didacticas.vue?vue&type=script&lang=js */ "./resources/js/components/Tarjetas_didacticas.vue?vue&type=script&lang=js");
 /* harmony import */ var _Tarjetas_didacticas_vue_vue_type_style_index_0_id_76e4c686_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Tarjetas_didacticas.vue?vue&type=style&index=0&id=76e4c686&lang=scss&scoped=true */ "./resources/js/components/Tarjetas_didacticas.vue?vue&type=style&index=0&id=76e4c686&lang=scss&scoped=true");
-/* harmony import */ var C_Users_ik_2dw3_Desktop_reto2_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
@@ -54370,7 +54676,35 @@ __webpack_require__.r(__webpack_exports__);
 ;
 
 
-const __exports__ = /*#__PURE__*/(0,C_Users_ik_2dw3_Desktop_reto2_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_Tarjetas_didacticas_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Tarjetas_didacticas_vue_vue_type_template_id_76e4c686_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render],['__scopeId',"data-v-76e4c686"],['__file',"resources/js/components/Tarjetas_didacticas.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_Tarjetas_didacticas_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Tarjetas_didacticas_vue_vue_type_template_id_76e4c686_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render],['__scopeId',"data-v-76e4c686"],['__file',"resources/js/components/Tarjetas_didacticas.vue"]])
+/* hot reload */
+if (false) {}
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
+
+/***/ }),
+
+/***/ "./resources/js/components/Tarjetas_repostajes.vue":
+/*!*********************************************************!*\
+  !*** ./resources/js/components/Tarjetas_repostajes.vue ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _Tarjetas_repostajes_vue_vue_type_template_id_6424bca8__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Tarjetas_repostajes.vue?vue&type=template&id=6424bca8 */ "./resources/js/components/Tarjetas_repostajes.vue?vue&type=template&id=6424bca8");
+/* harmony import */ var _Tarjetas_repostajes_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Tarjetas_repostajes.vue?vue&type=script&lang=js */ "./resources/js/components/Tarjetas_repostajes.vue?vue&type=script&lang=js");
+/* harmony import */ var C_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+
+
+
+
+;
+const __exports__ = /*#__PURE__*/(0,C_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Tarjetas_repostajes_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Tarjetas_repostajes_vue_vue_type_template_id_6424bca8__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/Tarjetas_repostajes.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -54392,13 +54726,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Vehiculo_seleccion_vue_vue_type_template_id_28c2310e__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Vehiculo_seleccion.vue?vue&type=template&id=28c2310e */ "./resources/js/components/Vehiculo_seleccion.vue?vue&type=template&id=28c2310e");
 /* harmony import */ var _Vehiculo_seleccion_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Vehiculo_seleccion.vue?vue&type=script&lang=js */ "./resources/js/components/Vehiculo_seleccion.vue?vue&type=script&lang=js");
-/* harmony import */ var C_Users_ik_2dw3_Desktop_reto2_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_Users_ik_2dw3_Desktop_reto2_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Vehiculo_seleccion_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Vehiculo_seleccion_vue_vue_type_template_id_28c2310e__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/Vehiculo_seleccion.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Vehiculo_seleccion_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Vehiculo_seleccion_vue_vue_type_template_id_28c2310e__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/Vehiculo_seleccion.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -54487,6 +54821,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/Tarjeta_repostaje.vue?vue&type=script&lang=js":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/components/Tarjeta_repostaje.vue?vue&type=script&lang=js ***!
+  \*******************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Tarjeta_repostaje_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Tarjeta_repostaje_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Tarjeta_repostaje.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Tarjeta_repostaje.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
 /***/ "./resources/js/components/Tarjetas_consumos.vue?vue&type=script&lang=js":
 /*!*******************************************************************************!*\
   !*** ./resources/js/components/Tarjetas_consumos.vue?vue&type=script&lang=js ***!
@@ -54515,6 +54865,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Tarjetas_didacticas_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Tarjetas_didacticas_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Tarjetas_didacticas.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Tarjetas_didacticas.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
+/***/ "./resources/js/components/Tarjetas_repostajes.vue?vue&type=script&lang=js":
+/*!*********************************************************************************!*\
+  !*** ./resources/js/components/Tarjetas_repostajes.vue?vue&type=script&lang=js ***!
+  \*********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Tarjetas_repostajes_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Tarjetas_repostajes_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Tarjetas_repostajes.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Tarjetas_repostajes.vue?vue&type=script&lang=js");
  
 
 /***/ }),
@@ -54647,6 +55013,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/Tarjeta_repostaje.vue?vue&type=template&id=0026b5c8&scoped=true":
+/*!*************************************************************************************************!*\
+  !*** ./resources/js/components/Tarjeta_repostaje.vue?vue&type=template&id=0026b5c8&scoped=true ***!
+  \*************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Tarjeta_repostaje_vue_vue_type_template_id_0026b5c8_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Tarjeta_repostaje_vue_vue_type_template_id_0026b5c8_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Tarjeta_repostaje.vue?vue&type=template&id=0026b5c8&scoped=true */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Tarjeta_repostaje.vue?vue&type=template&id=0026b5c8&scoped=true");
+
+
+/***/ }),
+
 /***/ "./resources/js/components/Tarjetas_consumos.vue?vue&type=template&id=44eef36b":
 /*!*************************************************************************************!*\
   !*** ./resources/js/components/Tarjetas_consumos.vue?vue&type=template&id=44eef36b ***!
@@ -54675,6 +55057,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Tarjetas_didacticas_vue_vue_type_template_id_76e4c686_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Tarjetas_didacticas_vue_vue_type_template_id_76e4c686_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Tarjetas_didacticas.vue?vue&type=template&id=76e4c686&scoped=true */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Tarjetas_didacticas.vue?vue&type=template&id=76e4c686&scoped=true");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Tarjetas_repostajes.vue?vue&type=template&id=6424bca8":
+/*!***************************************************************************************!*\
+  !*** ./resources/js/components/Tarjetas_repostajes.vue?vue&type=template&id=6424bca8 ***!
+  \***************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Tarjetas_repostajes_vue_vue_type_template_id_6424bca8__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Tarjetas_repostajes_vue_vue_type_template_id_6424bca8__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Tarjetas_repostajes.vue?vue&type=template&id=6424bca8 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Tarjetas_repostajes.vue?vue&type=template&id=6424bca8");
 
 
 /***/ }),
@@ -54717,6 +55115,19 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_11_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_11_use_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Tarjeta_consumo_vue_vue_type_style_index_0_id_fc1d338e_scoped_true_lang_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader/dist/cjs.js!../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[1]!../../../node_modules/vue-loader/dist/stylePostLoader.js!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Tarjeta_consumo.vue?vue&type=style&index=0&id=fc1d338e&scoped=true&lang=css */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Tarjeta_consumo.vue?vue&type=style&index=0&id=fc1d338e&scoped=true&lang=css");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Tarjeta_repostaje.vue?vue&type=style&index=0&id=0026b5c8&scoped=true&lang=css":
+/*!***************************************************************************************************************!*\
+  !*** ./resources/js/components/Tarjeta_repostaje.vue?vue&type=style&index=0&id=0026b5c8&scoped=true&lang=css ***!
+  \***************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_11_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_11_use_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Tarjeta_repostaje_vue_vue_type_style_index_0_id_0026b5c8_scoped_true_lang_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader/dist/cjs.js!../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[1]!../../../node_modules/vue-loader/dist/stylePostLoader.js!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Tarjeta_repostaje.vue?vue&type=style&index=0&id=0026b5c8&scoped=true&lang=css */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Tarjeta_repostaje.vue?vue&type=style&index=0&id=0026b5c8&scoped=true&lang=css");
 
 
 /***/ }),
