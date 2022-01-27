@@ -43,6 +43,7 @@ import Ranking from "./components/Ranking";
 import Vehiculo_seleccion from "./components/Vehiculo_seleccion";
 import Tarjetas_consumos from "./components/Tarjetas_consumos";
 import Cardscopy from "./components/Cardscopy";
+import Precios from "./components/Precios";
 
 
 app.component('Cardscopy', Cardscopy);
@@ -54,6 +55,7 @@ app.component('Grafico', Grafico);
 app.component('Ranking', Ranking);
 app.component('Vehiculo_seleccion', Vehiculo_seleccion);
 app.component('Tarjetas_consumos', Tarjetas_consumos);
+app.component('Precios', Precios);
 
 app.use(BootstrapVue3);
 app.use(VueSweetalert2);

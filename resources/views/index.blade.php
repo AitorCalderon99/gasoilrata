@@ -12,9 +12,11 @@
 
     <Tarjetas_didacticas></Tarjetas_didacticas>
     
-    <Tabla_precio></Tabla_precio>
+    {{-- <Tabla_precio></Tabla_precio>
 
-    <Grafico></Grafico>
+    <Grafico></Grafico> --}}
+
+    <Precios/>
     
 </main>
 @endsection

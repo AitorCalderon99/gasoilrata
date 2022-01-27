@@ -12,14 +12,17 @@
 <script>
 import Vue3ChartJs from '@j-t-mcc/vue3-chartjs';
 import {useStore} from "vuex";
+import { computed, reactive, ref } from '@vue/runtime-core';
 
 export default {
   name: 'App',
   components: {
     Vue3ChartJs,
   },
-  setup () {
+  props: ['g95', 'g98', 'diesel'],
+  setup (props) {
     const store = useStore();
+    const g95 = reactive(props.g95);
     const barChart = {
       id: 'bar',
       type: 'bar',
@@ -34,7 +37,7 @@ export default {
               '#162d1a'
             ],
             // rescatar datos de la api e insertarlo en este array
-            data: [store.state.prices.g95, 1.521, 1.677]
+            data: [1.5, g95, 1.677]
           }
         ]
       }
