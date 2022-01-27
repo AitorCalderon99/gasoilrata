@@ -52,8 +52,10 @@ export default {
             let g95Price = 0;
             g95.value.forEach(element => {
                 g95Price += parseFloat(element["Precio Gasolina 95 E5"].replace(',','.'));
+                /*
                 console.log(parseFloat(element["Precio Gasolina 95 E5"].replace(',','.')));
                 console.log(element["Precio Gasolina 95 E5"]);
+                */
             });
             g95Price = g95Price/g95.value.length;
     
