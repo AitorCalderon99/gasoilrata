@@ -56,11 +56,11 @@ export default {
 
       try {
         response = await axios.post("/vehiculos", {
-          vehiculo: vehiculo,
-          idUser: id_user,
+        vehiculo: vehiculo,
+        idUser: id_user,
         });
       } catch (error) {
-        Sawl.fire(error.title, "error");
+        Sawl.fire("Tienes que iniciar sesión para guardar vehículos", "error");
         return;
       }
 

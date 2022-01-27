@@ -43,6 +43,8 @@ import Ranking from "./components/Ranking";
 import Vehiculo_seleccion from "./components/Vehiculo_seleccion";
 import Tarjetas_consumos from "./components/Tarjetas_consumos";
 import Cardscopy from "./components/Cardscopy";
+import Tarjetas_repostajes from "./components/Tarjetas_repostajes";
+import Tarjeta_repostaje from "./components/Tarjeta_repostaje";
 
 
 app.component('Cardscopy', Cardscopy);
@@ -54,6 +56,8 @@ app.component('Grafico', Grafico);
 app.component('Ranking', Ranking);
 app.component('Vehiculo_seleccion', Vehiculo_seleccion);
 app.component('Tarjetas_consumos', Tarjetas_consumos);
+app.component('Tarjetas_repostajes', Tarjetas_repostajes);
+app.component('Tarjeta_repostaje', Tarjeta_repostaje);
 
 app.use(BootstrapVue3);
 app.use(VueSweetalert2);
