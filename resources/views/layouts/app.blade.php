@@ -9,11 +9,10 @@
     @else
         <meta name="id_user" content="{{ 0 }}" />
     @endif
-    <link rel="stylesheet" href="{{ asset('css/header.css') }}">
-    <!--La unica manera en la que se me ha ocurrido ponerlo para que funcionase-->
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>@yield('title')</title>
+    <script src="{{ asset('js/app.js') }}"></script>
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet"/>
+    <link rel="stylesheet" href="{{ asset('css/header.css') }}">
     @stack('head')
 </head>
 <body id="app">
@@ -24,7 +23,6 @@
 
         <Pie></Pie>
 
-    <script src="{{ asset('js/app.js') }}"></script>
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet"/>
+    
 </body>
 </html>
