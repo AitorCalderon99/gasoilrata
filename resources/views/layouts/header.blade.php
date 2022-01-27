@@ -33,7 +33,7 @@
 
             @guest
             <a href="login" class="nav-item">Login</a>
-            <a href="registrarse" class="nav-item">Hacerse miembro</a>
+            <a href="register" class="nav-item">Hacerse miembro</a>
             @endguest
 
             @auth

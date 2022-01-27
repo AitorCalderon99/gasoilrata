@@ -7,16 +7,20 @@
                 </div>
                 <br/>
                 <div class="foptions">
-                    <select class="selectComb form-select" aria-label="Default select example" v-model="combustibleEnviar">
+                    <!--        Two way binding con v-model            -->
+                    <select class="selectComb form-select" aria-label="Default select example"
+                            v-model="combustibleEnviar">
                         <option selected>Seleccione el tipo de combustible</option>
                     </select>
 
                     <input class="form-control" list="datalistOptions" id="exampleDataList"
-                           placeholder="Elige el municipio"  v-model="municipioEnviar">
+                           placeholder="Elige el municipio" v-model="municipioEnviar">
                     <datalist id="datalistOptions">
 
                     </datalist>
-                    <button type="button" class="btn btn-532E1C">Precio &nbsp;<i class="bi bi-arrow-down-short"></i>
+                    <!-- Evento toggle click ranking                    -->
+                    <button type="button" class="foo btn btn-532E1C" @click="isActive = !isActive; animatePrecio(isActive)">Precio &nbsp;<i class="fas fa-long-arrow-alt-up"></i>
+
                     </button>
                 </div>
             </div>
@@ -24,7 +28,9 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <Cardscopy :combustibleRecibido="combustibleEnviar" :municipioRecibido="municipioEnviar"></Cardscopy>
+                    <!--        Los parametros se pasan a el componente hijo CardsCopy, son recogidos a traves de Props            -->
+                    <Cardscopy :combustibleRecibido="combustibleEnviar" :municipioRecibido="municipioEnviar"
+                               :estadoPrecio="isActive"></Cardscopy>
                 </div>
             </div>
         </div>
@@ -40,17 +46,16 @@ export default {
     data() {
         return {
             municipioEnviar: null,
-            combustibleEnviar: null
+            combustibleEnviar: null,
+            isActive: false,
+            animatePrecio
+
+
         }
     },
     components: {
         Cardscopy
     },
-    methods: {
-        enviarMunicipio(){
-            this.municipioEnviar = municipioEnviar;
-        }
-    }
 }
 var listado = "";
 
@@ -79,6 +84,39 @@ axios
 
 
 //Functions
+
+function animatePrecio(input) {
+    /*$({deg: 0}).animate({deg: 180}, {
+        step: function(now, fx){
+            $(".fa-long-arrow-alt-up").css({
+                transform: "rotate(" + now + "deg)"
+            });
+
+
+        }
+    });*/
+
+
+    let orientation = input ? 180 : 0;
+
+    let sum = orientation - 360;
+
+    console.log("Orientation= " + orientation);
+    console.log("Sum= " + sum);
+
+
+    $({deg: orientation}).animate({deg: sum}, {
+        step: function(now, fx){
+            $(".fa-long-arrow-alt-up").css({
+                transform: "rotate(" + now + "deg)"
+            });
+
+
+        }
+    });
+
+
+}
 function getCarburantes(axiosResponse) {
     const reg = /Precio*/;
     var combustibles = [];
@@ -90,7 +128,7 @@ function getCarburantes(axiosResponse) {
     }
     return combustibles;
 }
-
+//Creacion elemento DOM JQUERY carburante
 function setCarburantes(nombreCombustible) {
     $(".selectComb").append($('<option/>', {
         value: nombreCombustible,
@@ -109,6 +147,7 @@ function getMunicipios(axiosResponse) {
     return [...municipiosSinDuplicados];
 }
 
+//Creacion elemento DOM JQUERY municipio
 function setMunicipios(municipio) {
     $("#datalistOptions").append($('<option>', {
         value: municipio

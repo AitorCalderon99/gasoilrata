@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 
+use function PHPUnit\Framework\isEmpty;
+
 class RegisteredUserController extends Controller
 {
     /**
@@ -39,10 +41,17 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
+        if (isEmpty($request->ubicacion)){
+            $ubicacion = "";
+        }else{
+            $ubicacion = $request->ubicacion;
+        };
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'ubicacion' => $ubicacion,
         ]);
 
         event(new Registered($user));

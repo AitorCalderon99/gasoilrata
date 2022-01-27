@@ -103,6 +103,12 @@
         </div>
     </div>
 
+    @if(empty($km))
+        <p>Data does not exist</p>
+    @else
+        <p>Your data is here!</p>
+    @endif
+
     <div class="mb-3">
         <label>Tipo de carburante utilizado:</label>
         <select id="carburante" class="form-select" name="carburante">
@@ -174,11 +180,13 @@
         </div>
     </div>
 
-    <div class="d-flex align-items-center justify-content-center">
-        <button type="submit" id="subir" class="mt-2 rounded-pill text-light">
-            Guardar
-        </button>
-    </div>
+    @if (Auth::check()) 
+        <div class="d-flex align-items-center justify-content-center">
+            <button type="submit" id="subir" class="mt-2 rounded-pill text-light">
+                Guardar
+            </button>
+        </div>
+    @endif
 </form>
 
 

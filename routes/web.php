@@ -36,7 +36,7 @@ Route::get('avisolegal', function () {
 });
 
 Route::get('login', [AuthenticatedSessionController::class, "create"]);
-Route::get('registrarse', [RegisteredUserController::class, "create"]);
+Route::get('register', [RegisteredUserController::class, "create"]);
 
 // Vistas con mantenimiento
 //Lo de las comillas es como tenemos que llamarlo en el href para que funcione
