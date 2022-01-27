@@ -9,7 +9,7 @@
         -webkit-appearance: none;
         margin: 0;
     }
-    
+
     #botones button{
         background-color: #522d1c;
         border: none;
@@ -21,8 +21,8 @@
 
 @section('content')
 <main>
-
-    <form class="container my-3" method="POST" action="/calculadora">
+    <a href="repostajes">aa</a>
+    <form class="container my-3" method="POST" action="">
         @csrf
         <div class="mb-3">
             <label> Gasolinera </label>
@@ -70,8 +70,8 @@
         </div>
 
         <div class="d-flex align-items-center justify-content-center" id="botones">
-            <button type="button" href="../repostajes" class="mt-2 rounded-pill text-light">Volver</button>
-            <button type="submit" href="" class="mt-2 ml-3 rounded-pill text-light">Guardar</button>
+            <a href="repostajes"><button type="button" class="mt-2 rounded-pill text-light">Volver</button></a>
+            <button type="submit"  class="mt-2 ml-3 rounded-pill text-light">Guardar</button>
         </div>
     </form>
 
