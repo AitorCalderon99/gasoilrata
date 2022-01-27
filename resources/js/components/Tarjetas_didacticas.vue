@@ -43,10 +43,10 @@ export default {
       for (var i = 0; i < 2; ) {
         // numero aleatorio entre 0 y longitud de array tarjetas
         const numRandom = Math.floor(Math.random() * tarjetas.length);
-        console.log(numRandom);
+        /*console.log(numRandom);*/
 
         if (!numerosSalidos.includes(numRandom)) {
-          console.log(tarjetas[numRandom]);
+          /*console.log(tarjetas[numRandom]);*/
           numerosSalidos.push(numRandom);
           cuestiones.push(tarjetas[numRandom]);
           i++;

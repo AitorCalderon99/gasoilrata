@@ -19,10 +19,5 @@
     <Vehiculo_seleccion></Vehiculo_seleccion>
 
     <Tarjetas_repostajes></Tarjetas_repostajes>
-<<<<<<< HEAD
-    
-=======
-
->>>>>>> 5199e0167567d520ab81e5818af942e462a8338f
 </main>
 @endsection

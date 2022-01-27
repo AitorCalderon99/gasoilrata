@@ -19,9 +19,11 @@ export default {
     props: {
         repostaje: Object,
     },
+    /*
     setup(repostaje) {
         console.log(repostaje);
     },
+    */
 }
 </script>
 
