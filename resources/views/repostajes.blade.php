@@ -18,7 +18,7 @@
 
     <Vehiculo_seleccion></Vehiculo_seleccion>
 
-    <Tarjetas_repostajes></Tarjetas_respostajes>
+    <Tarjetas_repostajes></Tarjetas_repostajes>
     
 </main>
 @endsection
