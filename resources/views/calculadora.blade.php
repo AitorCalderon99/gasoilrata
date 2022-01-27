@@ -73,6 +73,11 @@
     .subirHov:hover{
         cursor: not-allowed;
     }
+    #error{
+        color: red;
+        text-align: center;
+        font-size: 2rem;
+    }
 </style>
 
 @endpush
@@ -87,7 +92,15 @@
         tus viajes.
     </h3>
 
+    @if(!empty($errores["vehiculo"]))
+        <p id="error">Error al insertar: {{ $vehiculo }}</p>
+    @endif
+
     <Vehiculo_seleccion></Vehiculo_seleccion>
+
+    @if(!empty($errores["km"]))
+        <p id="error">Error al insertar: {{ $km }}</p>
+    @endif
 
     <div class="mb-3">
         <label> Kilometros a realizar </label>
@@ -99,10 +112,8 @@
         </div>
     </div>
 
-    @if(empty($km))
-        <p>Data does not exist</p>
-    @else
-        <p>Your data is here!</p>
+    @if(!empty($carburante))
+        <p id="error">Error al insertar: {{ $carburante }}</p>
     @endif
 
     <div class="mb-3">
@@ -126,6 +137,10 @@
         </select>
     </div>
 
+    @if(!empty($litros))
+        <p id="error">Error al insertar: {{ $litros }}</p>
+    @endif
+
     <div class="mb-3">
         <label> Consumo </label>
         <div class="input-group">
@@ -135,6 +150,10 @@
             </span>
         </div>
     </div>
+
+    @if(!empty($coste))
+        <p id="error">Error al insertar: {{ $coste }}</p>
+    @endif
 
     <div class="mb-3">
         <label> Coste litro </label>
