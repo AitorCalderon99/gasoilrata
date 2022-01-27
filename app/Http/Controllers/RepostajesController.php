@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Repostaje;
 use Illuminate\Http\Request;
 
 class RepostajesController extends Controller
@@ -46,7 +47,7 @@ class RepostajesController extends Controller
     public function show($id)
     {
         // return Consumo::where('id_vehiculo', '=', $id);
-        return Consumo::all();
+        return Repostaje::all();
         // filtrar para poner vehiculo_id => algo
     }
 
