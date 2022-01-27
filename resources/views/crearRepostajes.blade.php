@@ -17,7 +17,7 @@
         </div>
 
         <div class="mb-3">
-            <label> Combustile </label>
+            <label> Combustible </label>
             <input type="number" min="0" class="form-control" id="combustible" name="combustible">
         </div>
 
