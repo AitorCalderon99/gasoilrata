@@ -13,6 +13,7 @@
         href="https://www.facebook.com/"
         role="button"
         target="_blank"
+        id="facebook"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -34,6 +35,7 @@
         href="https://twitter.com/"
         role="button"
         target="_blank"
+        id="twitter"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -55,6 +57,7 @@
         href="https://www.instagram.com/"
         role="button"
         target="_blank"
+        id="instagram"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -123,6 +126,30 @@ ul {
       transition: all 0.2s ease;
     }
   }
+}
+
+#twitter svg{
+  transition: 0.2s;
+}
+
+#twitter:hover svg{
+  color: #179cf0;
+}
+
+#facebook svg{
+  transition: 0.2s;
+}
+
+#facebook:hover svg{
+  color: #1379f2;
+}
+
+#instagram svg{
+  transition: 0.2s;
+}
+
+#instagram:hover svg{
+  color: #c13584;
 }
 
 </style>
