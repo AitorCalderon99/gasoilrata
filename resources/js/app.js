@@ -1,12 +1,11 @@
 /* require('./bootstrap'); */
 
-import Alpine from 'alpinejs';
 const axios = require('axios');
 
 
-window.Alpine = Alpine;
-
-Alpine.start();
+// import Alpine from 'alpinejs';
+// window.Alpine = Alpine;
+// Alpine.start();
 
 /* import BootstrapVue3 */
 import BootstrapVue3 from 'bootstrap-vue-3'
@@ -45,6 +44,7 @@ import Tarjetas_consumos from "./components/Tarjetas_consumos";
 import Cardscopy from "./components/Cardscopy";
 import Tarjetas_repostajes from "./components/Tarjetas_repostajes";
 import Tarjeta_repostaje from "./components/Tarjeta_repostaje";
+import { Swal } from 'sweetalert2/dist/sweetalert2';
 
 
 app.component('Cardscopy', Cardscopy);
@@ -63,4 +63,6 @@ app.use(BootstrapVue3);
 app.use(VueSweetalert2);
 app.use(store)
 
-app.mount('#app');
+window.onload = function () {
+    app.mount('#app');
+}
