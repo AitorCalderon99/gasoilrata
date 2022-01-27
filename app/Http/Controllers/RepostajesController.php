@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Consumo;
 use Illuminate\Http\Request;
 
 class RepostajesController extends Controller
@@ -41,7 +42,7 @@ class RepostajesController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Consumo[]|\Illuminate\Database\Eloquent\Collection|\Illuminate\Http\Response
      */
     public function show($id)
     {
