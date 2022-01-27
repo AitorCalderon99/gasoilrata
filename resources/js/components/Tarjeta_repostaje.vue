@@ -2,7 +2,6 @@
     <div class="tarjeta">
         <div class="fecha-carburante-container">
             <div class="fecha">{{ repostaje.fecha }}</div>
-            <div class="carburante">IMAGEN</div>
         </div>
         <h3 class="gasolinera">{{ repostaje.gasolinera }}</h3>
         <div class="total">{{ repostaje.precio_litro * repostaje.litros }} km</div>
@@ -58,12 +57,7 @@ export default {
     text-align: center;
     color: white;
     font-size: small;
-
-    flex: 1 1 content;
-}
-
-.carburante {
-    font-size: small;
+    min-width: 5rem;
 }
 
 .gasolinera {
@@ -71,23 +65,24 @@ export default {
     text-align: center;
 }
 
+.total {
+    width: 7rem;
+    min-width: fit-content;
+    border-radius: 0 10px 0 0;
+    text-align: center;
+    color: white;
+    background: #532e1c;
+}
+
 .coste-litro-container {
     display: flex;
     flex-flow: row nowrap;
-    justify-content: flex-end;
+    justify-content: space-around;
 
-    width: 6rem;
+    width: 8rem;
+    min-width: fit-content;
     background-color: #532e1c;
     border-radius: 10px 0 0 0;
-}
-
-.coste-litro, .litros {
-    display: none;
-}
-
-.coste {
-    font-size: large;
-    padding: 0 1rem;
     color: white;
 }
 </style>
