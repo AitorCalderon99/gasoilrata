@@ -116,7 +116,7 @@
         </div>
     </div>
 
-    @if(!empty($carburante))
+    @if(!empty($errores["carburante"]))
         <p id="error">Error al insertar: {{ $carburante }}</p>
     @endif
 
@@ -141,7 +141,7 @@
         </select>
     </div>
 
-    @if(!empty($litros))
+    @if(!empty($errores["litros"]))
         <p id="error">Error al insertar: {{ $litros }}</p>
     @endif
 
@@ -155,7 +155,7 @@
         </div>
     </div>
 
-    @if(!empty($coste))
+    @if(!empty($errores["coste"]))
         <p id="error">Error al insertar: {{ $coste }}</p>
     @endif
 
