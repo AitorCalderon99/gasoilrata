@@ -162,7 +162,7 @@
     <div class="mb-3">
         <label> Coste litro </label>
         <div class="input-group">
-            <input type="text" class="form-control bg-white" readonly placeholder="Precio del combustible por litro" id="coste" name="coste" value="3"/>
+            <input type="text" class="form-control bg-white" readonly placeholder="Precio del combustible por litro" id="coste" name="coste"/>
         </div>
     </div>
 
