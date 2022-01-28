@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { onBeforeMount, reactive } from 'vue';
+import { computed, onBeforeMount, reactive } from 'vue';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import Tarjeta_repostaje from "./Tarjeta_repostaje.vue";
@@ -19,12 +19,11 @@ export default {
 
     setup() {
         const repostajes = reactive([]);
-        const id_vehiculo = 1; // traer el id del coche seleccionado aquí
 
         const getRepostajes = async() => {
             let response;
             try {
-                response = await axios.get('repostajes/'+1);
+                response = await axios.get('repostajes/'+getIdVehiculo);
             } catch (error) {
                 Swal.fire(error.message, "", "error");
             return;
@@ -38,6 +37,10 @@ export default {
             console.log(response.data);
             repostajes.value = response.data;
         }
+
+        const getIdVehiculo = computed( () => {
+            return id_vehiculo = this.$store.state.id_vehiculo;
+        });
 
         onBeforeMount( () => {
             getRepostajes();

@@ -1,9 +1,9 @@
 <template>
   <div class="select-container">
-    <h1 class="ms-5 mx-auto">Seleccione un vehículo</h1>
+    <h1 class="mx-auto">Seleccione un vehículo</h1>
 
     <div class="select-agregar row w-100 mx-auto">
-      <select v-model="vehiculos" class="col" name="vehiculo">
+      <select @change="cambiarVehiculo()" v-model="vehiculo" class="col" name="vehiculo">
         <option v-for="v in vehiculos.value" :key="v.id_vehiculo" :value="v.id_vehiculo">
           {{ v.nombre }}
         </option>
@@ -23,7 +23,7 @@
 
 <script>
 /* import { reactive, onBeforeMount } from '@vue/runtime-core' */
-import { reactive, onBeforeMount, ref, inject } from "vue";
+import { reactive, onBeforeMount, ref, inject, computed } from "vue";
 import axios from "axios";
 import Swal from "sweetalert2";
 export default {
@@ -32,7 +32,7 @@ export default {
     const id_user = inject("id_user");
 
     const vehiculos = reactive([]);
-    const vehiculo = ref("");
+    const vehiculo = computed("");
 
     const getVehiculos = async () => {
       let response;
