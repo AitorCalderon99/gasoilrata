@@ -83,33 +83,8 @@ class CalculadoraController extends Controller
             $consumo -> carburante = $carburante;
             $consumo -> id_vehiculo = $vehiculo;
             $consumo -> save();
-            return view("calculadora");
+            return view("calculadora")->with("guardado", "Consumo guardado");
         }
-
-        // if(empty($km) || $km == null){
-        //     return view("calculadora") -> with("km", "Introducir los kilómetros");
-        // }else if(empty($litros) || $litros == null){
-        //     return view("calculadora") -> with("litros", "Introducir los litros");
-        // }else if(empty($coste) || $coste == null){
-        //     return view("calculadora") -> with("coste", "Introducir los coste");
-        // }else if(empty($carburante) || $carburante == null){
-        //     return view("calculadora") -> with("carburante", "Introducir el carburante");
-        // }else if(empty($vehiculo) || $vehiculo == null){
-        //     return view("calculadora") -> with("vehiculo", "Introducir el vehículo");
-        // }else{
-        //     $fecha = date("Y-m-d");
-        //     $consumo = new Consumo;
-        //     $consumo -> kilometros = $km;
-        //     $consumo -> litros = $litros;
-        //     $consumo -> coste_litro = $coste;
-        //     $consumo -> origen = $origen;
-        //     $consumo -> destino = $destino;
-        //     $consumo -> fecha = $fecha;
-        //     $consumo -> carburante = $carburante;
-        //     $consumo -> id_vehiculo = $vehiculo;
-        //     $consumo -> save();
-        //     return view("calculadora");
-        // }
     }
 
     /**

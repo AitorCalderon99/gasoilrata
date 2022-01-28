@@ -14,12 +14,12 @@ class CreateConsumosTable extends Migration
     public function up()
     {
         Schema::create('consumos', function (Blueprint $table) {
-            $table->increments('id_consumo');
+            $table->increments('id_consumo'); // Con required() se puede hacer la validacion para campos nulos o vacios (tarde...)
             $table->double('kilometros');
             $table->double('litros');
             $table->double('coste_litro');
-            $table->string('origen');
-            $table->string('destino');
+            $table->string('origen')->nullable(); // Campos no obligatorios
+            $table->string('destino')->nullable();
             $table->date('fecha');
             $table->string('carburante');
             $table->unsignedInteger('id_vehiculo');

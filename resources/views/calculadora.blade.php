@@ -108,6 +108,10 @@
         tus viajes.
     </h3>
 
+    @if(!empty($guardado))
+        <p>GUARDADO</p>
+    @endif
+
     @if(Auth::check())
         <Vehiculo_seleccion></Vehiculo_seleccion>
     @else
@@ -115,7 +119,7 @@
     @endif
 
     @if(!empty($errores["vehiculo"]))
-        <p id="error">Error al insertar: {{ $errores["vehiculo"] }}</p>
+        <p id="error">Error al guardar: {{ $errores["vehiculo"] }}</p>
     @endif
 
     <div class="mb-3">
@@ -129,7 +133,7 @@
     </div>
 
     @if(!empty($errores["km"]))
-        <p id="error">Error al insertar: {{ $errores["km"] }}</p>
+        <p id="error">Error al guardar: {{ $errores["km"] }}</p>
     @endif
 
     <div class="mb-3">
@@ -154,7 +158,7 @@
     </div>
 
     @if(!empty($errores["carburante"]))
-        <p id="error">Error al insertar: {{ $errores["carburante"] }}</p>
+        <p id="error">Error al guardar: {{ $errores["carburante"] }}</p>
     @endif
 
     <div class="mb-3">
@@ -168,7 +172,7 @@
     </div>
 
     @if(!empty($errores["litros"]))
-        <p id="error">Error al insertar: {{ $errores["litros"] }}</p>
+        <p id="error">Error al guardar: {{ $errores["litros"] }}</p>
     @endif
 
     <div class="mb-3">
@@ -179,7 +183,7 @@
     </div>
 
     @if(!empty($errores["coste"]))
-        <p id="error">Error al insertar: {{ $errores["coste"] }}</p>
+        <p id="error">Error al guardar: {{ $errores["coste"] }}</p>
     @endif
 
     <div class="mb-3">
