@@ -92,17 +92,17 @@
         tus viajes.
     </h3>
 
-    @if(!empty($errores["vehiculo"]))
+    
+    @if(Auth::check())
+    @if(!empty($vehiculo))
         <p id="error">Error al insertar: {{ $vehiculo }}</p>
     @endif
-
-    @if(Auth::check())
-    <Vehiculo_seleccion></Vehiculo_seleccion>
+        <Vehiculo_seleccion></Vehiculo_seleccion>
     @else
-    <h1>Debes iniciar sesión para guardar vehículos</h1>
+        <h1>Debes iniciar sesión para guardar vehículos</h1>
     @endif
 
-    @if(!empty($errores["km"]))
+    @if(!empty($km))
         <p id="error">Error al insertar: {{ $km }}</p>
     @endif
 
@@ -116,7 +116,7 @@
         </div>
     </div>
 
-    @if(!empty($errores["carburante"]))
+    @if(!empty($carburante))
         <p id="error">Error al insertar: {{ $carburante }}</p>
     @endif
 
@@ -141,7 +141,7 @@
         </select>
     </div>
 
-    @if(!empty($errores["litros"]))
+    @if(!empty($litros))
         <p id="error">Error al insertar: {{ $litros }}</p>
     @endif
 
@@ -155,14 +155,14 @@
         </div>
     </div>
 
-    @if(!empty($errores["coste"]))
+    @if(!empty($coste))
         <p id="error">Error al insertar: {{ $coste }}</p>
     @endif
 
     <div class="mb-3">
         <label> Coste litro </label>
         <div class="input-group">
-            <input type="text" class="form-control bg-white" readonly placeholder="Precio del combustible por litro" id="coste" name="coste"/>
+            <input type="text" class="form-control bg-white" readonly placeholder="Precio del combustible por litro" id="coste" name="coste" value="3"/>
         </div>
     </div>
 

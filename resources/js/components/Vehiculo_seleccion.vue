@@ -3,7 +3,7 @@
     <h1 class="ms-5 mx-auto">Seleccione un vehículo</h1>
 
     <div class="select-agregar row w-100 mx-auto">
-      <select v-model="vehiculos" class="col">
+      <select v-model="vehiculos" class="col" name="vehiculo">
         <option v-for="v in vehiculos.value" :key="v.id_vehiculo" :value="v.id_vehiculo">
           {{ v.nombre }}
         </option>
