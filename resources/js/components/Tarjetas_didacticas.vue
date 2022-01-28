@@ -140,6 +140,7 @@ export default {
       cursor: pointer;
       >img{
         transform: rotate(180deg);
+        width: 5rem;
         &.firstCard{
           filter: opacity(25%);
         }
@@ -154,6 +155,7 @@ export default {
     >#next{
       cursor: pointer;
       >img{
+        width: 5rem;
         &.lastCard{
           filter: opacity(25%);
         }
