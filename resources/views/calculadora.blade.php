@@ -85,7 +85,13 @@
     #error{
         color: red;
         text-align: center;
-        font-size: 2rem;
+        font-size: 1rem;
+    }
+    #obligatorio{
+        color: red;
+    }
+    div label, div h1{
+        margin-left: 0;
     }
 </style>
 
@@ -93,6 +99,7 @@
 
 @section('content')
 <form class="container my-3" method="POST" action="/calculadora">
+    {{-- Etiqueta obligatoria para enviar el formulario (añadir el class="form-control" a los input) --}}
     @csrf
     <h3 class="d-flex align-items-center justify-content-center text-center mb-7">
         Un buen viaje necesita de una buena planificación.
@@ -101,22 +108,18 @@
         tus viajes.
     </h3>
 
-    @if(!empty($errores["vehiculo"]))
-        <p id="error">Error al insertar: {{ $errores["vehiculo"] }}</p>
-    @endif
-
     @if(Auth::check())
         <Vehiculo_seleccion></Vehiculo_seleccion>
     @else
         <h1>Debes iniciar sesión para guardar vehículos</h1>
     @endif
 
-    @if(!empty($errores["km"]))
-        <p id="error">Error al insertar: {{ $errores["km"] }}</p>
+    @if(!empty($errores["vehiculo"]))
+        <p id="error">Error al insertar: {{ $errores["vehiculo"] }}</p>
     @endif
 
     <div class="mb-3">
-        <label> Kilometros a realizar </label>
+        <label><span id="obligatorio">*</span> Kilometros a realizar </label>
         <div class="input-group">
             <input type="number" min="0" class="form-control" id="km" name="km">
             <span class="input-group-text">
@@ -125,12 +128,12 @@
         </div>
     </div>
 
-    @if(!empty($errores["carburante"]))
-        <p id="error">Error al insertar: {{ $errores["carburante"] }}</p>
+    @if(!empty($errores["km"]))
+        <p id="error">Error al insertar: {{ $errores["km"] }}</p>
     @endif
 
     <div class="mb-3">
-        <label>Tipo de carburante utilizado:</label>
+        <label><span id="obligatorio">*</span>Tipo de carburante utilizado:</label>
         <select id="carburante" class="form-select" name="carburante">
             <option selected disabled>Seleccione el carburante</option>
             <option value="Biodiesel">Biodiesel</option>
@@ -150,12 +153,12 @@
         </select>
     </div>
 
-    @if(!empty($errores["litros"]))
-        <p id="error">Error al insertar: {{ $errores["litros"] }}</p>
+    @if(!empty($errores["carburante"]))
+        <p id="error">Error al insertar: {{ $errores["carburante"] }}</p>
     @endif
 
     <div class="mb-3">
-        <label> Consumo </label>
+        <label><span id="obligatorio">*</span> Consumo</label>
         <div class="input-group">
             <input type="number" min="0" class="form-control bg-white" id="consumo" name="consumo">
             <span class="input-group-text">
@@ -164,16 +167,20 @@
         </div>
     </div>
 
-    @if(!empty($errores["coste"]))
-        <p id="error">Error al insertar: {{ $errores["coste"] }}</p>
+    @if(!empty($errores["litros"]))
+        <p id="error">Error al insertar: {{ $errores["litros"] }}</p>
     @endif
 
     <div class="mb-3">
-        <label> Coste litro </label>
+        <label><span id="obligatorio">*</span> Coste litro</label>
         <div class="input-group">
             <input type="text" class="form-control bg-white" readonly placeholder="Precio del combustible por litro" id="coste" name="coste"/>
         </div>
     </div>
+
+    @if(!empty($errores["coste"]))
+        <p id="error">Error al insertar: {{ $errores["coste"] }}</p>
+    @endif
 
     <div class="mb-3">
         <label> Origen </label>
