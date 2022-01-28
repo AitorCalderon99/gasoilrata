@@ -84,27 +84,11 @@ axios
 
 
 //Functions
-
+//Animation JQUERY precio
 function animatePrecio(input) {
-    /*$({deg: 0}).animate({deg: 180}, {
-        step: function(now, fx){
-            $(".fa-long-arrow-alt-up").css({
-                transform: "rotate(" + now + "deg)"
-            });
-
-
-        }
-    });*/
-
-
     let orientation = input ? 180 : 0;
 
     let sum = orientation - 360;
-
-    console.log("Orientation= " + orientation);
-    console.log("Sum= " + sum);
-
-
     $({deg: orientation}).animate({deg: sum}, {
         step: function(now, fx){
             $(".fa-long-arrow-alt-up").css({
