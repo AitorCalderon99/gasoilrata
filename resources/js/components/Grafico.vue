@@ -12,6 +12,7 @@
 <script>
 import Vue3ChartJs from '@j-t-mcc/vue3-chartjs';
 import {useStore} from "vuex";
+import { computed } from 'vue';
 
 export default {
   name: 'App',
@@ -34,18 +35,24 @@ export default {
               '#162d1a'
             ],
             // rescatar datos de la api e insertarlo en este array
-            data: [store.state.prices.g95, 1.521, 1.677]
+            data: [getG95, 1.521, 1.677]
           }
         ]
       }
     }
+
+    const getG95 = computed( {
+      get: () => this.$store.state.prices.g95
+    } );
   
     const beforeRenderLogic = (event) => {
       //...
       //if(a === b) {
       //  event.preventDefault()
       //}   
-    }    
+    }
+
+    console.log(getG95)
 
     return {
       barChart,

@@ -2,7 +2,6 @@
 
 const axios = require('axios');
 
-
 // import Alpine from 'alpinejs';
 // window.Alpine = Alpine;
 // Alpine.start();
@@ -16,7 +15,7 @@ import 'bootstrap-vue-3/dist/bootstrap-vue-3.css'
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 
-import store from "./store";
+import store from "./store/index";
 
 /**
  * 
@@ -69,7 +68,7 @@ app.component('Tarjeta_repostaje', Tarjeta_repostaje);
 
 app.use(BootstrapVue3);
 app.use(VueSweetalert2);
-app.use(store)
+app.use(store);
 
 window.onload = function () {
     app.mount('#app');

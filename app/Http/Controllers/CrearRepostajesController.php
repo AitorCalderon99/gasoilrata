@@ -34,7 +34,15 @@ class CrearRepostajesController extends Controller
      */
     public function store(Request $request)
     {
+        $gasolinera = $request -> gasolinera;
+        //Al ser un formulario, el name (carburante) ya te devuelve automaticamente el value que sea
+        $carburante = $request -> carburante;
+        $litros = $request -> litros;
+        $coste = $request -> coste;
+        $total = $request -> total;
 
+        //Todos los campos son obligatorios
+        
     }
 
     /**
