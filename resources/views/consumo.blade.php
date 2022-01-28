@@ -10,7 +10,7 @@
 @section('content')
 
     <main>
-        <h3 class="text-center">¡WOW, qué cantidad de dinero que has ahorrado utilizando la calculadora de consumo!</h3>
+        <h3 class="my-4 text-center">¡WOW, qué cantidad de dinero que has ahorrado utilizando la calculadora de consumo!</h3>
 
         <Vehiculo_seleccion></Vehiculo_seleccion>
 
