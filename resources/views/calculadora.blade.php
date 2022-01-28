@@ -107,7 +107,7 @@
         Con esta herramienta serás capaz de calcular el coste aproximado de
         tus viajes.
     </h3>
-
+    <p>Los campos con * son obligatorios</p>
     @if(!empty($guardado))
         <p>GUARDADO</p>
     @endif

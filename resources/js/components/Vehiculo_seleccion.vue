@@ -1,6 +1,6 @@
 <template>
   <div class="select-container">
-    <h1 class="ms-5 mx-auto">Seleccione un vehículo</h1>
+    <h1 class="mx-auto"><span id="obligatorio">*</span> Seleccione un vehículo</h1>
 
     <div class="select-agregar row w-100 mx-auto">
       <select v-model="vehiculos" class="col" name="vehiculo">
