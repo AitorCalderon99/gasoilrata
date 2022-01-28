@@ -1,7 +1,13 @@
+/**
+ * 
+ * IMPORTANTE
+ * 
+ * Tenemos que poner esto para que el js se cargue al final
+ * 
+ */
 
-$(function () {
+$(window).on('load', function() {
     $('#calcular').on('click', function () {
-
         //Distancia que va a recorrer
         km = $('#km').val();
         //Lo que cuesta ese combustible en concreto
@@ -129,13 +135,14 @@ $(function () {
         ["Gasolina98E5", 1,65],
         ["Hidrogeno", 6.6],
     ];
-
+    
     $('#carburante').on('change', function () {
         //Conseguimos el value del tipo de carburante que es
         seleccion = $('#carburante');
         valor = seleccion.val();
         //Conseguimos el tamaño del array
         tamanio = precios.length;
+        console.log("ssa");
 
         //Recorremos el array de los precios de los carburantes
         for (let i = 0; i < tamanio; i++) {
