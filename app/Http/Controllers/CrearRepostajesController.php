@@ -41,7 +41,8 @@ class CrearRepostajesController extends Controller
         $coste = $request -> coste;
         $total = $request -> total;
 
-        //Campos obligatorios son: todos
+        //Todos los campos son obligatorios
+        
     }
 
     /**
