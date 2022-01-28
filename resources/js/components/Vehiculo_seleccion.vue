@@ -86,6 +86,8 @@ export default {
         width: "40rem",
         showCancelButton: true,
         cancelButtonColor: "#DC143C",
+        confirmButtonText: "Añadir",
+        cancelButtonText: "Volver"
       });
 
       if (vehiculo) {

@@ -8,6 +8,8 @@
  * esta ahora, tendremos que ponerlo asi:
  * '$(function (){})'
  * 
+ * Esta en resources/app.js la linea 27
+ * 
  */
 
 $(window).on('load', function() {

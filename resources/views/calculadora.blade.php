@@ -43,6 +43,14 @@
         border-radius: 15px 0px 15px 0px;
     }
 
+    #subir, #calcular{
+        transition: 0.2s;
+    }
+
+    #subir:hover, #calcular:hover{
+        color: #C5A880 !important;
+    }
+
     /*Para que al calcular el precio se "desactiven" los campos de textos*/
     .desaparecer{
         background-color: white !important;
@@ -73,10 +81,17 @@
     .subirHov:hover{
         cursor: not-allowed;
     }
+
     #error{
         color: red;
         text-align: center;
-        font-size: 2rem;
+        font-size: 1rem;
+    }
+    #obligatorio{
+        color: red;
+    }
+    div label, div h1{
+        margin-left: 0;
     }
 </style>
 
@@ -84,6 +99,7 @@
 
 @section('content')
 <form class="container my-3" method="POST" action="/calculadora">
+    {{-- Etiqueta obligatoria para enviar el formulario (añadir el class="form-control" a los input) --}}
     @csrf
     <h3 class="d-flex align-items-center justify-content-center text-center mb-7">
         Un buen viaje necesita de una buena planificación.
@@ -92,36 +108,36 @@
         tus viajes.
     </h3>
 
-    
-    @if(Auth::check())
-    @if(!empty($vehiculo))
-        <p id="error">Error al insertar: {{ $vehiculo }}</p>
+    @if(!empty($guardado))
+        <p>GUARDADO</p>
     @endif
+
+    @if(Auth::check())
         <Vehiculo_seleccion></Vehiculo_seleccion>
     @else
         <h1>Debes iniciar sesión para guardar vehículos</h1>
     @endif
 
-    @if(!empty($km))
-        <p id="error">Error al insertar: {{ $km }}</p>
+    @if(!empty($errores["vehiculo"]))
+        <p id="error">Error al guardar: {{ $errores["vehiculo"] }}</p>
     @endif
 
     <div class="mb-3">
-        <label> Kilometros a realizar </label>
+        <label><span id="obligatorio">*</span> Kilometros a realizar </label>
         <div class="input-group">
-            <input type="number" min="0" class="form-control" id="km" name="km">
+            <input type="number" min="0" step="0.01" class="form-control" id="km" name="km">
             <span class="input-group-text">
                 km
             </span>
         </div>
     </div>
 
-    @if(!empty($carburante))
-        <p id="error">Error al insertar: {{ $carburante }}</p>
+    @if(!empty($errores["km"]))
+        <p id="error">Error al guardar: {{ $errores["km"] }}</p>
     @endif
 
     <div class="mb-3">
-        <label>Tipo de carburante utilizado:</label>
+        <label><span id="obligatorio">*</span>Tipo de carburante utilizado:</label>
         <select id="carburante" class="form-select" name="carburante">
             <option selected disabled>Seleccione el carburante</option>
             <option value="Biodiesel">Biodiesel</option>
@@ -141,30 +157,34 @@
         </select>
     </div>
 
-    @if(!empty($litros))
-        <p id="error">Error al insertar: {{ $litros }}</p>
+    @if(!empty($errores["carburante"]))
+        <p id="error">Error al guardar: {{ $errores["carburante"] }}</p>
     @endif
 
     <div class="mb-3">
-        <label> Consumo </label>
+        <label><span id="obligatorio">*</span> Consumo</label>
         <div class="input-group">
-            <input type="number" min="0" class="form-control bg-white" id="consumo" name="consumo">
+            <input type="number" step="0.01" min="0" class="form-control bg-white" id="consumo" name="consumo">
             <span class="input-group-text">
                 L/100
             </span>
         </div>
     </div>
 
-    @if(!empty($coste))
-        <p id="error">Error al insertar: {{ $coste }}</p>
+    @if(!empty($errores["litros"]))
+        <p id="error">Error al guardar: {{ $errores["litros"] }}</p>
     @endif
 
     <div class="mb-3">
-        <label> Coste litro </label>
+        <label><span id="obligatorio">*</span> Coste litro</label>
         <div class="input-group">
             <input type="text" class="form-control bg-white" readonly placeholder="Precio del combustible por litro" id="coste" name="coste"/>
         </div>
     </div>
+
+    @if(!empty($errores["coste"]))
+        <p id="error">Error al guardar: {{ $errores["coste"] }}</p>
+    @endif
 
     <div class="mb-3">
         <label> Origen </label>

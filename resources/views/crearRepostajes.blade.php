@@ -3,6 +3,7 @@
 @section('title', 'Crear repostaje')
 
 @push('head')
+<script src="{{ asset('js/calculadora.js') }}"></script>
     <style>
         input::-webkit-outer-spin-button,
         input::-webkit-inner-spin-button {
@@ -31,21 +32,45 @@
                     <h1 class="d-flex justify-content-center pt-2 pb-2">Inserte los datos necesarios del repostaje.</h1>
                 </div>
             </div>
+
             @csrf
             <div class="mb-3">
                 <label> Gasolinera </label>
                 <input type="text" min="0" class="form-control" id="gasolinera" name="gasolinera">
             </div>
 
+            <!--Le especificamos donde va a dar esos errores-->
+            @if(!empty($errores["gasolinera"]))
+                <p id="error">
+                    Error al insertar: {{ $errores["gasolinera"] }}
+                </p>
+            @endif
+
             <div class="mb-3">
                 <label> Combustible </label>
-                <input type="number" min="0" class="form-control" id="combustible" name="combustible">
+                <select id="carburante" class="form-select" name="carburante">
+                    <option selected disabled>Tipo de combustible</option>
+                    <option value="Biodiesel">Biodiesel</option>
+                    <option value="Bioetanol">Bioetanol</option>
+                    <option value="GasNaturalComprimido">Gas Natural Comprimido</option>
+                    <option value="GasNaturalLicuado">Gas Natural Licuado</option>
+                    <option value="Gaseslicuadosdelpetroleo">Gases licuados del petróleo</option>
+                    <option value="GasoleoA">Gasoleo A</option>
+                    <option value="GasoleoB">Gasoleo B</option>
+                    <option value="GasoleoPremium">Gasoleo Premium</option>
+                    <option value="Gasolina95E10">Gasolina 95 E10</option>
+                    <option value="Gasolina95E5">Gasolina 95 E5</option>
+                    <option value="Gasolina95E5Premium">Gasolina 95 E5 Premium</option>
+                    <option value="Gasolina98E10">Gasolina 98 E10</option>
+                    <option value="Gasolina98E5">Gasolina 98 E5</option>
+                    <option value="Hidrogeno">Hidrogeno</option>
+                </select>
             </div>
 
             <div class="mb-3">
                 <label> Litros </label>
                 <div class="input-group">
-                    <input type="number" min="0" class="form-control bg-white" id="litros" name="litros">
+                    <input type="number" step="0.01" min="0" class="form-control bg-white" id="litros" name="litros">
                     <span class="input-group-text">
                     L
                 </span>
@@ -60,10 +85,7 @@
             <div class="mb-3">
                 <label> Coste por litro </label>
                 <div class="input-group">
-                    <input type="number" min="0" class="form-control bg-white" id="coste-litros" name="coste-litros">
-                    <span class="input-group-text">
-                    €/L
-                </span>
+                    <input type="text" class="form-control bg-white" readonly placeholder="Precio del combustible por litro" id="coste" name="coste"/>
                 </div>
             </div>
 
