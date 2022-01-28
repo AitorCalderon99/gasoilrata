@@ -121,7 +121,7 @@
     <div class="mb-3">
         <label><span id="obligatorio">*</span> Kilometros a realizar </label>
         <div class="input-group">
-            <input type="number" min="0" class="form-control" id="km" name="km">
+            <input type="number" min="0" step="0.01" class="form-control" id="km" name="km">
             <span class="input-group-text">
                 km
             </span>
@@ -160,7 +160,7 @@
     <div class="mb-3">
         <label><span id="obligatorio">*</span> Consumo</label>
         <div class="input-group">
-            <input type="number" min="0" class="form-control bg-white" id="consumo" name="consumo">
+            <input type="number" step="0.01" min="0" class="form-control bg-white" id="consumo" name="consumo">
             <span class="input-group-text">
                 L/100
             </span>
