@@ -43,6 +43,14 @@
         border-radius: 15px 0px 15px 0px;
     }
 
+    #subir, #calcular{
+        transition: 0.2s;
+    }
+
+    #subir:hover, #calcular:hover{
+        color: #C5A880 !important;
+    }
+
     /*Para que al calcular el precio se "desactiven" los campos de textos*/
     .desaparecer{
         background-color: white !important;
@@ -73,6 +81,7 @@
     .subirHov:hover{
         cursor: not-allowed;
     }
+
     #error{
         color: red;
         text-align: center;
