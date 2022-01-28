@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col">
                 <div class="head-text">
-                    <p>¡Encuentra las gasolineras cercanas con los precios más baratos!</p>
+                    <p class="h2">¡Encuentra las gasolineras cercanas con los precios más baratos!</p>
                 </div>
                 <br/>
                 <div class="foptions">
