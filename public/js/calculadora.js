@@ -4,6 +4,10 @@
  * 
  * Tenemos que poner esto para que el js se cargue al final
  * 
+ * Si hemos cambiado el "app.js", aqui en vez de ponerlo como
+ * esta ahora, tendremos que ponerlo asi:
+ * '$(function (){})'
+ * 
  */
 
 $(window).on('load', function() {

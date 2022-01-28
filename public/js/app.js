@@ -21426,6 +21426,16 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js"); /
 
 
 
+/**
+ * 
+ * Si no queremos poner toda la linea de codigo de
+ * "window.on('load')", podemos venir aqui y comentar
+ * la linea de abajo, y cambiarla por esta:
+ * 
+ * window.$=$;
+ * 
+ */
+
 __webpack_require__.g.$ = __webpack_require__.g.jQuery = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 
 var app = (0,vue__WEBPACK_IMPORTED_MODULE_6__.createApp)({}); // PROVIDES/INJECT (para mandar a todos los hijos)

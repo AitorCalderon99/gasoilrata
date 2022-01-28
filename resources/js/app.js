@@ -18,8 +18,16 @@ import 'sweetalert2/dist/sweetalert2.min.css';
 
 import store from "./store";
 
+/**
+ * 
+ * Si no queremos poner toda la linea de codigo de
+ * "window.on('load')", podemos venir aqui y comentar
+ * la linea de abajo, y cambiarla por esta:
+ * 
+ * window.$=$;
+ * 
+ */
 global.$ = global.jQuery = require('jquery');
-
 
 import { createApp } from 'vue';
 const app = createApp({});
