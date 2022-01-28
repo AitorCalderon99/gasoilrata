@@ -28,7 +28,7 @@ class ConsumoFactory extends Factory
         return [
             'kilometros' => $this->faker->numberBetween(10,5000),
             'litros' => $this->faker->numberBetween(0,500),
-            'coste_litro'=> $this->faker->numberBetween(0.90,1.90),
+            'coste_litro'=>  $this->faker->randomFloat(2, 0.99, 1.99),
             'origen' => $faker->state(),
             'destino' => $faker->state(),
             'fecha' => $faker->dateTimeBetween('-6 months', 'now')->format('Y-m-d H:i:s'),
