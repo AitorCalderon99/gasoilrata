@@ -9,7 +9,7 @@
 
     html * {
         font-family: "Hemi head";
-    }
+    }   
 
     a{
         transition: 0.5s;
@@ -58,7 +58,7 @@
     <form method="POST" action="{{ route('password.email') }}" class="container my-3">
         @csrf
 
-        <div class="my-2 text-md text-center">
+        <div class="my-4 text-sm text-center">
             {{ __('¿Contraseña olvidada? No hay problema. Haznos saber tu correo y te enviaremos un link para resetear tu contraseña, pudiendo así escoger una nueva.') }}
         </div>
 
@@ -71,8 +71,8 @@
 
         <!-- Link para resetear la cuenta -->
         <div class="d-flex justify-content-center my-4">
-            <x-button id="link" class="mt-4 rounded-pill bg-black text-light d-flex align-items-center justify-center">
-                {{ __('Restaurar contraseña') }}
+            <x-button id="link" class="mt-4 rounded-pill bg-black text-light">
+                {{ __('Link para resetear la cuenta') }}
             </x-button>
         </div>
     </form>

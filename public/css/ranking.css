@@ -11285,11 +11285,6 @@ textarea.form-control-lg {
   font-family: "Hemi Head Rg", Roboto, serif;
 }
 
-a {
-  text-decoration: none;
-  color: black;
-}
-
 .container .head-text {
   padding-top: 1em;
   display: flex;

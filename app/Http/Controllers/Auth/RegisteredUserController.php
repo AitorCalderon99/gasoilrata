@@ -41,8 +41,7 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
-        /*Para comprobar si la ubicacion esta vacia o no*/
-        if ($request->ubicacion==""){
+        if (isEmpty($request->ubicacion)){
             $ubicacion = "";
         }else{
             $ubicacion = $request->ubicacion;

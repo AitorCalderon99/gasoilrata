@@ -1,19 +1,7 @@
-/**
- * 
- * IMPORTANTE
- * 
- * Tenemos que poner esto para que el js se cargue al final
- * 
- * Si hemos cambiado el "app.js", aqui en vez de ponerlo como
- * esta ahora, tendremos que ponerlo asi:
- * '$(function (){})'
- * 
- * Esta en resources/app.js la linea 27
- * 
- */
 
-$(window).on('load', function() {
+$(function () {
     $('#calcular').on('click', function () {
+
         //Distancia que va a recorrer
         km = $('#km').val();
         //Lo que cuesta ese combustible en concreto
@@ -141,14 +129,13 @@ $(window).on('load', function() {
         ["Gasolina98E5", 1,65],
         ["Hidrogeno", 6.6],
     ];
-    
+
     $('#carburante').on('change', function () {
         //Conseguimos el value del tipo de carburante que es
         seleccion = $('#carburante');
         valor = seleccion.val();
         //Conseguimos el tamaño del array
         tamanio = precios.length;
-        console.log("ssa");
 
         //Recorremos el array de los precios de los carburantes
         for (let i = 0; i < tamanio; i++) {

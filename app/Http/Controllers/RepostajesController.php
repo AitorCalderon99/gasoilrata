@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Repostaje;
 use Illuminate\Http\Request;
 
 class RepostajesController extends Controller
@@ -10,7 +9,7 @@ class RepostajesController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
@@ -20,7 +19,7 @@ class RepostajesController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
+     * @return \Illuminate\Http\Response
      */
     public function create()
     {
@@ -42,13 +41,11 @@ class RepostajesController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return Consumo[]|\Illuminate\Database\Eloquent\Collection|\Illuminate\Http\Response
+     * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        // return Repostaje::where('id_vehiculo', '=', $id);
-        return Repostaje::all();
-        // filtrar para poner vehiculo_id => algo
+        //
     }
 
     /**

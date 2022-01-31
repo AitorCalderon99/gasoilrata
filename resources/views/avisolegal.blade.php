@@ -21,7 +21,7 @@ main > * {
         de información general de este sitio web:</p>
 
     <p>La titularidad de este sitio web, <a href="https://gasoilrata.es">https://gasoilrata.es</a>, (en adelante, Sitio
-        Web) la ostenta: Nadir Boughlala Ruiz, con NIF: 57303196F, y cuyos datos de contacto son:</p>
+        Web) la ostenta: Yeray Li Loaiza, con NIF: 57303196F, y cuyos datos de contacto son:</p>
 
     <p>Dirección: Plaza Euskadi 5</p>
 
