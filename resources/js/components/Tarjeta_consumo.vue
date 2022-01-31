@@ -20,8 +20,7 @@ export default {
     props: {
         consumo: Object,
     },
-    setup(consumo) {
-        console.log(consumo);
+    setup() {
     },
 }
 </script>
