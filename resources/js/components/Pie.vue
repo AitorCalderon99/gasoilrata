@@ -86,7 +86,7 @@ footer {
   background-color: #c5a880;
   padding: 1rem 0;
 
-  >#company{
+  > #company {
     font-size: 11px;
     display: flex;
     justify-content: center;
@@ -100,18 +100,18 @@ ul {
   justify-content: center;
   align-items: center;
 
-  >li{
+  > li {
     margin-left: 5px;
     font-size: 11px;
   }
 }
 
-#socialNetworks{
+#socialNetworks {
   display: flex;
   width: 15em;
   justify-content: space-evenly;
 
-  >a {
+  > a {
     width: fit-content;
     padding: 0px;
     border: none;
@@ -121,38 +121,37 @@ ul {
     justify-content: center;
     align-items: center;
 
-    >a:active .bi {
+    > a:active .bi {
       color: white;
     }
 
-    >.bi {
+    > .bi {
       transition: all 0.2s ease;
     }
   }
 }
 
-#twitter svg{
+#twitter svg {
   transition: 0.2s;
 }
 
-#twitter:hover svg{
+#twitter:hover svg {
   color: #179cf0;
 }
 
-#facebook svg{
+#facebook svg {
   transition: 0.2s;
 }
 
-#facebook:hover svg{
+#facebook:hover svg {
   color: #1379f2;
 }
 
-#instagram svg{
+#instagram svg {
   transition: 0.2s;
 }
 
-#instagram:hover svg{
+#instagram:hover svg {
   color: #c13584;
 }
-
 </style>
