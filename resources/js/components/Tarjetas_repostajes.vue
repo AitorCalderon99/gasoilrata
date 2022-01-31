@@ -9,6 +9,7 @@ import { computed, onBeforeMount, reactive } from 'vue';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import Tarjeta_repostaje from "./Tarjeta_repostaje.vue";
+import {useStore} from "vuex";
 
 export default {
     name: "Tarjetas_repostajes",
@@ -18,6 +19,7 @@ export default {
     },
 
     setup() {
+        const store = useStore();
         const repostajes = reactive([]);
 
         const getRepostajes = async() => {

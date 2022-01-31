@@ -5,10 +5,10 @@
 </template>
 
 <script>
-import { onBeforeMount, inject, reactive } from '@vue/runtime-core';
+import { onBeforeMount, reactive, computed } from 'vue';
 import axios from 'axios';
-import Swal from 'sweetalert2';
 import Tarjeta_consumo from "./Tarjeta_consumo.vue";
+import {useStore} from "vuex";
 
 export default {
   name: "Tarjetas_consumos",
@@ -18,15 +18,14 @@ export default {
   },
 
   setup() {
+    const store = useStore();
     const Swal = require('sweetalert2');
-    const id_user = inject("id_user");
     const consumos = reactive([]);
-    var id_vehiculo = 1;
 
     const getConsumos = async() => {
       let response;
         try {
-            response = await axios.get('consumo/'+id_vehiculo);
+            response = await axios.get('consumo/'+getIdVehiculo);
         } catch (error) {
             Swal.fire(error.title, error.message, "error");
             return;
@@ -38,6 +37,10 @@ export default {
         // }
       consumos.value = response.data;
     }
+
+    const getIdVehiculo = computed( () => {
+      return id_vehiculo = store.state.id_vehiculo;
+    });
 
     onBeforeMount( () => {
       getConsumos();
