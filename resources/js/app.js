@@ -51,7 +51,6 @@ import Tarjetas_consumos from "./components/Tarjetas_consumos";
 import Cardscopy from "./components/Cardscopy";
 import Tarjetas_repostajes from "./components/Tarjetas_repostajes";
 import Tarjeta_repostaje from "./components/Tarjeta_repostaje";
-import { Swal } from 'sweetalert2/dist/sweetalert2';
 
 
 app.component('Cardscopy', Cardscopy);
