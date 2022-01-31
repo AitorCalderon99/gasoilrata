@@ -3,21 +3,21 @@
     <!--  bucle para recorrer las gasolineras con los filtros mencionados en el apartado de script  -->
     <div class="principalContainer">
         <div v-for="(gasolinera,index) in filteredGasolineras" :key="gasolinera" class="card mb-3 principalContainer">
-            <div class="cajaDTotal row g-0 row justify-content-center align-items-center">
-                <div class="col-2 imgContainer">
+            <div class="cajaDTotal g-0 row justify-content-center align-items-center">
+                <div class="col-sm-2 imgContainer">
                     <!--  Se coge una imagen random de una carpeta con una funcion  -->
                     <img :src="'/images/gasPumps/gas'+Math.floor(Math.random() * (8 - 1 + 1) + 1) +'.svg'"
                          class="imageAnimate rounded mx-auto d-block animate"
                          style="width: 50px; height: auto;"/>
                 </div>
-                <div class="col-8">
+                <div class="col-sm-8">
                     <div class="card-body">
                         <!--  El codigo despues del & es para tildar la o ya que en la api tienen tildes las palabras            -->
                         <p class="card-text">{{ gasolinera.Direcci&oacute;n }} - {{ gasolinera.Localidad }}
                         </p>
                     </div>
                 </div>
-                <div class="col-2">
+                <div class="col-sm-2">
                     <p class="precio" :id="'gas'+index">
                         {{ gasolinera["Precio " + combustibleRecibido] }}€
                     </p>
@@ -167,6 +167,19 @@ export default {
 
 
 <style lang="scss" scoped>
+
+@media (max-width: 515px) {
+    .precio, .card-text{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .col-sm-2{
+        margin-bottom: .5em;
+        margin-left: .5em;
+    }
+
+}
 
 #gas0 {
     background-color: #FFD700;

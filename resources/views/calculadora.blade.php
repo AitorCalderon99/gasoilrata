@@ -87,7 +87,11 @@
         tus viajes.
     </h3>
 
+    @if(Auth::check())
     <Vehiculo_seleccion></Vehiculo_seleccion>
+    @else
+    <h1>Debes iniciar sesión para guardar vehículos</h1>
+    @endif
 
     <div class="mb-3">
         <label> Kilometros a realizar </label>
