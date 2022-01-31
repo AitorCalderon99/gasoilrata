@@ -23857,7 +23857,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 6:
                 _context2.prev = 6;
                 _context2.t0 = _context2["catch"](0);
-                Sawl.fire(_context2.t0.title, "error");
+                Sawl.fire("Tienes que iniciar sesión para guardar vehículos", "error");
                 return _context2.abrupt("return");
 
               case 10:
@@ -23997,14 +23997,14 @@ var _hoisted_1 = {
   "class": "principalContainer"
 };
 var _hoisted_2 = {
-  "class": "cajaDTotal row g-0 row justify-content-center align-items-center"
+  "class": "cajaDTotal g-0 row justify-content-center align-items-center"
 };
 var _hoisted_3 = {
-  "class": "col-2 imgContainer"
+  "class": "col-sm-2 imgContainer"
 };
 var _hoisted_4 = ["src"];
 var _hoisted_5 = {
-  "class": "col-8"
+  "class": "col-sm-8"
 };
 var _hoisted_6 = {
   "class": "card-body"
@@ -24013,7 +24013,7 @@ var _hoisted_7 = {
   "class": "card-text"
 };
 var _hoisted_8 = {
-  "class": "col-2"
+  "class": "col-sm-2"
 };
 var _hoisted_9 = ["id"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -38256,7 +38256,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "#gas0[data-v-e8592906] {\n  background-color: #FFD700;\n}\n#gas1[data-v-e8592906] {\n  background-color: silver;\n}\n#gas2[data-v-e8592906] {\n  background-color: #cd7f32;\n}\n.principalContainer[data-v-e8592906] {\n  margin-top: 1.5em;\n}\n.cajaDTotal[data-v-e8592906] {\n  background-color: #c5a880;\n  border: 1px solid #532e1c;\n  border-radius: 15px 0 15px 0;\n  min-width: 35px;\n}\n.fade[data-v-e8592906] {\n  -webkit-animation: fadeinout-e8592906 0.5s;\n          animation: fadeinout-e8592906 0.5s;\n}\n@-webkit-keyframes fadeinout-e8592906 {\n0%, 100% {\n    opacity: 1;\n}\n50% {\n    opacity: 0;\n}\n}\n@keyframes fadeinout-e8592906 {\n0%, 100% {\n    opacity: 1;\n}\n50% {\n    opacity: 0;\n}\n}\n.precio[data-v-e8592906] {\n  background-color: white;\n  border: 5px none #1C6EA4;\n  border-radius: 12px;\n  margin-right: 10%;\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  padding: 8px 10px;\n  display: flex;\n  text-align: center;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "@media (max-width: 515px) {\n.precio[data-v-e8592906], .card-text[data-v-e8592906] {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n.col-sm-2[data-v-e8592906] {\n    margin-bottom: 0.5em;\n    margin-left: 0.5em;\n}\n}\n#gas0[data-v-e8592906] {\n  background-color: #FFD700;\n}\n#gas1[data-v-e8592906] {\n  background-color: silver;\n}\n#gas2[data-v-e8592906] {\n  background-color: #cd7f32;\n}\n.principalContainer[data-v-e8592906] {\n  margin-top: 1.5em;\n}\n.cajaDTotal[data-v-e8592906] {\n  background-color: #c5a880;\n  border: 1px solid #532e1c;\n  border-radius: 15px 0 15px 0;\n  min-width: 35px;\n}\n.fade[data-v-e8592906] {\n  -webkit-animation: fadeinout-e8592906 0.5s;\n          animation: fadeinout-e8592906 0.5s;\n}\n@-webkit-keyframes fadeinout-e8592906 {\n0%, 100% {\n    opacity: 1;\n}\n50% {\n    opacity: 0;\n}\n}\n@keyframes fadeinout-e8592906 {\n0%, 100% {\n    opacity: 1;\n}\n50% {\n    opacity: 0;\n}\n}\n.precio[data-v-e8592906] {\n  background-color: white;\n  border: 5px none #1C6EA4;\n  border-radius: 12px;\n  margin-right: 10%;\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  padding: 8px 10px;\n  display: flex;\n  text-align: center;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
