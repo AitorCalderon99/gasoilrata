@@ -19784,7 +19784,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _j_t_mcc_vue3_chartjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @j-t-mcc/vue3-chartjs */ "./node_modules/@j-t-mcc/vue3-chartjs/dist/vue3-chartjs.es.js");
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -19793,7 +19795,9 @@ __webpack_require__.r(__webpack_exports__);
     Vue3ChartJs: _j_t_mcc_vue3_chartjs__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   setup: function setup() {
-    var store = (0,vuex__WEBPACK_IMPORTED_MODULE_1__.useStore)();
+    var _this = this;
+
+    var store = (0,vuex__WEBPACK_IMPORTED_MODULE_2__.useStore)();
     var barChart = {
       id: 'bar',
       type: 'bar',
@@ -19803,10 +19807,15 @@ __webpack_require__.r(__webpack_exports__);
         datasets: [{
           backgroundColor: ['#529d1c', '#222d1c', '#162d1a'],
           // rescatar datos de la api e insertarlo en este array
-          data: [store.state.prices.g95, 1.521, 1.677]
+          data: [getG95, 1.521, 1.677]
         }]
       }
     };
+    var getG95 = (0,vue__WEBPACK_IMPORTED_MODULE_1__.computed)({
+      get: function get() {
+        return _this.$store.state.prices.g95;
+      }
+    });
 
     var beforeRenderLogic = function beforeRenderLogic(event) {//...
       //if(a === b) {
@@ -19814,6 +19823,7 @@ __webpack_require__.r(__webpack_exports__);
       //}   
     };
 
+    console.log(getG95);
     return {
       barChart: barChart,
       beforeRenderLogic: beforeRenderLogic
@@ -20166,6 +20176,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
     var id_user = (0,_vue_runtime_core__WEBPACK_IMPORTED_MODULE_4__.inject)("id_user");
     var consumos = (0,_vue_runtime_core__WEBPACK_IMPORTED_MODULE_5__.reactive)([]);
+    var id_vehiculo = 1;
 
     var getConsumos = /*#__PURE__*/function () {
       var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
@@ -20176,7 +20187,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default().get('consumo/' + id_user);
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().get('consumo/' + id_vehiculo);
 
               case 3:
                 response = _context.sent;
@@ -20378,8 +20389,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     Tarjeta_repostaje: _Tarjeta_repostaje_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
   },
   setup: function setup() {
+    var _this = this;
+
     var repostajes = (0,vue__WEBPACK_IMPORTED_MODULE_1__.reactive)([]);
-    var id_vehiculo = 1; // traer el id del coche seleccionado aquí
 
     var getRepostajes = /*#__PURE__*/function () {
       var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
@@ -20390,7 +20402,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_2___default().get('repostajes/' + 1);
+                return axios__WEBPACK_IMPORTED_MODULE_2___default().get('repostajes/' + getIdVehiculo);
 
               case 3:
                 response = _context.sent;
@@ -20424,6 +20436,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       };
     }();
 
+    var getIdVehiculo = (0,vue__WEBPACK_IMPORTED_MODULE_1__.computed)(function () {
+      return id_vehiculo = _this.$store.state.id_vehiculo;
+    });
     (0,vue__WEBPACK_IMPORTED_MODULE_1__.onBeforeMount)(function () {
       getRepostajes();
     });
@@ -20469,7 +20484,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
     var id_user = (0,vue__WEBPACK_IMPORTED_MODULE_1__.inject)("id_user");
     var vehiculos = (0,vue__WEBPACK_IMPORTED_MODULE_1__.reactive)([]);
-    var vehiculo = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)("");
+    var vehiculo = (0,vue__WEBPACK_IMPORTED_MODULE_1__.computed)("");
 
     var getVehiculos = /*#__PURE__*/function () {
       var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
@@ -21137,7 +21152,7 @@ var _hoisted_8 = {
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.repostaje.fecha), 1
   /* TEXT */
-  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.repostaje.gasolinera), 1
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.repostaje.gasolinera) + "--" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.repostaje.id_vehiculo), 1
   /* TEXT */
   ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.repostaje.precio_litro * $props.repostaje.litros) + " km", 1
   /* TEXT */
@@ -21323,8 +21338,11 @@ var _hoisted_5 = {
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
-    "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
-      return $setup.vehiculos = $event;
+    onChange: _cache[0] || (_cache[0] = function ($event) {
+      return _ctx.cambiarVehiculo();
+    }),
+    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+      return _ctx.vehiculo = $event;
     }),
     "class": "col",
     name: "vehiculo"
@@ -21337,13 +21355,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     , _hoisted_4);
   }), 128
   /* KEYED_FRAGMENT */
-  )), $setup.vehiculos.value <= 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", _hoisted_5, "No has añadido ningún vehículo")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 512
-  /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $setup.vehiculos]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  )), $setup.vehiculos.value <= 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", _hoisted_5, "No has añadido ningún vehículo")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 544
+  /* HYDRATE_EVENTS, NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, _ctx.vehiculo]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     type: "button",
     id: "masVehiculo",
     "class": "btn btn-outline-secondary col-2",
-    onClick: _cache[1] || (_cache[1] = function ($event) {
+    onClick: _cache[2] || (_cache[2] = function ($event) {
       return $setup.addVehiculo();
     })
   }, " + ")])]);
@@ -21365,7 +21383,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_sweetalert2__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-sweetalert2 */ "./node_modules/vue-sweetalert2/dist/vue-sweetalert.umd.js");
 /* harmony import */ var vue_sweetalert2__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(vue_sweetalert2__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var sweetalert2_dist_sweetalert2_min_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! sweetalert2/dist/sweetalert2.min.css */ "./node_modules/sweetalert2/dist/sweetalert2.min.css");
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./store */ "./resources/js/store/index.js");
+/* harmony import */ var _store_index__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./store/index */ "./resources/js/store/index.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 /* harmony import */ var _components_Cabecera__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/Cabecera */ "./resources/js/components/Cabecera.vue");
 /* harmony import */ var _components_Pie__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/Pie */ "./resources/js/components/Pie.vue");
@@ -21440,7 +21458,7 @@ app.component('Tarjetas_repostajes', _components_Tarjetas_repostajes__WEBPACK_IM
 app.component('Tarjeta_repostaje', _components_Tarjeta_repostaje__WEBPACK_IMPORTED_MODULE_17__["default"]);
 app.use(bootstrap_vue_3__WEBPACK_IMPORTED_MODULE_0__["default"]);
 app.use((vue_sweetalert2__WEBPACK_IMPORTED_MODULE_3___default()));
-app.use(_store__WEBPACK_IMPORTED_MODULE_5__["default"]);
+app.use(_store_index__WEBPACK_IMPORTED_MODULE_5__["default"]);
 
 window.onload = function () {
   app.mount('#app');
@@ -21462,16 +21480,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,vuex__WEBPACK_IMPORTED_MODULE_0__.createStore)({
-  state: {
-    prices: {
-      g95: 0,
-      g98: 0,
-      diesel: 0
-    }
+  state: function state() {
+    return {
+      prices: {
+        g95: 1.23,
+        g98: 1.23,
+        diesel: 1.23
+      },
+      id_vehiculo: 1
+    };
   },
   mutations: {
     setg95Price: function setg95Price(state, price) {
       state.prices.g95 = price;
+    },
+    setIdVehiculo: function setIdVehiculo(state, id_vehiculo) {
+      state.id_vehiculo = id_vehiculo;
     }
   }
 }));
@@ -35019,7 +35043,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.tarjeta[data-v-0026b5c8] {\r\n    background-color: #c5a880;\r\n    border: #532e1c solid medium;\r\n    width: 90%;\r\n    margin: 1rem auto;\r\n    border-radius: 10px 0px;\r\n\r\n    display: flex;\r\n    flex-flow: row wrap;\r\n    justify-content: space-between;\r\n    gap: 0.5em;\r\n    cursor: pointer;\r\n    transition: all .2s ease-in;\n}\n.tarjeta[data-v-0026b5c8]:hover {\r\n    box-shadow: 0px 16px 24px 2px rgba(0,0,0,0.14) , 0px 6px 30px 5px rgba(0,0,0,0.12) , 0px 8px 10px -7px rgba(0,0,0,0.2) ;\n}\n.fecha-carburante-container[data-v-0026b5c8] {\r\n    display: flex;\r\n    flex-flow: column nowrap;\n}\n.fecha[data-v-0026b5c8] {\r\n    background-color: #532e1c;\r\n    border-radius: 0 0 10px 0;\r\n    text-align: center;\r\n    color: white;\r\n    font-size: small;\r\n    min-width: 5rem;\n}\n.gasolinera[data-v-0026b5c8] {\r\n    flex: 1 1 60%;\r\n    text-align: center;\n}\n.total[data-v-0026b5c8] {\r\n    width: 7rem;\r\n    min-width: -webkit-fit-content;\r\n    min-width: -moz-fit-content;\r\n    min-width: fit-content;\r\n    border-radius: 0 10px 0 0;\r\n    text-align: center;\r\n    color: white;\r\n    background: #532e1c;\n}\n.coste-litro-container[data-v-0026b5c8] {\r\n    display: flex;\r\n    flex-flow: row nowrap;\r\n    justify-content: space-around;\r\n\r\n    width: 8rem;\r\n    min-width: -webkit-fit-content;\r\n    min-width: -moz-fit-content;\r\n    min-width: fit-content;\r\n    background-color: #532e1c;\r\n    border-radius: 10px 0 0 0;\r\n    color: white;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.tarjeta[data-v-0026b5c8] {\r\n    background-color: #c5a880;\r\n    border: #532e1c solid medium;\r\n    width: 90%;\r\n    margin: 1rem auto;\r\n    border-radius: 10px 0px;\r\n\r\n    display: flex;\r\n    flex-flow: row wrap;\r\n    justify-content: space-between;\r\n    gap: 0.5em;\r\n    cursor: pointer;\r\n    transition: all .2s ease-in;\n}\n.tarjeta[data-v-0026b5c8]:hover {\r\n    box-shadow: 0px 16px 24px 2px rgba(0,0,0,0.14) , 0px 6px 30px 5px rgba(0,0,0,0.12) , 0px 8px 10px -7px rgba(0,0,0,0.2) ;\n}\n.fecha-carburante-container[data-v-0026b5c8] {\r\n    display: flex;\r\n    flex-flow: column nowrap;\n}\n.fecha[data-v-0026b5c8] {\r\n    background-color: #532e1c;\r\n    border-radius: 0 0 10px 0;\r\n    text-align: center;\r\n    color: white;\r\n    min-width: 6rem;\n}\n.gasolinera[data-v-0026b5c8] {\r\n    flex: 1 1 fill;\r\n    text-align:center;\n}\n.total[data-v-0026b5c8] {\r\n    width: 7rem;\r\n    min-width: -webkit-fit-content;\r\n    min-width: -moz-fit-content;\r\n    min-width: fit-content;\r\n    border-radius: 0 10px 0 0;\r\n    text-align: center;\r\n    color: white;\r\n    background: #532e1c;\n}\n.coste-litro-container[data-v-0026b5c8] {\r\n    display: flex;\r\n    flex-flow: row nowrap;\r\n    justify-content: space-around;\r\n\r\n    width: 8rem;\r\n    min-width: -webkit-fit-content;\r\n    min-width: -moz-fit-content;\r\n    min-width: fit-content;\r\n    background-color: #532e1c;\r\n    border-radius: 10px 0 0 0;\r\n    color: white;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

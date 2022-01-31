@@ -11,7 +11,6 @@
  * Esta en resources/app.js la linea 27
  * 
  */
-
 $(window).on('load', function() {
     $('#calcular').on('click', function () {
         //Distancia que va a recorrer
@@ -106,7 +105,7 @@ $(window).on('load', function() {
                 $('#calcular').removeClass('calculo');
                 guardar.removeClass('subirHov');
                 $(multiples).removeClass('multiple');
-            }, 5000);
+            }, 1500);
         }else{
             comprobacion=false;
         }
@@ -118,7 +117,7 @@ $(window).on('load', function() {
                 icon: 'warning',
                 iconColor: 'red',
                 title: 'Cuidado',
-                html: 'Rellene los campos obligatorios',
+                html: 'Necesitas de los kilómetros a recorrer, el consumo de tu vehículo y su tipo de combustible para calcular los totales',
                 confirmButtonText: '<i class="fa fa-thumbs-up"></i> ok',
             });
         }
@@ -159,5 +158,8 @@ $(window).on('load', function() {
             }
         }
     })
+
+           
+        
 })
 
