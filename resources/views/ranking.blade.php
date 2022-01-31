@@ -13,5 +13,7 @@
 @endpush
 
 @section('content')
-        <Ranking></Ranking>
+        <main>
+            <Ranking></Ranking>
+        </main>
 @endsection
