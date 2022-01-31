@@ -21,7 +21,7 @@ export default {
     const Swal = require('sweetalert2');
     const id_user = inject("id_user");
     const consumos = reactive([]);
-    var id_vehiculo = this.$store.state.id_vehiculo;
+    var id_vehiculo = 1;
 
     const getConsumos = async() => {
       let response;
