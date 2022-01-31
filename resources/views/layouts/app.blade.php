@@ -11,18 +11,17 @@
     @endif
     <title>@yield('title')</title>
     <script src="{{ asset('js/app.js') }}"></script>
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet"/>
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}"/>
     <link rel="stylesheet" href="{{ asset('css/header.css') }}">
     @stack('head')
 </head>
 <body id="app">
-
-        @include('layouts.header')
+    <div class="wrapper">
+        <header>@include('layouts.header')</header>
 
         @yield('content')
 
         <Pie></Pie>
-
-    
+    </div>
 </body>
 </html>
