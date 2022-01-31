@@ -3,7 +3,8 @@
     <h1 class="mx-auto"><span id="obligatorio">*</span> Seleccione un vehículo</h1>
 
     <div class="select-agregar row w-100 mx-auto">
-      <select @change="cambiarVehiculo()" v-model="vehiculo" class="col" name="vehiculo">
+      <select @change="cambiarVehiculo()" class="col" name="vehiculo" id="vehiculo">
+        <option value="0" selected disabled>Seleccione un vehiculo</option>
         <option v-for="v in vehiculos.value" :key="v.id_vehiculo" :value="v.id_vehiculo">
           {{ v.nombre }}
         </option>
@@ -24,19 +25,20 @@
 <script>
 import { reactive, onBeforeMount, inject, computed } from "vue";
 import axios from "axios";
+import Swal from "sweetalert2"
 import {useStore} from "vuex";
 
 export default {
   setup() {
     const store = useStore();
-    const Swal = require("sweetalert2");
     const id_user = inject("id_user");
-
     const vehiculos = reactive([]);
     const vehiculo = computed("");
 
     const cambiarVehiculo = () => {
-      store.commit("setIdVehiculo", document.getElementsByName("vehiculo").value);
+      const vehiculo_seleccionado = document.getElementById("vehiculo").value;
+      
+      if (vehiculo_seleccionado) store.commit("setIdVehiculo", vehiculo_seleccionado);
     };
 
     const getVehiculos = async () => {
@@ -109,12 +111,7 @@ export default {
       addVehiculo,
       cambiarVehiculo,
       vehiculos,
-      vehiculo
     };
   },
 };
 </script>
-
-
-<style lang="scss" scoped>
-</style>
