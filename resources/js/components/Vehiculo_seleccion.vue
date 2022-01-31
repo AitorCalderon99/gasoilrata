@@ -22,17 +22,22 @@
 </template>
 
 <script>
-/* import { reactive, onBeforeMount } from '@vue/runtime-core' */
-import { reactive, onBeforeMount, ref, inject, computed } from "vue";
+import { reactive, onBeforeMount, inject, computed } from "vue";
 import axios from "axios";
-import Swal from "sweetalert2";
+import {useStore} from "vuex";
+
 export default {
   setup() {
+    const store = useStore();
     const Swal = require("sweetalert2");
     const id_user = inject("id_user");
 
     const vehiculos = reactive([]);
     const vehiculo = computed("");
+
+    const cambiarVehiculo = () => {
+      store.commit("setIdVehiculo", document.getElementsByName("vehiculo").value);
+    };
 
     const getVehiculos = async () => {
       let response;
@@ -101,8 +106,10 @@ export default {
 
     return {
       getVehiculos,
-      vehiculos,
       addVehiculo,
+      cambiarVehiculo,
+      vehiculos,
+      vehiculo
     };
   },
 };
