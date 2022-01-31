@@ -25,7 +25,9 @@ export default {
         const getRepostajes = async() => {
             let response;
             try {
-                response = await axios.get('repostajes/'+getIdVehiculo);
+            console.log("----------ANTES----------");
+            console.log(getIdVehiculo);
+                response = await axios.get('repostajes/'+store.state.id_vehiculo);
             } catch (error) {
                 Swal.fire(error.message, "", "error");
             return;
@@ -41,7 +43,7 @@ export default {
         }
 
         const getIdVehiculo = computed( () => {
-            return id_vehiculo = this.$store.state.id_vehiculo;
+            return id_vehiculo = store.state.id_vehiculo;
         });
 
         onBeforeMount( () => {
