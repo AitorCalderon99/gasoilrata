@@ -115,7 +115,7 @@
     @if(Auth::check())
         <Vehiculo_seleccion></Vehiculo_seleccion>
     @else
-        <h1>Debes iniciar sesión para guardar vehículos</h1>
+        <h1 class="mx-auto">Debes iniciar sesión para guardar vehículos</h1>
     @endif
 
     @if(!empty($errores["vehiculo"]))
