@@ -1,12 +1,10 @@
 /* require('./bootstrap'); */
 
-import Alpine from 'alpinejs';
 const axios = require('axios');
 
-
-window.Alpine = Alpine;
-
-Alpine.start();
+// import Alpine from 'alpinejs';
+// window.Alpine = Alpine;
+// Alpine.start();
 
 /* import BootstrapVue3 */
 import BootstrapVue3 from 'bootstrap-vue-3'
@@ -17,10 +15,18 @@ import 'bootstrap-vue-3/dist/bootstrap-vue-3.css'
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 
-import store from "./store";
+import store from "./store/index";
 
+/**
+ * 
+ * Si no queremos poner toda la linea de codigo de
+ * "window.on('load')", podemos venir aqui y comentar
+ * la linea de abajo, y cambiarla por esta:
+ * 
+ * window.$=$;
+ * 
+ */
 global.$ = global.jQuery = require('jquery');
-
 
 import { createApp } from 'vue';
 const app = createApp({});
@@ -43,7 +49,13 @@ import Ranking from "./components/Ranking";
 import Vehiculo_seleccion from "./components/Vehiculo_seleccion";
 import Tarjetas_consumos from "./components/Tarjetas_consumos";
 import Cardscopy from "./components/Cardscopy";
+<<<<<<< HEAD
 import Precios from "./components/Precios";
+=======
+import Tarjetas_repostajes from "./components/Tarjetas_repostajes";
+import Tarjeta_repostaje from "./components/Tarjeta_repostaje";
+import { Swal } from 'sweetalert2/dist/sweetalert2';
+>>>>>>> 644517fb854f8cac784238afdc8f829a94608441
 
 
 app.component('Cardscopy', Cardscopy);
@@ -55,10 +67,17 @@ app.component('Grafico', Grafico);
 app.component('Ranking', Ranking);
 app.component('Vehiculo_seleccion', Vehiculo_seleccion);
 app.component('Tarjetas_consumos', Tarjetas_consumos);
+<<<<<<< HEAD
 app.component('Precios', Precios);
+=======
+app.component('Tarjetas_repostajes', Tarjetas_repostajes);
+app.component('Tarjeta_repostaje', Tarjeta_repostaje);
+>>>>>>> 644517fb854f8cac784238afdc8f829a94608441
 
 app.use(BootstrapVue3);
 app.use(VueSweetalert2);
-app.use(store)
+app.use(store);
 
-app.mount('#app');
+window.onload = function () {
+    app.mount('#app');
+}

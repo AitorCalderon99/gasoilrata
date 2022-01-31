@@ -32,9 +32,24 @@ export default {
           "El carné de conducir tiene una vigencia de 10 años y según la Ley de Tráfico, circular con el carné caducado conlleva una multa de 200 euros. Pero no solo eso, si estamos implicados en algún accidente el seguro probablemente se lave las manos (sea a terceros o todo riesgo). ",
       },
       {
-        pregunta: "¿Te la suda todo?",
+        pregunta: "¿En qué paises es más cara la gasolina?",
         respuesta:
-          "Pues no deberia.",
+          "Noruega, Islandia y Hong Kong, tienen el precio de la gasolina más caro.",
+      },
+      {
+        pregunta: "¿El automóvil fue conocido como ese medio de transporte limpio capaz de acabar con la contaminación de la epoca. Cuál era esa contaminación?",
+        respuesta:
+          "Los excrementos de caballo.",
+      },
+      {
+        pregunta: "¿Porqué se invento la velocidad de crucero?",
+        respuesta:
+          "La velocidad de crucero fue inventada por un ingeniero ciego porque su abogado conducía a 'trompicones'.",
+      },
+      {
+        pregunta: "¿A qué velocidad se circulo en la primera carrera de coches de la historia?",
+        respuesta:
+          "La primera carrera se disputó en Francia entre lae ciudades de Burdeos y París, en una ida y vuelta a 24 km/h.",
       },
     ];
 
@@ -43,10 +58,10 @@ export default {
       for (var i = 0; i < 2; ) {
         // numero aleatorio entre 0 y longitud de array tarjetas
         const numRandom = Math.floor(Math.random() * tarjetas.length);
-        console.log(numRandom);
+        /*console.log(numRandom);*/
 
         if (!numerosSalidos.includes(numRandom)) {
-          console.log(tarjetas[numRandom]);
+          /*console.log(tarjetas[numRandom]);*/
           numerosSalidos.push(numRandom);
           cuestiones.push(tarjetas[numRandom]);
           i++;
@@ -125,6 +140,7 @@ export default {
       cursor: pointer;
       >img{
         transform: rotate(180deg);
+        width: 5rem;
         &.firstCard{
           filter: opacity(25%);
         }
@@ -139,6 +155,7 @@ export default {
     >#next{
       cursor: pointer;
       >img{
+        width: 5rem;
         &.lastCard{
           filter: opacity(25%);
         }

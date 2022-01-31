@@ -21,11 +21,12 @@ export default {
     const Swal = require('sweetalert2');
     const id_user = inject("id_user");
     const consumos = reactive([]);
+    var id_vehiculo = this.$store.state.id_vehiculo;
 
     const getConsumos = async() => {
       let response;
         try {
-            response = await axios.get('consumo/'+id_user);
+            response = await axios.get('consumo/'+id_vehiculo);
         } catch (error) {
             Swal.fire(error.title, error.message, "error");
             return;

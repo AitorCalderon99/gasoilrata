@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
 use SebastianBergmann\Environment\Console;
 
-use function PHPUnit\Framework\isEmpty;
+use function PHPUnit\Framework\empty;
 
 class CalculadoraController extends Controller
 {
@@ -49,26 +49,42 @@ class CalculadoraController extends Controller
         $destino = $request -> destino;
         $carburante = $request -> carburante;
         $vehiculo = $request -> vehiculo;
+        $errores = array();
+
         // Obligatorios: km, litros, coste, idV
-        if(isEmpty($km) || $km == null){
-            return view("calculadora", ["km" => "Error al insertar"]);
+        if(empty($km) || $km == null || empty($litros) || $litros == null || empty($coste) || $coste == null || empty($carburante) || $carburante == null || empty($vehiculo) || $vehiculo == null){
+            if(empty($km) || $km == null){
+                $errores["km"] = "No se han introducido los kilómetros a recorrer";
+            }
+            if(empty($litros) || $litros == null){
+                $errores["litros"] = "No se ha introducido el consumo del vehículo";
+            }
+            if(empty($coste) || $coste == null){
+                $errores["coste"] = "No se ha introducido el coste del carburante";
+            }
+            if(empty($carburante) || $carburante == null){
+                $errores["carburante"] = "No se ha seleccionado el tipo carburante del vehículo";
+            }
+            if(empty($vehiculo) || $vehiculo == null){
+                $errores["vehiculo"] = "No se ha seleccionado o añadido un vehiculo";
+            }
+            // return $errores;
+            return view("calculadora") -> with("errores", $errores);
         }else{
             // $fecha = Carbon::now();
             $fecha = date("Y-m-d");
             $consumo = new Consumo;
-            $consumo -> kilometros = $request -> km;
-            $consumo -> litros = $request -> consumo;
-            $consumo -> coste_litro = $request -> coste;
-            $consumo -> origen = $request -> origen;
-            $consumo -> destino = $request -> destino;
+            $consumo -> kilometros = $km;
+            $consumo -> litros = $litros;
+            $consumo -> coste_litro = $coste;
+            $consumo -> origen = $origen;
+            $consumo -> destino = $destino;
             $consumo -> fecha = $fecha;
-            $consumo -> carburante = $request -> carburante;
-            $consumo -> id_vehiculo = $request -> vehiculo;
+            $consumo -> carburante = $carburante;
+            $consumo -> id_vehiculo = $vehiculo;
             $consumo -> save();
-            return view("calculadora");
+            return view("calculadora")->with("guardado", "Consumo guardado");
         }
-
-        
     }
 
     /**

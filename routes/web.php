@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\CrearRepostajesController;
+use App\Http\Controllers\UsuariosController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ConsumosController;
@@ -41,6 +45,7 @@ Route::get('register', [RegisteredUserController::class, "create"]);
 // Vistas con mantenimiento
 //Lo de las comillas es como tenemos que llamarlo en el href para que funcione
 Route::resource("consumo", ConsumosController::class);
+Route::resource("crearRepostajes", CrearRepostajesController::class);
 Route::resource("ranking", RankingController::class);
 Route::resource("calculadora", CalculadoraController::class);
 Route::resource("repostajes", RepostajesController::class);

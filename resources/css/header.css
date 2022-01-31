@@ -6,6 +6,10 @@ nav {
     background-color: #c5a880;
 }
 
+#Inicio{
+    color: black;
+}
+
 .nav-justified .nav-item,
 .nav-justified>.nav-link {
     text-align: center;

@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col">
                 <div class="head-text">
-                    <p>¡Encuentra las gasolineras cercanas con los precios más baratos!</p>
+                    <p class="h2">¡Encuentra las gasolineras cercanas con los precios más baratos!</p>
                 </div>
                 <br/>
                 <div class="foptions">
@@ -84,27 +84,11 @@ axios
 
 
 //Functions
-
+//Animation JQUERY precio
 function animatePrecio(input) {
-    /*$({deg: 0}).animate({deg: 180}, {
-        step: function(now, fx){
-            $(".fa-long-arrow-alt-up").css({
-                transform: "rotate(" + now + "deg)"
-            });
-
-
-        }
-    });*/
-
-
     let orientation = input ? 180 : 0;
 
     let sum = orientation - 360;
-
-    console.log("Orientation= " + orientation);
-    console.log("Sum= " + sum);
-
-
     $({deg: orientation}).animate({deg: sum}, {
         step: function(now, fx){
             $(".fa-long-arrow-alt-up").css({
