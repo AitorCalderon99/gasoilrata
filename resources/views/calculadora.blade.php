@@ -3,6 +3,7 @@
 <!--Para subir lo estilos al header y asi que se muestren bien-->
 @push('head')
 <script src="{{ asset('js/calculadora.js') }}"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <style>
     html * {
         font-family: "Hemi head";
@@ -98,6 +99,7 @@
 @endpush
 
 @section('content')
+
 <form class="container my-3" method="POST" action="/calculadora">
     {{-- Etiqueta obligatoria para enviar el formulario (añadir el class="form-control" a los input) --}}
     @csrf
@@ -109,7 +111,19 @@
     </h3>
     <p>Los campos con * son obligatorios</p>
     @if(!empty($guardado))
-        <p>GUARDADO</p>
+    <script>
+         Swal.fire({
+                toast: true,
+                icon: 'success',
+                title: 'General Title',
+                animation: true,
+                position: 'top-right',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                title: 'Signed in Successfully'
+            });
+    </script>
     @endif
 
     @if(Auth::check())

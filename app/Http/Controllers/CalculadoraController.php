@@ -83,7 +83,7 @@ class CalculadoraController extends Controller
             $consumo -> carburante = $carburante;
             $consumo -> id_vehiculo = $vehiculo;
             $consumo -> save();
-            return view("calculadora")->with("guardado", "Consumo guardado");
+            return view("calculadora")->with("guardado", "true");
         }
     }
 
