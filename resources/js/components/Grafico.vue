@@ -42,7 +42,7 @@ export default {
     }
 
     const getG95 = computed( {
-      get: () => this.$store.state.prices.g95
+      get: () => store.state.prices.g95
     } );
   
     const beforeRenderLogic = (event) => {
@@ -51,8 +51,6 @@ export default {
       //  event.preventDefault()
       //}   
     }
-
-    console.log(getG95)
 
     return {
       barChart,
