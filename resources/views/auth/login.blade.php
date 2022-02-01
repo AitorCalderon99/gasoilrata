@@ -9,6 +9,7 @@
 
     html * {
         font-family: "Hemi head";
+        letter-spacing: 0.06rem;
     }   
 
     a{

@@ -11423,6 +11423,10 @@ select {
   margin-left: auto;
   margin-right: auto;
 }
+.my-4 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
 .mx-4 {
   margin-left: 1rem;
   margin-right: 1rem;
@@ -11438,10 +11442,6 @@ select {
 .mx-1 {
   margin-left: 0.25rem;
   margin-right: 0.25rem;
-}
-.my-4 {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
 }
 .my-2 {
   margin-top: 0.5rem;
@@ -11973,8 +11973,23 @@ select {
 .ease-in {
   transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
 }
-footer{
-    margin-top: auto;
+html * {
+    font-family: "Hemi Head";
+}
+html, body, .wrapper{
+    height: 100%;
+    margin: 0;
+}
+.wrapper {
+    display: flex;
+    flex-flow: column nowrap;
+
+}
+header, footer {
+    flex: 0 0 auto;
+}
+main {
+    flex: 1 0 auto;
 }
 .hover\:border-gray-300:hover {
   --tw-border-opacity: 1;

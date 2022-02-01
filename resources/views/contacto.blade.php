@@ -3,6 +3,9 @@
 <!--Para subir lo estilos al header y asi que se muestren bien-->
 @push('head')
 <style>
+    html *{
+        letter-spacing: 0.06rem;
+    }
     #mapa {
         width: 100%;
         height: 20%;

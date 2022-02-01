@@ -5,6 +5,9 @@
 @push('head')
 <script src="{{ asset('js/calculadora.js') }}"></script>
     <style>
+        html *{
+            letter-spacing: 0.06rem;
+        }
         input::-webkit-outer-spin-button,
         input::-webkit-inner-spin-button {
             -webkit-appearance: none;
