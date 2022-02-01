@@ -83,6 +83,6 @@ class VehiculosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return "Prueba";
     }
 }
