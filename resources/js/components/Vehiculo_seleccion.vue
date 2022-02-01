@@ -5,10 +5,10 @@
     <div class="select-agregar row w-100 mx-auto">
       <select @change="cambiarVehiculo()" class="col" name="vehiculo" id="vehiculo">
         <option value="0" selected disabled>Seleccione un vehiculo</option>
-        <option v-for="v in vehiculos.value" :key="v.id_vehiculo" :value="v.id_vehiculo">
+        <option v-for="v in vehiculos" :key="v.id_vehiculo" :value="v.id_vehiculo">
           {{ v.nombre }}
         </option>
-        <option v-if="vehiculos.value <= 0" disabled>No has añadido ningún vehículo</option>
+        <option v-if="vehiculos <= 0" disabled>No has añadido ningún vehículo</option>
       </select>
       <button
         type="button"
@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import { reactive, onBeforeMount, inject, computed } from "vue";
+import { reactive, onBeforeMount, inject, computed, ref } from "vue";
 import axios from "axios";
 import Swal from "sweetalert2"
 import {useStore} from "vuex";
@@ -32,7 +32,7 @@ export default {
   setup() {
     const store = useStore();
     const id_user = inject("id_user");
-    const vehiculos = reactive([]);
+    const vehiculos = ref([]);
     const vehiculo = computed("");
 
     const cambiarVehiculo = () => {
