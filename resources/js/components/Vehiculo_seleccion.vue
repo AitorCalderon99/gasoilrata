@@ -18,6 +18,14 @@
       >
         +
       </button>
+      <button
+        type="button"
+        id="menosVehiculo"
+        class="btn btn-outline-secondary col-2"
+        @click="removeVehiculo()"
+      >
+        -
+      </button>
     </div>
   </div>
 </template>
@@ -79,6 +87,28 @@ export default {
       getVehiculos();
     };
 
+    const deleteVehiculo = async (vehiculo) => {
+      let response;
+
+      try {
+        response = await axios.post("/vehiculos/{vehiculo}", {
+        vehiculo: vehiculo,
+        idUser: id_user,
+        });
+      } catch (error) {
+        Sawl.fire("Tienes que iniciar sesión para guardar vehículos", "error");
+        return;
+      }
+
+      Swal.fire(vehiculo + " se ha añadido al garaje.");
+
+      if (response.data != 200) {
+        //marcar error
+        return;
+      }
+      getVehiculos();
+    };
+
     const addVehiculo = async () => {
       const { value: vehiculo } = await Swal.fire({
         titleText: "Añade tu coche al garaje virtual",
@@ -103,6 +133,26 @@ export default {
       }
     };
 
+    const removeVehiculo = async () => {
+      const { value: vehiculo } = await Swal.fire({
+        title: "¿Eliminar este vehículo?",
+        showDenyButton: true,
+        confirmButtonText: 'Eliminar',
+        denyButtonText: 'Volver',
+        width: "40rem",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire('Vehículo eliminado!', '', 'success')
+        }
+      });
+
+      if (vehiculo) {
+        // saveVehiculo(vehiculo);
+        deleteVehiculo();
+        getVehiculos();
+      }
+    };
+
     onBeforeMount(() => {
       getVehiculos();
     });
@@ -110,6 +160,7 @@ export default {
     return {
       getVehiculos,
       addVehiculo,
+      removeVehiculo,
       cambiarVehiculo,
       vehiculos,
     };
