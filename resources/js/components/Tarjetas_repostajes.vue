@@ -26,19 +26,20 @@ export default {
             let response;
             try {
             console.log("----------ANTES----------");
-            console.log(getIdVehiculo);
+            console.log(store.state.id_vehiculo);
                 response = await axios.get('repostajes/'+store.state.id_vehiculo);
             } catch (error) {
                 Swal.fire(error.message, "", "error");
-            return;
+                return;
             }
 
-            // if (response.data != 200) {
-            //     //marcar error
-            //     return;
-            // }
-
             console.log(response.data);
+
+            if (!response.data) {
+                Swal.fire("UPS!", "no he encontrado ningún repostaje con este coche", "error");
+                return;
+            }
+
             repostajes.value = response.data;
         }
 
