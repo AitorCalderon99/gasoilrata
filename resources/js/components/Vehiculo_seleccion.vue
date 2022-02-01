@@ -99,6 +99,7 @@ export default {
 
       if (vehiculo) {
         saveVehiculo(vehiculo);
+        getVehiculos();
       }
     };
 

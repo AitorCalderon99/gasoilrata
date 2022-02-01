@@ -7,6 +7,7 @@
 main > * {
     margin: 2rem 1rem;
     text-align: justify;
+    letter-spacing: 0.06rem;
 }
 </style>
 @endpush

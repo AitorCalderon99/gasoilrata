@@ -7,6 +7,7 @@
 <style>
     html * {
         font-family: "Hemi head";
+        letter-spacing: 0.06rem;
     }
 
     input::-webkit-outer-spin-button,
@@ -110,6 +111,7 @@
         tus viajes.
     </h3>
     <p>Los campos con * son obligatorios</p>
+    <br>
     @if(!empty($guardado))
     <script>
          Swal.fire({
@@ -135,7 +137,7 @@
     @if(!empty($errores["vehiculo"]))
         <p id="error">Error al guardar: {{ $errores["vehiculo"] }}</p>
     @endif
-
+    <br>
     <div class="mb-3">
         <label><span id="obligatorio">*</span> Kilometros a realizar </label>
         <div class="input-group">
@@ -224,11 +226,9 @@
         <label>Consumo:</label>
         <div id="cajaDTotal">
             <div id="cajaLTotal" class="text-light d-flex align-items-center justify-content-center">
-                {{-- <h2>32.65L</h2> --}}
             </div>
 
             <div id="textoTotal" class="d-flex align-items-center justify-content-center">
-                {{-- <p id="resultado"></p> --}}
             </div>
         </div>
     </div>

@@ -3,7 +3,11 @@
 @section('title', 'Mis repostajes')
 
 @push('head')
-
+    <style>
+        html * {
+            letter-spacing: 0.06rem;
+        }
+    </style>
 @endpush
 
 @section('content')
