@@ -98,7 +98,7 @@
         <article class="col-md-6 col-xl-6">
             <div class="d-flex">
                 <img class="logos mx-4" src="img/mailLogo.png"/>
-                idazkaria@fpTXurdinaga.com
+                <a href="mailto:idazkaria@fpTXurdinaga.com">idazkaria@fpTXurdinaga.com</a>
             </div>
 
             <div class="d-flex my-3">
@@ -121,7 +121,7 @@
 
             <div class="d-flex mt-3">
                 <img class="logos mx-4" src="img/telefonoLogo.png"/>
-                944 125 712                
+                <a href="tel:944125712">944 125 712</a>
             </div>
         </article>
 
