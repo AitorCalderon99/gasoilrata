@@ -51,6 +51,7 @@ Route::resource("calculadora", CalculadoraController::class);
 Route::resource("repostajes", RepostajesController::class);
 Route::resource("editarUsuario", UsuariosController::class);
 Route::resource("vehiculos", VehiculosController::class);
+Route::resource("usuarios", UsuariosController::class);
 
 // Route::post("/vehiculos", [VehiculosController::class, "store"]);
 

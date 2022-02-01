@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UsuariosController extends Controller
@@ -45,7 +46,7 @@ class UsuariosController extends Controller
      */
     public function show($id)
     {
-        //
+        return User::where('id', '=', $id)->get();
     }
 
     /**
