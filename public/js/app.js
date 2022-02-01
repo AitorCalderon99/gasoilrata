@@ -1623,7 +1623,7 @@ function parseAttributes(context, type) {
         }
         const attr = parseAttribute(context, attributeNames);
         // Trim whitespace between class
-        // https://github.com/vuejs/vue-next/issues/4251
+        // https://github.com/vuejs/core/issues/4251
         if (attr.type === 6 /* ATTRIBUTE */ &&
             attr.value &&
             attr.name === 'class') {
@@ -1859,7 +1859,7 @@ function parseTextData(context, length, mode) {
     advanceBy(context, length);
     if (mode === 2 /* RAWTEXT */ ||
         mode === 3 /* CDATA */ ||
-        rawText.indexOf('&') === -1) {
+        !rawText.includes('&')) {
         return rawText;
     }
     else {
@@ -3483,6 +3483,7 @@ const transformFor = createStructuralDirectiveTransform('for', (node, dir, conte
         const renderExp = createCallExpression(helper(RENDER_LIST), [
             forNode.source
         ]);
+        const isTemplate = isTemplateNode(node);
         const memo = findDir(node, 'memo');
         const keyProp = findProp(node, `key`);
         const keyExp = keyProp &&
@@ -3502,7 +3503,6 @@ const transformFor = createStructuralDirectiveTransform('for', (node, dir, conte
         return () => {
             // finish the codegen now that all children have been traversed
             let childBlock;
-            const isTemplate = isTemplateNode(node);
             const { children } = forNode;
             // check <template v-for> key placement
             if (( true) && isTemplate) {
@@ -6031,6 +6031,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "isReactive": () => (/* reexport safe */ _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.isReactive),
 /* harmony export */   "isReadonly": () => (/* reexport safe */ _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.isReadonly),
 /* harmony export */   "isRef": () => (/* reexport safe */ _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.isRef),
+/* harmony export */   "isShallow": () => (/* reexport safe */ _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.isShallow),
 /* harmony export */   "markRaw": () => (/* reexport safe */ _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.markRaw),
 /* harmony export */   "onScopeDispose": () => (/* reexport safe */ _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.onScopeDispose),
 /* harmony export */   "proxyRefs": () => (/* reexport safe */ _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.proxyRefs),
@@ -6296,7 +6297,7 @@ const ErrorTypeStrings = {
     [12 /* FUNCTION_REF */]: 'ref function',
     [13 /* ASYNC_COMPONENT_LOADER */]: 'async component loader',
     [14 /* SCHEDULER */]: 'scheduler flush. This is likely a Vue internals bug. ' +
-        'Please open an issue at https://new-issue.vuejs.org/?repo=vuejs/vue-next'
+        'Please open an issue at https://new-issue.vuejs.org/?repo=vuejs/core'
 };
 function callWithErrorHandling(fn, instance, type, args) {
     let res;
@@ -7763,7 +7764,7 @@ function inject(key, defaultValue, treatDefaultAsFactory = false) {
     if (instance) {
         // #2400
         // to support `app.use` plugins,
-        // fallback to appContext's `provides` if the intance is at root
+        // fallback to appContext's `provides` if the instance is at root
         const provides = instance.parent == null
             ? instance.vnode.appContext && instance.vnode.appContext.provides
             : instance.parent.provides;
@@ -7831,7 +7832,7 @@ function doWatch(source, cb, { immediate, deep, flush, onTrack, onTrigger } = _v
     let isMultiSource = false;
     if ((0,_vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.isRef)(source)) {
         getter = () => source.value;
-        forceTrigger = !!source._shallow;
+        forceTrigger = (0,_vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.isShallow)(source);
     }
     else if ((0,_vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.isReactive)(source)) {
         getter = () => source;
@@ -8724,7 +8725,7 @@ function matches(pattern, name) {
         return pattern.some((p) => matches(p, name));
     }
     else if ((0,_vue_shared__WEBPACK_IMPORTED_MODULE_1__.isString)(pattern)) {
-        return pattern.split(',').indexOf(name) > -1;
+        return pattern.split(',').includes(name);
     }
     else if (pattern.test) {
         return pattern.test(name);
@@ -8979,7 +8980,7 @@ function applyOptions(instance) {
                         warn(`Write operation failed: computed property "${key}" is readonly.`);
                     }
                     : 0;
-            const c = (0,_vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.computed)({
+            const c = computed({
                 get,
                 set
             });
@@ -9380,7 +9381,9 @@ function updateProps(instance, rawProps, rawPrevProps, optimized) {
         // attrs point to the same object so it should already have been updated.
         if (attrs !== rawCurrentProps) {
             for (const key in attrs) {
-                if (!rawProps || !(0,_vue_shared__WEBPACK_IMPORTED_MODULE_1__.hasOwn)(rawProps, key)) {
+                if (!rawProps ||
+                    (!(0,_vue_shared__WEBPACK_IMPORTED_MODULE_1__.hasOwn)(rawProps, key) &&
+                        (!false ))) {
                     delete attrs[key];
                     hasAttrsChanged = true;
                 }
@@ -10482,6 +10485,7 @@ function createHydrationFunctions(rendererInternals) {
     return [hydrate, hydrateNode];
 }
 
+/* eslint-disable no-restricted-globals */
 let supported;
 let perf;
 function startMeasure(instance, type) {
@@ -10509,7 +10513,6 @@ function isSupported() {
     if (supported !== undefined) {
         return supported;
     }
-    /* eslint-disable no-restricted-globals */
     if (typeof window !== 'undefined' && window.performance) {
         supported = true;
         perf = window.performance;
@@ -10517,7 +10520,6 @@ function isSupported() {
     else {
         supported = false;
     }
-    /* eslint-enable no-restricted-globals */
     return supported;
 }
 
@@ -12426,7 +12428,7 @@ function cloneVNode(vnode, extraProps, mergeRef = false) {
         shapeFlag: vnode.shapeFlag,
         // if the vnode is cloned with extra props, we can no longer assume its
         // existing patch flag to be reliable and need to add the FULL_PROPS flag.
-        // note: perserve flag for fragments since they use the flag for children
+        // note: preserve flag for fragments since they use the flag for children
         // fast paths only.
         patchFlag: extraProps && vnode.type !== Fragment
             ? patchFlag === -1 // hoisted node
@@ -12588,7 +12590,8 @@ function mergeProps(...args) {
             else if ((0,_vue_shared__WEBPACK_IMPORTED_MODULE_1__.isOn)(key)) {
                 const existing = ret[key];
                 const incoming = toMerge[key];
-                if (existing !== incoming &&
+                if (incoming &&
+                    existing !== incoming &&
                     !((0,_vue_shared__WEBPACK_IMPORTED_MODULE_1__.isArray)(existing) && existing.includes(incoming))) {
                     ret[key] = existing
                         ? [].concat(existing, incoming)
@@ -13420,7 +13423,7 @@ function defineEmits() {
  * instance properties when it is accessed by a parent component via template
  * refs.
  *
- * `<script setup>` components are closed by default - i.e. varaibles inside
+ * `<script setup>` components are closed by default - i.e. variables inside
  * the `<script setup>` scope is not exposed to parent unless explicitly exposed
  * via `defineExpose`.
  *
@@ -13589,6 +13592,10 @@ const useSSRContext = () => {
     }
 };
 
+function isShallow(value) {
+    return !!(value && value["__v_isShallow" /* IS_SHALLOW */]);
+}
+
 function initCustomFormatter() {
     /* eslint-disable no-restricted-globals */
     if ( false || typeof window === 'undefined') {
@@ -13623,7 +13630,7 @@ function initCustomFormatter() {
                 return [
                     'div',
                     {},
-                    ['span', vueStyle, 'Reactive'],
+                    ['span', vueStyle, isShallow(obj) ? 'ShallowReactive' : 'Reactive'],
                     '<',
                     formatValue(obj),
                     `>${(0,_vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.isReadonly)(obj) ? ` (readonly)` : ``}`
@@ -13633,7 +13640,7 @@ function initCustomFormatter() {
                 return [
                     'div',
                     {},
-                    ['span', vueStyle, 'Readonly'],
+                    ['span', vueStyle, isShallow(obj) ? 'ShallowReadonly' : 'Readonly'],
                     '<',
                     formatValue(obj),
                     '>'
@@ -13762,7 +13769,7 @@ function initCustomFormatter() {
         }
     }
     function genRefFlag(v) {
-        if (v._shallow) {
+        if (isShallow(v)) {
             return `ShallowRef`;
         }
         if (v.effect) {
@@ -13806,7 +13813,7 @@ function isMemoSame(cached, memo) {
 }
 
 // Core API ------------------------------------------------------------------
-const version = "3.2.27";
+const version = "3.2.29";
 const _ssrUtils = {
     createComponentInstance,
     setupComponent,
@@ -13857,6 +13864,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "isReactive": () => (/* binding */ isReactive),
 /* harmony export */   "isReadonly": () => (/* binding */ isReadonly),
 /* harmony export */   "isRef": () => (/* binding */ isRef),
+/* harmony export */   "isShallow": () => (/* binding */ isShallow),
 /* harmony export */   "markRaw": () => (/* binding */ markRaw),
 /* harmony export */   "onScopeDispose": () => (/* binding */ onScopeDispose),
 /* harmony export */   "pauseTracking": () => (/* binding */ pauseTracking),
@@ -14026,7 +14034,7 @@ class ReactiveEffect {
         if (!this.active) {
             return this.fn();
         }
-        if (!effectStack.includes(this)) {
+        if (!effectStack.length || !effectStack.includes(this)) {
             try {
                 effectStack.push((activeEffect = this));
                 enableTracking();
@@ -14286,6 +14294,9 @@ function createGetter(isReadonly = false, shallow = false) {
         else if (key === "__v_isReadonly" /* IS_READONLY */) {
             return isReadonly;
         }
+        else if (key === "__v_isShallow" /* IS_SHALLOW */) {
+            return shallow;
+        }
         else if (key === "__v_raw" /* RAW */ &&
             receiver ===
                 (isReadonly
@@ -14330,9 +14341,14 @@ const shallowSet = /*#__PURE__*/ createSetter(true);
 function createSetter(shallow = false) {
     return function set(target, key, value, receiver) {
         let oldValue = target[key];
+        if (isReadonly(oldValue) && isRef(oldValue) && !isRef(value)) {
+            return false;
+        }
         if (!shallow && !isReadonly(value)) {
-            value = toRaw(value);
-            oldValue = toRaw(oldValue);
+            if (!isShallow(value)) {
+                value = toRaw(value);
+                oldValue = toRaw(oldValue);
+            }
             if (!(0,_vue_shared__WEBPACK_IMPORTED_MODULE_0__.isArray)(target) && isRef(oldValue) && !isRef(value)) {
                 oldValue.value = value;
                 return true;
@@ -14720,7 +14736,7 @@ function getTargetType(value) {
 }
 function reactive(target) {
     // if trying to observe a readonly proxy, return the readonly version.
-    if (target && target["__v_isReadonly" /* IS_READONLY */]) {
+    if (isReadonly(target)) {
         return target;
     }
     return createReactiveObject(target, false, mutableHandlers, mutableCollectionHandlers, reactiveMap);
@@ -14785,6 +14801,9 @@ function isReactive(value) {
 function isReadonly(value) {
     return !!(value && value["__v_isReadonly" /* IS_READONLY */]);
 }
+function isShallow(value) {
+    return !!(value && value["__v_isShallow" /* IS_SHALLOW */]);
+}
 function isProxy(value) {
     return isReactive(value) || isReadonly(value);
 }
@@ -14845,22 +14864,22 @@ function createRef(rawValue, shallow) {
     return new RefImpl(rawValue, shallow);
 }
 class RefImpl {
-    constructor(value, _shallow) {
-        this._shallow = _shallow;
+    constructor(value, __v_isShallow) {
+        this.__v_isShallow = __v_isShallow;
         this.dep = undefined;
         this.__v_isRef = true;
-        this._rawValue = _shallow ? value : toRaw(value);
-        this._value = _shallow ? value : toReactive(value);
+        this._rawValue = __v_isShallow ? value : toRaw(value);
+        this._value = __v_isShallow ? value : toReactive(value);
     }
     get value() {
         trackRefValue(this);
         return this._value;
     }
     set value(newVal) {
-        newVal = this._shallow ? newVal : toRaw(newVal);
+        newVal = this.__v_isShallow ? newVal : toRaw(newVal);
         if ((0,_vue_shared__WEBPACK_IMPORTED_MODULE_0__.hasChanged)(newVal, this._rawValue)) {
             this._rawValue = newVal;
-            this._value = this._shallow ? newVal : toReactive(newVal);
+            this._value = this.__v_isShallow ? newVal : toReactive(newVal);
             triggerRefValue(this, newVal);
         }
     }
@@ -14943,22 +14962,23 @@ class ComputedRefImpl {
     constructor(getter, _setter, isReadonly, isSSR) {
         this._setter = _setter;
         this.dep = undefined;
-        this._dirty = true;
         this.__v_isRef = true;
+        this._dirty = true;
         this.effect = new ReactiveEffect(getter, () => {
             if (!this._dirty) {
                 this._dirty = true;
                 triggerRefValue(this);
             }
         });
-        this.effect.active = !isSSR;
+        this.effect.computed = this;
+        this.effect.active = this._cacheable = !isSSR;
         this["__v_isReadonly" /* IS_READONLY */] = isReadonly;
     }
     get value() {
         // the computed ref may get wrapped by other proxies e.g. readonly() #3376
         const self = toRaw(this);
         trackRefValue(self);
-        if (self._dirty) {
+        if (self._dirty || !self._cacheable) {
             self._dirty = false;
             self._value = self.effect.run();
         }
@@ -15040,14 +15060,14 @@ class DeferredComputedRefImpl {
                 // value invalidation in case of sync access; normal effects are
                 // deferred to be triggered in scheduler.
                 for (const e of this.dep) {
-                    if (e.computed) {
+                    if (e.computed instanceof DeferredComputedRefImpl) {
                         e.scheduler(true /* computedTrigger */);
                     }
                 }
             }
             this._dirty = true;
         });
-        this.effect.computed = true;
+        this.effect.computed = this;
     }
     _get() {
         if (this._dirty) {
@@ -15132,6 +15152,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "isReadonly": () => (/* reexport safe */ _vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__.isReadonly),
 /* harmony export */   "isRef": () => (/* reexport safe */ _vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__.isRef),
 /* harmony export */   "isRuntimeOnly": () => (/* reexport safe */ _vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__.isRuntimeOnly),
+/* harmony export */   "isShallow": () => (/* reexport safe */ _vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__.isShallow),
 /* harmony export */   "isVNode": () => (/* reexport safe */ _vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__.isVNode),
 /* harmony export */   "markRaw": () => (/* reexport safe */ _vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__.markRaw),
 /* harmony export */   "mergeDefaults": () => (/* reexport safe */ _vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__.mergeDefaults),
@@ -15291,7 +15312,10 @@ const nodeOps = {
     insertStaticContent(content, parent, anchor, isSVG, start, end) {
         // <parent> before | first ... last | anchor </parent>
         const before = anchor ? anchor.previousSibling : parent.lastChild;
-        if (start && end) {
+        // #5308 can only take cached path if:
+        // - has a single root node
+        // - nextSibling info is still available
+        if (start && (start === end || start.nextSibling)) {
             // cached
             while (true) {
                 parent.insertBefore(start.cloneNode(true), anchor);
@@ -15604,7 +15628,7 @@ function patchStopImmediatePropagation(e, value) {
             originalStop.call(e);
             e._stopped = true;
         };
-        return value.map(fn => (e) => !e._stopped && fn(e));
+        return value.map(fn => (e) => !e._stopped && fn && fn(e));
     }
     else {
         return value;
@@ -17305,8 +17329,20 @@ const SVG_TAGS = 'svg,animate,animateMotion,animateTransform,circle,clipPath,col
     'polygon,polyline,radialGradient,rect,set,solidcolor,stop,switch,symbol,' +
     'text,textPath,title,tspan,unknown,use,view';
 const VOID_TAGS = 'area,base,br,col,embed,hr,img,input,link,meta,param,source,track,wbr';
+/**
+ * Compiler only.
+ * Do NOT use in runtime code paths unless behind `(process.env.NODE_ENV !== 'production')` flag.
+ */
 const isHTMLTag = /*#__PURE__*/ makeMap(HTML_TAGS);
+/**
+ * Compiler only.
+ * Do NOT use in runtime code paths unless behind `(process.env.NODE_ENV !== 'production')` flag.
+ */
 const isSVGTag = /*#__PURE__*/ makeMap(SVG_TAGS);
+/**
+ * Compiler only.
+ * Do NOT use in runtime code paths unless behind `(process.env.NODE_ENV !== 'production')` flag.
+ */
 const isVoidTag = /*#__PURE__*/ makeMap(VOID_TAGS);
 
 const escapeRE = /["'&<>]/;
@@ -20482,7 +20518,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   setup: function setup() {
     var store = (0,vuex__WEBPACK_IMPORTED_MODULE_4__.useStore)();
     var id_user = (0,vue__WEBPACK_IMPORTED_MODULE_1__.inject)("id_user");
-    var vehiculos = (0,vue__WEBPACK_IMPORTED_MODULE_1__.reactive)([]);
+    var vehiculos = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)([]);
     var vehiculo = (0,vue__WEBPACK_IMPORTED_MODULE_1__.computed)("");
 
     var cambiarVehiculo = function cambiarVehiculo() {
@@ -21359,7 +21395,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "col",
     name: "vehiculo",
     id: "vehiculo"
+<<<<<<< Updated upstream
   }, [_hoisted_4, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.vehiculos.value, function (v) {
+=======
+  }, [_hoisted_4, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.vehiculos, function (v) {
+>>>>>>> Stashed changes
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
       key: v.id_vehiculo,
       value: v.id_vehiculo
@@ -21368,7 +21408,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     , _hoisted_5);
   }), 128
   /* KEYED_FRAGMENT */
+<<<<<<< Updated upstream
   )), $setup.vehiculos.value <= 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", _hoisted_6, "No has añadido ningún vehículo")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 32
+=======
+  )), $setup.vehiculos <= 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", _hoisted_6, "No has añadido ningún vehículo")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 32
+>>>>>>> Stashed changes
   /* HYDRATE_EVENTS */
   ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     type: "button",
@@ -51048,14 +51092,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Cabecera_vue_vue_type_template_id_5497f71d_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Cabecera.vue?vue&type=template&id=5497f71d&scoped=true */ "./resources/js/components/Cabecera.vue?vue&type=template&id=5497f71d&scoped=true");
 /* harmony import */ var _Cabecera_vue_vue_type_style_index_0_id_5497f71d_scoped_true_lang_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Cabecera.vue?vue&type=style&index=0&id=5497f71d&scoped=true&lang=css */ "./resources/js/components/Cabecera.vue?vue&type=style&index=0&id=5497f71d&scoped=true&lang=css");
-/* harmony import */ var C_Users_ik_2dw3_Desktop_reto2_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_Users_ik_2dw3_Desktop_Reto2_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 const script = {}
 
 ;
 
 
-const __exports__ = /*#__PURE__*/(0,C_Users_ik_2dw3_Desktop_reto2_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(script, [['render',_Cabecera_vue_vue_type_template_id_5497f71d_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render],['__scopeId',"data-v-5497f71d"],['__file',"resources/js/components/Cabecera.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_Users_ik_2dw3_Desktop_Reto2_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(script, [['render',_Cabecera_vue_vue_type_template_id_5497f71d_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render],['__scopeId',"data-v-5497f71d"],['__file',"resources/js/components/Cabecera.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -51078,7 +51122,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Cardscopy_vue_vue_type_template_id_e8592906_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Cardscopy.vue?vue&type=template&id=e8592906&scoped=true */ "./resources/js/components/Cardscopy.vue?vue&type=template&id=e8592906&scoped=true");
 /* harmony import */ var _Cardscopy_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Cardscopy.vue?vue&type=script&lang=js */ "./resources/js/components/Cardscopy.vue?vue&type=script&lang=js");
 /* harmony import */ var _Cardscopy_vue_vue_type_style_index_0_id_e8592906_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Cardscopy.vue?vue&type=style&index=0&id=e8592906&lang=scss&scoped=true */ "./resources/js/components/Cardscopy.vue?vue&type=style&index=0&id=e8592906&lang=scss&scoped=true");
-/* harmony import */ var C_Users_ik_2dw3_Desktop_reto2_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_Users_ik_2dw3_Desktop_Reto2_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
@@ -51086,7 +51130,7 @@ __webpack_require__.r(__webpack_exports__);
 ;
 
 
-const __exports__ = /*#__PURE__*/(0,C_Users_ik_2dw3_Desktop_reto2_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_Cardscopy_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Cardscopy_vue_vue_type_template_id_e8592906_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render],['__scopeId',"data-v-e8592906"],['__file',"resources/js/components/Cardscopy.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_Users_ik_2dw3_Desktop_Reto2_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_Cardscopy_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Cardscopy_vue_vue_type_template_id_e8592906_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render],['__scopeId',"data-v-e8592906"],['__file',"resources/js/components/Cardscopy.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -51108,13 +51152,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Grafico_vue_vue_type_template_id_7b7da92a__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Grafico.vue?vue&type=template&id=7b7da92a */ "./resources/js/components/Grafico.vue?vue&type=template&id=7b7da92a");
 /* harmony import */ var _Grafico_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Grafico.vue?vue&type=script&lang=js */ "./resources/js/components/Grafico.vue?vue&type=script&lang=js");
-/* harmony import */ var C_Users_ik_2dw3_Desktop_reto2_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_Users_ik_2dw3_Desktop_Reto2_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_Users_ik_2dw3_Desktop_reto2_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Grafico_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Grafico_vue_vue_type_template_id_7b7da92a__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/Grafico.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_Users_ik_2dw3_Desktop_Reto2_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Grafico_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Grafico_vue_vue_type_template_id_7b7da92a__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/Grafico.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -51136,14 +51180,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Pie_vue_vue_type_template_id_194eb91e_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Pie.vue?vue&type=template&id=194eb91e&scoped=true */ "./resources/js/components/Pie.vue?vue&type=template&id=194eb91e&scoped=true");
 /* harmony import */ var _Pie_vue_vue_type_style_index_0_id_194eb91e_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Pie.vue?vue&type=style&index=0&id=194eb91e&lang=scss&scoped=true */ "./resources/js/components/Pie.vue?vue&type=style&index=0&id=194eb91e&lang=scss&scoped=true");
-/* harmony import */ var C_Users_ik_2dw3_Desktop_reto2_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_Users_ik_2dw3_Desktop_Reto2_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 const script = {}
 
 ;
 
 
-const __exports__ = /*#__PURE__*/(0,C_Users_ik_2dw3_Desktop_reto2_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(script, [['render',_Pie_vue_vue_type_template_id_194eb91e_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render],['__scopeId',"data-v-194eb91e"],['__file',"resources/js/components/Pie.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_Users_ik_2dw3_Desktop_Reto2_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(script, [['render',_Pie_vue_vue_type_template_id_194eb91e_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render],['__scopeId',"data-v-194eb91e"],['__file',"resources/js/components/Pie.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -51165,13 +51209,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Ranking_vue_vue_type_template_id_49a4ea9b__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Ranking.vue?vue&type=template&id=49a4ea9b */ "./resources/js/components/Ranking.vue?vue&type=template&id=49a4ea9b");
 /* harmony import */ var _Ranking_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Ranking.vue?vue&type=script&lang=js */ "./resources/js/components/Ranking.vue?vue&type=script&lang=js");
-/* harmony import */ var C_Users_ik_2dw3_Desktop_reto2_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_Users_ik_2dw3_Desktop_Reto2_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_Users_ik_2dw3_Desktop_reto2_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Ranking_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Ranking_vue_vue_type_template_id_49a4ea9b__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/Ranking.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_Users_ik_2dw3_Desktop_Reto2_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Ranking_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Ranking_vue_vue_type_template_id_49a4ea9b__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/Ranking.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -51193,13 +51237,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Tabla_precio_vue_vue_type_template_id_01628074__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Tabla_precio.vue?vue&type=template&id=01628074 */ "./resources/js/components/Tabla_precio.vue?vue&type=template&id=01628074");
 /* harmony import */ var _Tabla_precio_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Tabla_precio.vue?vue&type=script&lang=js */ "./resources/js/components/Tabla_precio.vue?vue&type=script&lang=js");
-/* harmony import */ var C_Users_ik_2dw3_Desktop_reto2_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_Users_ik_2dw3_Desktop_Reto2_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_Users_ik_2dw3_Desktop_reto2_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Tabla_precio_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Tabla_precio_vue_vue_type_template_id_01628074__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/Tabla_precio.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_Users_ik_2dw3_Desktop_Reto2_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Tabla_precio_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Tabla_precio_vue_vue_type_template_id_01628074__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/Tabla_precio.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -51222,7 +51266,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Tarjeta_consumo_vue_vue_type_template_id_fc1d338e_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Tarjeta_consumo.vue?vue&type=template&id=fc1d338e&scoped=true */ "./resources/js/components/Tarjeta_consumo.vue?vue&type=template&id=fc1d338e&scoped=true");
 /* harmony import */ var _Tarjeta_consumo_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Tarjeta_consumo.vue?vue&type=script&lang=js */ "./resources/js/components/Tarjeta_consumo.vue?vue&type=script&lang=js");
 /* harmony import */ var _Tarjeta_consumo_vue_vue_type_style_index_0_id_fc1d338e_scoped_true_lang_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Tarjeta_consumo.vue?vue&type=style&index=0&id=fc1d338e&scoped=true&lang=css */ "./resources/js/components/Tarjeta_consumo.vue?vue&type=style&index=0&id=fc1d338e&scoped=true&lang=css");
-/* harmony import */ var C_Users_ik_2dw3_Desktop_reto2_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_Users_ik_2dw3_Desktop_Reto2_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
@@ -51230,7 +51274,7 @@ __webpack_require__.r(__webpack_exports__);
 ;
 
 
-const __exports__ = /*#__PURE__*/(0,C_Users_ik_2dw3_Desktop_reto2_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_Tarjeta_consumo_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Tarjeta_consumo_vue_vue_type_template_id_fc1d338e_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render],['__scopeId',"data-v-fc1d338e"],['__file',"resources/js/components/Tarjeta_consumo.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_Users_ik_2dw3_Desktop_Reto2_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_Tarjeta_consumo_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Tarjeta_consumo_vue_vue_type_template_id_fc1d338e_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render],['__scopeId',"data-v-fc1d338e"],['__file',"resources/js/components/Tarjeta_consumo.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -51253,7 +51297,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Tarjeta_repostaje_vue_vue_type_template_id_0026b5c8_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Tarjeta_repostaje.vue?vue&type=template&id=0026b5c8&scoped=true */ "./resources/js/components/Tarjeta_repostaje.vue?vue&type=template&id=0026b5c8&scoped=true");
 /* harmony import */ var _Tarjeta_repostaje_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Tarjeta_repostaje.vue?vue&type=script&lang=js */ "./resources/js/components/Tarjeta_repostaje.vue?vue&type=script&lang=js");
 /* harmony import */ var _Tarjeta_repostaje_vue_vue_type_style_index_0_id_0026b5c8_scoped_true_lang_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Tarjeta_repostaje.vue?vue&type=style&index=0&id=0026b5c8&scoped=true&lang=css */ "./resources/js/components/Tarjeta_repostaje.vue?vue&type=style&index=0&id=0026b5c8&scoped=true&lang=css");
-/* harmony import */ var C_Users_ik_2dw3_Desktop_reto2_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_Users_ik_2dw3_Desktop_Reto2_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
@@ -51261,7 +51305,7 @@ __webpack_require__.r(__webpack_exports__);
 ;
 
 
-const __exports__ = /*#__PURE__*/(0,C_Users_ik_2dw3_Desktop_reto2_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_Tarjeta_repostaje_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Tarjeta_repostaje_vue_vue_type_template_id_0026b5c8_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render],['__scopeId',"data-v-0026b5c8"],['__file',"resources/js/components/Tarjeta_repostaje.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_Users_ik_2dw3_Desktop_Reto2_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_Tarjeta_repostaje_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Tarjeta_repostaje_vue_vue_type_template_id_0026b5c8_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render],['__scopeId',"data-v-0026b5c8"],['__file',"resources/js/components/Tarjeta_repostaje.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -51283,13 +51327,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Tarjetas_consumos_vue_vue_type_template_id_44eef36b__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Tarjetas_consumos.vue?vue&type=template&id=44eef36b */ "./resources/js/components/Tarjetas_consumos.vue?vue&type=template&id=44eef36b");
 /* harmony import */ var _Tarjetas_consumos_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Tarjetas_consumos.vue?vue&type=script&lang=js */ "./resources/js/components/Tarjetas_consumos.vue?vue&type=script&lang=js");
-/* harmony import */ var C_Users_ik_2dw3_Desktop_reto2_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_Users_ik_2dw3_Desktop_Reto2_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_Users_ik_2dw3_Desktop_reto2_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Tarjetas_consumos_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Tarjetas_consumos_vue_vue_type_template_id_44eef36b__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/Tarjetas_consumos.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_Users_ik_2dw3_Desktop_Reto2_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Tarjetas_consumos_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Tarjetas_consumos_vue_vue_type_template_id_44eef36b__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/Tarjetas_consumos.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -51312,7 +51356,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Tarjetas_didacticas_vue_vue_type_template_id_76e4c686_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Tarjetas_didacticas.vue?vue&type=template&id=76e4c686&scoped=true */ "./resources/js/components/Tarjetas_didacticas.vue?vue&type=template&id=76e4c686&scoped=true");
 /* harmony import */ var _Tarjetas_didacticas_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Tarjetas_didacticas.vue?vue&type=script&lang=js */ "./resources/js/components/Tarjetas_didacticas.vue?vue&type=script&lang=js");
 /* harmony import */ var _Tarjetas_didacticas_vue_vue_type_style_index_0_id_76e4c686_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Tarjetas_didacticas.vue?vue&type=style&index=0&id=76e4c686&lang=scss&scoped=true */ "./resources/js/components/Tarjetas_didacticas.vue?vue&type=style&index=0&id=76e4c686&lang=scss&scoped=true");
-/* harmony import */ var C_Users_ik_2dw3_Desktop_reto2_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_Users_ik_2dw3_Desktop_Reto2_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
@@ -51320,7 +51364,7 @@ __webpack_require__.r(__webpack_exports__);
 ;
 
 
-const __exports__ = /*#__PURE__*/(0,C_Users_ik_2dw3_Desktop_reto2_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_Tarjetas_didacticas_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Tarjetas_didacticas_vue_vue_type_template_id_76e4c686_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render],['__scopeId',"data-v-76e4c686"],['__file',"resources/js/components/Tarjetas_didacticas.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_Users_ik_2dw3_Desktop_Reto2_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_Tarjetas_didacticas_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Tarjetas_didacticas_vue_vue_type_template_id_76e4c686_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render],['__scopeId',"data-v-76e4c686"],['__file',"resources/js/components/Tarjetas_didacticas.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -51342,13 +51386,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Tarjetas_repostajes_vue_vue_type_template_id_6424bca8__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Tarjetas_repostajes.vue?vue&type=template&id=6424bca8 */ "./resources/js/components/Tarjetas_repostajes.vue?vue&type=template&id=6424bca8");
 /* harmony import */ var _Tarjetas_repostajes_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Tarjetas_repostajes.vue?vue&type=script&lang=js */ "./resources/js/components/Tarjetas_repostajes.vue?vue&type=script&lang=js");
-/* harmony import */ var C_Users_ik_2dw3_Desktop_reto2_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_Users_ik_2dw3_Desktop_Reto2_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_Users_ik_2dw3_Desktop_reto2_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Tarjetas_repostajes_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Tarjetas_repostajes_vue_vue_type_template_id_6424bca8__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/Tarjetas_repostajes.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_Users_ik_2dw3_Desktop_Reto2_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Tarjetas_repostajes_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Tarjetas_repostajes_vue_vue_type_template_id_6424bca8__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/Tarjetas_repostajes.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -51370,13 +51414,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Vehiculo_seleccion_vue_vue_type_template_id_28c2310e__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Vehiculo_seleccion.vue?vue&type=template&id=28c2310e */ "./resources/js/components/Vehiculo_seleccion.vue?vue&type=template&id=28c2310e");
 /* harmony import */ var _Vehiculo_seleccion_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Vehiculo_seleccion.vue?vue&type=script&lang=js */ "./resources/js/components/Vehiculo_seleccion.vue?vue&type=script&lang=js");
-/* harmony import */ var C_Users_ik_2dw3_Desktop_reto2_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_Users_ik_2dw3_Desktop_Reto2_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_Users_ik_2dw3_Desktop_reto2_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Vehiculo_seleccion_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Vehiculo_seleccion_vue_vue_type_template_id_28c2310e__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/Vehiculo_seleccion.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_Users_ik_2dw3_Desktop_Reto2_gasoilrata_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Vehiculo_seleccion_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Vehiculo_seleccion_vue_vue_type_template_id_28c2310e__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/Vehiculo_seleccion.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -51895,6 +51939,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "isReadonly": () => (/* reexport safe */ _vue_runtime_dom__WEBPACK_IMPORTED_MODULE_0__.isReadonly),
 /* harmony export */   "isRef": () => (/* reexport safe */ _vue_runtime_dom__WEBPACK_IMPORTED_MODULE_0__.isRef),
 /* harmony export */   "isRuntimeOnly": () => (/* reexport safe */ _vue_runtime_dom__WEBPACK_IMPORTED_MODULE_0__.isRuntimeOnly),
+/* harmony export */   "isShallow": () => (/* reexport safe */ _vue_runtime_dom__WEBPACK_IMPORTED_MODULE_0__.isShallow),
 /* harmony export */   "isVNode": () => (/* reexport safe */ _vue_runtime_dom__WEBPACK_IMPORTED_MODULE_0__.isVNode),
 /* harmony export */   "markRaw": () => (/* reexport safe */ _vue_runtime_dom__WEBPACK_IMPORTED_MODULE_0__.markRaw),
 /* harmony export */   "mergeDefaults": () => (/* reexport safe */ _vue_runtime_dom__WEBPACK_IMPORTED_MODULE_0__.mergeDefaults),
@@ -53551,7 +53596,7 @@ var index = {
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"Promise based HTTP client for the browser and node.js","main":"index.js","scripts":{"test":"grunt test","start":"node ./sandbox/server.js","build":"NODE_ENV=production grunt build","preversion":"npm test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json","postversion":"git push && git push --tags","examples":"node ./examples/server.js","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","fix":"eslint --fix lib/**/*.js"},"repository":{"type":"git","url":"https://github.com/axios/axios.git"},"keywords":["xhr","http","ajax","promise","node"],"author":"Matt Zabriskie","license":"MIT","bugs":{"url":"https://github.com/axios/axios/issues"},"homepage":"https://axios-http.com","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"jsdelivr":"dist/axios.min.js","unpkg":"dist/axios.min.js","typings":"./index.d.ts","dependencies":{"follow-redirects":"^1.14.0"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}]}');
+module.exports = JSON.parse('{"_args":[["axios@0.21.4","C:\\\\Users\\\\ik_2dw3\\\\Desktop\\\\Reto2\\\\gasoilrata"]],"_from":"axios@0.21.4","_id":"axios@0.21.4","_inBundle":false,"_integrity":"sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==","_location":"/axios","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"axios@0.21.4","name":"axios","escapedName":"axios","rawSpec":"0.21.4","saveSpec":null,"fetchSpec":"0.21.4"},"_requiredBy":["#DEV:/"],"_resolved":"https://registry.npmjs.org/axios/-/axios-0.21.4.tgz","_spec":"0.21.4","_where":"C:\\\\Users\\\\ik_2dw3\\\\Desktop\\\\Reto2\\\\gasoilrata","author":{"name":"Matt Zabriskie"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"bugs":{"url":"https://github.com/axios/axios/issues"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}],"dependencies":{"follow-redirects":"^1.14.0"},"description":"Promise based HTTP client for the browser and node.js","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"homepage":"https://axios-http.com","jsdelivr":"dist/axios.min.js","keywords":["xhr","http","ajax","promise","node"],"license":"MIT","main":"index.js","name":"axios","repository":{"type":"git","url":"git+https://github.com/axios/axios.git"},"scripts":{"build":"NODE_ENV=production grunt build","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","examples":"node ./examples/server.js","fix":"eslint --fix lib/**/*.js","postversion":"git push && git push --tags","preversion":"npm test","start":"node ./sandbox/server.js","test":"grunt test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json"},"typings":"./index.d.ts","unpkg":"dist/axios.min.js","version":"0.21.4"}');
 
 /***/ })
 
