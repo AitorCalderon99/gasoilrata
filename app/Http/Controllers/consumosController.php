@@ -51,7 +51,8 @@ class ConsumosController extends Controller
      */
     public function show($id)
     {
-        return Consumo::where("id_vehiculo", "=", $id)->get();
+        // return Consumo::where("id_vehiculo", "=", $id)->get();
+        return Consumo::all();
     }
 
     /**

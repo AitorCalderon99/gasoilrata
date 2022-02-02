@@ -46,8 +46,8 @@ class RepostajesController extends Controller
      */
     public function show($id)
     {
-        return Repostaje::where('id_vehiculo', '=', $id)->get();
-        // return Repostaje::all();
+        // return Repostaje::where('id_vehiculo', '=', $id)->get();
+        return Repostaje::all();
         // filtrar para poner vehiculo_id => algo
     }
 
