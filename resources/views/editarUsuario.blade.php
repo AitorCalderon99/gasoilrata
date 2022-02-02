@@ -1,7 +1,10 @@
 @extends('layouts.app')
+@push('head')
+    
+@endpush
 @section('content')
 
-<div id="main">
-    <h1>osiadjasoidja</h1>
-</div>
-@section
+    <Editar_usuario/>
+    
+
+@endsection

@@ -37,7 +37,7 @@
             @endguest
 
             @auth
-            <a href="" class="nav-item">{{ Auth::user()->name }}</a>
+            <a href="editUser" class="nav-item">EditarUsuario</a>
             <a href="consumo" class="nav-item">Mis Consumos</a>
             <a href="repostajes" class="nav-item">Mis Repostajes</a>
             <!-- no encuentra el controlador de repostajes ?? -->

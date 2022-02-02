@@ -51,6 +51,7 @@ import Tarjetas_consumos from "./components/Tarjetas_consumos";
 import Cardscopy from "./components/Cardscopy";
 import Tarjetas_repostajes from "./components/Tarjetas_repostajes";
 import Tarjeta_repostaje from "./components/Tarjeta_repostaje";
+import Editar_usuario from "./components/Editar_usuario";
 
 
 app.component('Cardscopy', Cardscopy);
@@ -64,6 +65,7 @@ app.component('Vehiculo_seleccion', Vehiculo_seleccion);
 app.component('Tarjetas_consumos', Tarjetas_consumos);
 app.component('Tarjetas_repostajes', Tarjetas_repostajes);
 app.component('Tarjeta_repostaje', Tarjeta_repostaje);
+app.component('Editar_usuario', Editar_usuario);
 
 app.use(BootstrapVue3);
 app.use(VueSweetalert2);

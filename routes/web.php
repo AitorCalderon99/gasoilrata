@@ -38,6 +38,9 @@ Route::get('contacto', function () {
 Route::get('avisolegal', function () {
     return view('avisolegal');
 });
+Route::get('editUser', function () {
+    return view('editarUsuario');
+});
 
 Route::get('login', [AuthenticatedSessionController::class, "create"]);
 Route::get('register', [RegisteredUserController::class, "create"]);
