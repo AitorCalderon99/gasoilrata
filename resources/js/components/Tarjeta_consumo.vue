@@ -4,7 +4,7 @@
             <div class="fecha">{{ consumo.fecha }}</div>
             <div class="carburante">{{ consumo.carburante }}</div>
         </div>
-        <h3 class="viaje">{{ consumo.origen }}-{{ consumo.destino }}--{{ consumo.id_vehiculo }}</h3>
+        <h3 class="viaje">{{ consumo.origen }}-{{ consumo.destino }}</h3>
         <div class="kilometros">{{ consumo.kilometros }} km</div>
         <div class="coste-litro-container">
             <div class="coste-litro">{{ consumo.coste_litro }} €/L</div>

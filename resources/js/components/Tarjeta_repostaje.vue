@@ -3,7 +3,7 @@
         <div class="fecha-carburante-container">
             <div class="fecha">{{ repostaje.fecha }}</div>
         </div>
-        <h3 class="gasolinera">{{ repostaje.gasolinera }}--{{ repostaje.id_vehiculo }}</h3>
+        <h3 class="gasolinera">{{ repostaje.gasolinera }}</h3>
         <div class="total">{{ repostaje.precio_litro * repostaje.litros }} km</div>
         <div class="coste-litro-container">
             <div class="coste-litro">{{ repostaje.precio_litro }} €/L</div>
