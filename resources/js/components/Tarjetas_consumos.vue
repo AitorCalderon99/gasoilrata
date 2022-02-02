@@ -1,6 +1,6 @@
 <template>
   <div class="tarjetas-container">
-    <Tarjeta_consumo v-for="consumo in consumos.value" :key="consumo" :consumo="consumo"></Tarjeta_consumo>
+    <Tarjeta_consumo v-for="consumo in getConsumos()" :key="consumo" :consumo="consumo"></Tarjeta_consumo>
   </div>
 </template>
 
@@ -21,33 +21,42 @@ export default {
     const store = useStore();
     const Swal = require('sweetalert2');
     const consumos = reactive([]);
+    const numerovehiculo = ref([0]);
 
-    const getConsumos = async() => {
+    const getIdVehiculo = computed( () => {
+      return store.state.id_vehiculo;
+    });
+
+    const getConsumos = computed(async() => {
       let response;
         try {
-            response = await axios.get('consumo/'+getIdVehiculo);
+            response = await axios.get('consumo/'+getIdVehiculo.value);
         } catch (error) {
             Swal.fire(error.title, error.message, "error");
             return;
         }
 
         // if (response.data != 200) {
-        //     //marcar error
+        //     marcar error
         //     return;
         // }
-      consumos.value = response.data;
+        console.log(response.data);
+
+        if (response.data.length <= 0) {
+          alert("Mala Suerte");
+        }
+        
+        consumos.value = response.data;
+        return response.data;
     }
-
-    const getIdVehiculo = computed( () => {
-      return id_vehiculo = store.state.id_vehiculo;
-    });
-
+) 
     onBeforeMount( () => {
       getConsumos();
     });
 
     return {
-      consumos
+      consumos,
+      getConsumos
     }
   },
 };

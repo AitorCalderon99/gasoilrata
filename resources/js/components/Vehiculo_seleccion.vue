@@ -3,12 +3,11 @@
     <h1 class="mx-auto"><span id="obligatorio">*</span> Seleccione un vehículo</h1>
 
     <div class="select-agregar row w-100 mx-auto">
-      <select @change="cambiarVehiculo()" class="col" name="vehiculo" id="vehiculo">
-        <option value="0" selected disabled>Seleccione un vehiculo</option>
+      <select @change="cambiarVehiculo()" v-model="vehiculos.value" class="col" name="vehiculo" id="vehiculo">
         <option v-for="v in vehiculos" :key="v.id_vehiculo" :value="v.id_vehiculo">
           {{ v.nombre }}
         </option>
-        <option v-if="vehiculos <= 0" disabled>No has añadido ningún vehículo</option>
+        <option v-if="vehiculos<= 0" disabled selected>No has añadido ningún vehículo</option>
       </select>
       <button
         type="button"
@@ -31,7 +30,7 @@
 </template>
 
 <script>
-import { reactive, onBeforeMount, inject, computed, ref } from "vue";
+import { onBeforeMount, inject, ref } from "vue";
 import axios from "axios";
 import Swal from "sweetalert2"
 import {useStore} from "vuex";
@@ -41,12 +40,13 @@ export default {
     const store = useStore();
     const id_user = inject("id_user");
     const vehiculos = ref([]);
-    const vehiculo = computed("");
 
     const cambiarVehiculo = () => {
       const vehiculo_seleccionado = document.getElementById("vehiculo").value;
-      
+    
       if (vehiculo_seleccionado) store.commit("setIdVehiculo", vehiculo_seleccionado);
+    
+      console.log(store.state.id_vehiculo);
     };
 
     const getVehiculos = async () => {
@@ -57,11 +57,12 @@ export default {
         Swal.fire(error.title, error.message, "error");
         return;
       }
+
       //   if (response.data != 200) {
       //     console.log("que es esto");
       //     return;
       //   }
-      
+
       vehiculos.value = response.data;
     };
 
