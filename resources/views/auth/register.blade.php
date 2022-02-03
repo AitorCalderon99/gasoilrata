@@ -6,6 +6,11 @@
     body {
         background-color: #C5A880 !important;
     }
+    #global{
+        background-image: url("img/fondoCoche.png") !important;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
     
     html * {
         font-family: "Hemi head";
@@ -39,10 +44,6 @@
 
     input{
         opacity: 56%;
-    }
-
-    body{
-        background-color: #C5A880;
     }
 
     form{

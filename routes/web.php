@@ -55,6 +55,7 @@ Route::resource("repostajes", RepostajesController::class);
 Route::resource("editarUsuario", UsuariosController::class);
 Route::resource("vehiculos", VehiculosController::class);
 Route::resource("usuarios", UsuariosController::class);
+Route::put('usuarios', [UsuariosController::class, 'update']);
 
 // Route::post("/vehiculos", [VehiculosController::class, "store"]);
 

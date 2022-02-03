@@ -21,7 +21,7 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 export default {
     setup() {
-        const userData = ref([]);
+        const userData = ref({});
         const id_user = inject("id_user");
         const getVehiculos = async () => {
             let response;
@@ -31,7 +31,7 @@ export default {
                 Swal.fire(error.title, error.message, "error");
                 return;
             } 
-            userData.value = response.data;
+            userData.value = response.data[0];
         };
         const updateUserData = async()=>{
             if (userData.value.name == "" || userData.value.email == "" || userData.value.ubicacion == "") {
@@ -39,14 +39,16 @@ export default {
                 return;
             }
             const data = {
+                id: id_user,
                 name: userData.value.name,
                 email: userData.value.email,
                 ubicacion: userData.value.ubicacion
             }
+            console.log(data);
             let response;
             try {
-                response = await axios.put("usuarios/" + id_user, {
-                    data: data
+                response = await axios.put("usuarios/", {
+                    data
                 });
             } catch (error) {
                 Swal.fire(error.title, error.message, "error");
