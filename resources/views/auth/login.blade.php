@@ -6,6 +6,11 @@
     body {
         background-color: #C5A880 !important;
     }
+    #global{
+        background-image: url("img/fondoEsferas.png") !important;
+        background-size: cover !important;
+        background-repeat: no-repeat !important;
+    }
 
     html * {
         font-family: "Hemi head";

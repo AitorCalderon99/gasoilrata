@@ -16,7 +16,7 @@
     @stack('head')
 </head>
 <body id="app">
-    <div class="wrapper">
+    <div id="global" class="wrapper">
         <header>@include('layouts.header')</header>
 
         @yield('content')
