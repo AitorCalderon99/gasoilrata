@@ -20,7 +20,11 @@
 
     <h1 class="text-center mb-2">¡Revisa el historial de repostajes para ahorrarte un dinerito!</h1>
 
-    <Vehiculo_seleccion></Vehiculo_seleccion>
+    @if(Auth::check())
+        <Vehiculo_seleccion></Vehiculo_seleccion>
+    @else
+        <h1 class="mx-auto">Debes iniciar sesión para guardar vehículos</h1>
+    @endif
 
     <Tarjetas_repostajes @cambioVehiculo="getVehiculo($event)"></Tarjetas_repostajes>
 </main>

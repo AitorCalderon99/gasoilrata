@@ -16,7 +16,11 @@
     <main>
         <h3 class="my-4 text-center">¡WOW, qué cantidad de dinero que has ahorrado utilizando la calculadora de consumo!</h3>
 
-        <Vehiculo_seleccion></Vehiculo_seleccion>
+        @if(Auth::check())
+            <Vehiculo_seleccion></Vehiculo_seleccion>
+        @else
+            <h1 class="mx-auto">Debes iniciar sesión para guardar vehículos</h1>
+        @endif
 
         <Tarjetas_consumos></Tarjetas_consumos>
     </main>
