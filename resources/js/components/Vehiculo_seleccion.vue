@@ -58,12 +58,8 @@ export default {
         return;
       }
 
-      //   if (response.data != 200) {
-      //     console.log("que es esto");
-      //     return;
-      //   }
-
       vehiculos.value = response.data;
+      console.log(vehiculos.value);
     };
 
     const saveVehiculo = async (vehiculo) => {
@@ -88,27 +84,6 @@ export default {
       getVehiculos();
     };
 
-    const deleteVehiculo = async (vehiculo) => {
-      let response;
-
-      try {
-        response = await axios.post("/vehiculos/{vehiculo}", {
-        vehiculo: vehiculo,
-        idUser: id_user,
-        });
-      } catch (error) {
-        Sawl.fire("Tienes que iniciar sesión para guardar vehículos", "error");
-        return;
-      }
-
-      Swal.fire(vehiculo + " se ha añadido al garaje.");
-
-      if (response.data != 200) {
-        //marcar error
-        return;
-      }
-      getVehiculos();
-    };
 
     const addVehiculo = async () => {
       const { value: vehiculo } = await Swal.fire({
@@ -133,25 +108,36 @@ export default {
         getVehiculos();
       }
     };
+      
+    const deleteVehiculo = async (id) => {
+      let response;
+      try {
+        response = await axios({
+          method: 'delete',
+          url: '/vehiculos/'+id,
+        });
+      } catch (error) {
+        Sawl.fire(error.title, error.message, "error");
+        return;
+      }
+      getVehiculos();
+    };
 
     const removeVehiculo = async () => {
-      const { value: vehiculo } = await Swal.fire({
-        title: "¿Eliminar este vehículo?",
+      const id_seleccionado = document.getElementById("vehiculo").value;
+      const selected_index = document.getElementById("vehiculo").selectedIndex;
+      Swal.fire({
+        title: "¿Seguro que quieres eliminar "+ vehiculos.value[selected_index].nombre +"?",
         showDenyButton: true,
         confirmButtonText: 'Eliminar',
         denyButtonText: 'Volver',
         width: "40rem",
       }).then((result) => {
         if (result.isConfirmed) {
-          Swal.fire('Vehículo eliminado!', '', 'success')
+          deleteVehiculo(id_seleccionado);
+          Swal.fire('Vehículo eliminado!', '', 'success');
         }
       });
-
-      if (vehiculo) {
-        // saveVehiculo(vehiculo);
-        deleteVehiculo();
-        getVehiculos();
-      }
     };
 
     onBeforeMount(() => {
