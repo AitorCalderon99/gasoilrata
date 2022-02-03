@@ -9,7 +9,7 @@
         <div class="coste-litro-container">
             <div class="coste-litro">{{ consumo.coste_litro }} €/L</div>
             <div class="litros">{{ consumo.litros }} L</div>
-            <h1 class="coste">{{ consumo.litros * consumo.coste_litro }} €</h1>
+            <h1 class="coste">{{ (consumo.litros * consumo.coste_litro).toLocaleString('de-DE', {style: 'currency', currency:'EUR'}) }}</h1>
         </div>
     </div>
 </template>
@@ -74,7 +74,7 @@ export default {
     flex-flow: row nowrap;
     justify-content: flex-end;
 
-    width: 6rem;
+    width: 7rem;
     background-color: #532e1c;
     border-radius: 10px 0 0 0;
 }
