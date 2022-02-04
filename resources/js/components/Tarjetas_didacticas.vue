@@ -134,8 +134,10 @@ export default {
 </script>
 <style lang="scss" scoped>
   #content{
+    margin: 1rem 0;
     display: grid;
     grid-template-columns: 1fr 8fr 1fr;
+    align-items: center;
     >#prev{
       cursor: pointer;
       >img{
@@ -151,6 +153,16 @@ export default {
       display: flex;
       justify-content: center;
       align-items: center;
+
+      border: solid black medium;
+      border-radius: 10px;
+      box-sizing: border-box;
+      width: auto;
+      min-height: 8rem;
+      text-align: center;
+      background: rgb(34,193,195);
+      background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
+      color: black;
     }
     >#next{
       cursor: pointer;

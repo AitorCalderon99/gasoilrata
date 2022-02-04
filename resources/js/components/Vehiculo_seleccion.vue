@@ -54,7 +54,7 @@ export default {
       try {
         response = await axios.get("vehiculos/" + id_user);
       } catch (error) {
-        Swal.fire(error.title, error.message, "error");
+        Swal.fire("Ventana "+error.title, error.message, "error");
         return;
       }
 
