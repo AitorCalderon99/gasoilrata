@@ -35,15 +35,11 @@ export default {
               '#162d1a'
             ],
             // rescatar datos de la api e insertarlo en este array
-            data: [getG95, 1.521, 1.677]
+            data: [store.state.prices.g95, store.state.prices.g98, store.state.prices.diesel]
           }
         ]
       }
     }
-
-    const getG95 = computed( {
-      get: () => store.state.prices.g95
-    } );
   
     const beforeRenderLogic = (event) => {
       //...

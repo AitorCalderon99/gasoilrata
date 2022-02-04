@@ -4,9 +4,9 @@ export default createStore({
     state() {
         return {
             prices: {
-                g95: 1.23,
-                g98: 1.23,
-                diesel: 1.23
+                g95: 1.54,
+                g98: 1.68,
+                diesel: 1.44
             },
             id_vehiculo : 1,
         }
